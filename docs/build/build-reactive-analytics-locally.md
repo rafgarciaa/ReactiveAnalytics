@@ -1,5 +1,8 @@
 # Build Reactive Analytics locally
 
+NOTE: this document is stale and needs to be updated.
+We no longer use lerna, we use yarn workspaces instead.
+
 ## Pre-requisites
 
 - [npm](https://www.npmjs.com/)
