@@ -1,4 +1,4 @@
-FROM node:16.15-alpine3.15 as builder
+FROM node:12-alpine as builder
 
 ARG ANALYTICS_SERVER_HOST
 ARG BUILD_VERSION
