@@ -16,7 +16,7 @@ export interface StockHistoryQuery_stock_chart {
   low: number | null;
   high: number | null;
   close: number | null;
-  volume: number;
+  volume: number | null;
 }
 
 export interface StockHistoryQuery_stock_quote {

@@ -24,7 +24,7 @@ import { gql } from 'apollo-server'
     average: Float
     open: Float
     close: Float
-    volume: Float!
+    volume: Float
     notional: Float!
     numberOfTrades: Float!
     changeOverTime: Float!
