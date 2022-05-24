@@ -16,7 +16,7 @@ export interface History_chart {
   low: number | null;
   high: number | null;
   close: number | null;
-  volume: number;
+  volume: number | null;
 }
 
 export interface History_quote {
