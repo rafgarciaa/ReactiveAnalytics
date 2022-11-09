@@ -26,7 +26,8 @@
     "styled-components": "^5.0.0",
     "subscriptions-transport-ws": "^0.9.16",
     "typeface-merriweather": "^0.0.72",
-    "typeface-roboto": "^0.0.75"
+    "typeface-roboto": "^0.0.75",
+    "vite-plugin-graphql": "^0.1.0"
   },
   "scripts": {
     "start": "vite",
