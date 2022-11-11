@@ -8,6 +8,8 @@
     "@fortawesome/free-regular-svg-icons": "^5.8.1",
     "@fortawesome/free-solid-svg-icons": "^5.2.0",
     "@fortawesome/react-fontawesome": "^0.1.2",
+    "@rollup/plugin-graphql": "^2.0.2",
+    "@rollup/plugin-typescript": "^9.0.2",
     "downshift": "^4.0.7",
     "graphql": "^14.5.8",
     "lodash": "^4.17.19",
@@ -27,14 +29,14 @@
     "typeface-roboto": "^0.0.75"
   },
   "scripts": {
-    "start": "react-app-rewired start",
+    "start": "vite",
     "start:https": "cross-env HTTPS=true react-app-rewired start",
     "start:local": "cross-env REACT_APP_ANALYTICS_SERVER_HOST=localhost:4000 npm run start",
     "start:dev": "cross-env REACT_APP_ANALYTICS_SERVER_HOST=dev-reactive-analytics.adaptivecluster.com REACT_APP_ANALYTICS_SERVER_HTTPS=true npm run start",
     "start:demo": "cross-env REACT_APP_ANALYTICS_SERVER_HOST=demo-reactive-analytics.adaptivecluster.com REACT_APP_ANALYTICS_SERVER_HTTPS=true npm run start",
     "start:openfin": "concurrently npm:start npm:openfin",
     "start:openfin:dev": "concurrently npm:start:dev npm:openfin",
-    "build": "react-app-rewired build",
+    "build": "tsc && vite build",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-app-rewired eject",
     "openfin": "wait-on -l http://localhost:3005/openfin/app.json && openfin -l -c http://localhost:3005/openfin/app.json"
@@ -50,6 +52,7 @@
     "@types/react-router-dom": "^5.1.3",
     "@types/recharts": "^1.1.16",
     "@types/styled-components": "^5.1.0",
+    "@vitejs/plugin-react": "^1.3.2",
     "apollo": "^2.21.3",
     "concurrently": "^5.2.0",
     "copy-webpack-plugin": "^6.0.3",
@@ -60,6 +63,7 @@
     "react-app-rewired": "^2.1.3",
     "string.prototype.replaceall": "^1.0.3",
     "typescript": "^3.9.5",
+    "vite": "^2.8.6",
     "wait-on": "^5.1.0"
   },
   "eslintConfig": {

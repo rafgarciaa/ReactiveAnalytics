@@ -7,18 +7,6 @@
   "dependencies": {
     "openfin-fdc3": "^0.2.0"
   },
-  "workspaces": {
-    "packages": [
-      "common",
-      "server",
-      "client"
-    ],
-    "_comment": "styled-components includes react-native causing type conflicts, see https://github.com/DefinitelyTyped/DefinitelyTyped/issues/33311",
-    "nohoist": [
-      "**/react-native",
-      "**/react-native/**"
-    ]
-  },
   "devDependencies": {
     "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^8.2.0",
