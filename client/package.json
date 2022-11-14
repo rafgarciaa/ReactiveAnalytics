@@ -36,7 +36,7 @@
     "start:demo": "cross-env REACT_APP_ANALYTICS_SERVER_HOST=demo-reactive-analytics.adaptivecluster.com REACT_APP_ANALYTICS_SERVER_HTTPS=true npm run start",
     "start:openfin": "concurrently npm:start npm:openfin",
     "start:openfin:dev": "concurrently npm:start:dev npm:openfin",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-app-rewired eject",
     "openfin": "wait-on -l http://localhost:3005/openfin/app.json && openfin -l -c http://localhost:3005/openfin/app.json"
