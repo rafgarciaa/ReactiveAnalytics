@@ -15,7 +15,7 @@ FROM openresty/openresty:alpine-fat
 EXPOSE 3000
 
 # Copy website resourcees
-COPY --from=builder /build /usr/local/openresty/nginx/html
+COPY --from=builder /dist /usr/local/openresty/nginx/html
 
 # Install lua template engine
 RUN /usr/local/openresty/luajit/bin/luarocks install lua-resty-template
