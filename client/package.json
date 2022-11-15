@@ -11,12 +11,11 @@
     "@rollup/plugin-graphql": "^2.0.2",
     "@rollup/plugin-typescript": "^9.0.2",
     "downshift": "^4.0.7",
-    "graphql": "^14.5.8",
+    "graphql": "^16.6.0",
     "lodash": "^4.17.19",
     "moment": "^2.20.1",
     "numeral": "^2.0.6",
-    "react": "^16.8.6",
-    "react-app-rewire-graphql-tag": "^1.1.0",
+    "react": "^17",
     "react-dom": "^16.8.6",
     "react-ga": "^3.1.2",
     "react-router-dom": "^5.0.0",
@@ -42,6 +41,7 @@
     "openfin": "wait-on -l http://localhost:3005/openfin/app.json && openfin -l -c http://localhost:3005/openfin/app.json"
   },
   "devDependencies": {
+    "@types/graphql": "^14.5.0",
     "@types/jest": "24.9.0",
     "@types/lodash": "^4.14.149",
     "@types/node": "13.1.8",
@@ -76,6 +76,6 @@
     "not op_mini all"
   ],
   "resolutions": {
-    "graphql": "^14.5.8"
+    "graphql": "^16.6.0"
   }
 }
