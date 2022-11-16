@@ -5,8 +5,6 @@ import App from '@/App'
 import * as serviceWorker from '@/serviceWorker'
 import { getEnvironment } from '@/utils'
 
-console.log('test')
-
 window.addEventListener('beforeinstallprompt', e => {
   e.preventDefault()
   window.beforeInstallPromptEvent = e
@@ -26,9 +24,7 @@ async function init() {
   })
 
   console.log(
-    `%cReactive Analytics ${
-      import.meta.env.VITE_REACT_APP_BUILD_VERSION || 'vUnknown'
-    }, running in ${env.toUpperCase()}`,
+    `%cReactive Analytics ${import.meta.env.VITE_BUILD_VERSION || 'vUnknown'}, running in ${env.toUpperCase()}`,
     'font-weight:bold;',
   )
 

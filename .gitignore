@@ -1,11 +1,9 @@
 # dependencies
 node_modules
 
-# distributable
-client/dist
-
 # production
-/build
+build/
+client/dist/
 
 # ts output
 server/lib
