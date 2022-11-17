@@ -3,13 +3,12 @@ import react from '@vitejs/plugin-react'
 import graphql from '@rollup/plugin-graphql'
 import copy from 'rollup-plugin-copy'
 
-const PORT = Number(process.env.PORT) || 1917
-
-function getBaseUrl(dev: boolean) {
-  return dev ? `http://localhost:${PORT}` : `${process.env.DOMAIN || ''}${process.env.URL_PATH || ''}` || ''
-}
-
 const copyOpenfinPlugin = (dev: boolean) => {
+  const scheme = process.env.HTTPS === 'true' ? 'https' : 'http'
+  const host_url = `${scheme}://${process.env.HOST || 'localhost'}:${process.env.PORT || '3005'}`
+
+  console.log('host: ', host_url)
+
   const env = process.env.ENVIRONMENT || 'local'
   return {
     ...copy({
@@ -20,7 +19,7 @@ const copyOpenfinPlugin = (dev: boolean) => {
           transform: contents =>
             contents
               .toString()
-              .replace(/<BASE_URL>/g, getBaseUrl(dev))
+              .replace(/<BASE_URL>/g, host_url)
               .replace(/<ENV_NAME>/g, env)
               .replace(/<ENV_SUFFIX>/g, env === 'prod' ? '' : env.toUpperCase()),
         },
