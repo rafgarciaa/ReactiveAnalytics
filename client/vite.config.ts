@@ -58,16 +58,8 @@ const copyWebManifestPlugin = (dev: boolean) => {
 }
 const setConfig = ({ mode }) => {
   const isDev = mode === 'development'
-  const target = process.env.TARGET || 'web'
-  const plugins = [react(), graphql()]
+  const plugins = [react(), graphql(), copyWebManifestPlugin(isDev), copyOpenfinPlugin(isDev)]
 
-  if (target === 'web') {
-    plugins.push(copyWebManifestPlugin(isDev))
-  }
-
-  if (target === 'openfin') {
-    plugins.push(copyOpenfinPlugin(isDev))
-  }
   return defineConfig({
     plugins: plugins,
     resolve: {
