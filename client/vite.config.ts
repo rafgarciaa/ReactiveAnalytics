@@ -2,13 +2,10 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import graphql from '@rollup/plugin-graphql'
 import copy from 'rollup-plugin-copy'
-import { transformOperation } from '@apollo/client/link/utils'
 
 const copyOpenfinPlugin = (dev: boolean) => {
   const scheme = process.env.HTTPS === 'true' ? 'https' : 'http'
   const host_url = `${scheme}://${process.env.HOST || 'localhost'}:${process.env.PORT || '3005'}`
-
-  console.log('host: ', host_url)
 
   const env = process.env.ENVIRONMENT || 'local'
   return {
@@ -65,6 +62,9 @@ const setConfig = ({ mode }) => {
 
   return defineConfig({
     plugins: plugins,
+    server: {
+      port: process.env.PORT ? Number(process.env.PORT) : 3005,
+    },
     resolve: {
       alias: [
         {

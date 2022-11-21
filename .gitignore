@@ -3,7 +3,7 @@ node_modules
 
 # production
 build/
-client/dist/
+dist/
 
 # ts output
 server/lib
