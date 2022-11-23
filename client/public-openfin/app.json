@@ -1,10 +1,10 @@
 {
   "devtools_port": 9090,
   "startup_app": {
-    "name": "Reactive Analytics LOCAL",
+    "name": "Reactive Analytics <ENV_SUFFIX>",
     "description": "Desktop Reactive Analytics",
-    "url": "http://localhost:3005",
-    "uuid": "reactive-analytics-local",
+    "url": "<BASE_URL>",
+    "uuid": "reactive-analytics-<ENV_NAME>",
     "autoShow": true,
     "defaultWidth": 1280,
     "defaultHeight": 900,
@@ -12,7 +12,7 @@
     "minHeight": 600,
     "resizable": true,
     "maximizable": true,
-    "applicationIcon": "http://localhost:3005/static/media/reactive-analytics-icon-256x256.png",
+    "applicationIcon": "<BASE_URL>/static/media/reactive-analytics-icon-256x256.png",
     "fdc3Api": true
   },
   "services": [
@@ -26,7 +26,7 @@
   "shortcut": {
     "company": "Adaptive Consulting",
     "description": "Desktop Reactive Analytics",
-    "icon": "http://localhost:3005/static/media/reactive-analytics.ico",
-    "name": "Reactive Analytics LOCAL"
+    "icon": "<BASE_URL>/static/media/reactive-analytics.ico",
+    "name": "Reactive Analytics <ENV_SUFFIX>"
   }
 }
