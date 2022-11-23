@@ -16,9 +16,9 @@ const copyOpenfinPlugin = (dev: boolean) => {
           transform: contents => {
             const transformed = contents
               .toString()
-              .replace(/<BASE_URL>/g, hostUrl)
-              .replace(/<ENV_NAME>/g, env)
-              .replace(/<ENV_SUFFIX>/g, env === 'prod' ? '' : env.toUpperCase())
+              .replace(/{\*host_url\*}/g, hostUrl)
+              .replace(/{{environment}}/g, env)
+              .replace(/{{environment_suffix}}/g, env === 'prod' ? '' : env.toUpperCase())
             return transformed
           },
         },
