@@ -34,10 +34,11 @@
     "start:dev": "cross-env VITE_ANALYTICS_SERVER_HOST=dev-reactive-analytics.adaptivecluster.com VITE_ANALYTICS_SERVER_HTTPS=true npm run start",
     "start:demo": "cross-env VITE_ANALYTICS_SERVER_HOST=demo-reactive-analytics.adaptivecluster.com VITE_ANALYTICS_SERVER_HTTPS=true npm run start",
     "start:openfin": "concurrently \"yarn start\" \"yarn openfin\"",
-    "start:openfin:dev": "concurrently \"yarn start dev\" \"yarn openfin\"",
+    "start:openfin:dev": "concurrently \"yarn start:dev\" \"yarn openfin\"",
     "build": "vite build",
+    "preview": "vite preview",
     "test": "react-app-rewired test --env=jsdom",
-    "openfin": "wait-on -l http://localhost:3005/openfin/app.json && openfin -l -c http://localhost:3005/openfin/app.json"
+    "openfin": "wait-on -l http://localhost:3005/dist/openfin/app.json && openfin -l -c http://localhost:3005/dist/openfin/app.json"
   },
   "devDependencies": {
     "@types/jest": "24.9.0",
