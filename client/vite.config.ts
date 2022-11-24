@@ -1,76 +1,49 @@
 import { defineConfig, Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import graphql from '@rollup/plugin-graphql'
-import copy from 'rollup-plugin-copy'
+import { TransformOption, viteStaticCopy } from 'vite-plugin-static-copy'
 
-const copyOpenfinPlugin = (dev: boolean):Plugin => {
-  const scheme = process.env.HTTPS === 'true' ? 'https' : 'http'
-  const hostUrl = `${scheme}://${process.env.HOST || 'localhost'}:${process.env.PORT || '3005'}`
-  const env = process.env.ENVIRONMENT_NAME || 'local'
+const localPort = Number(process.env.PORT) || 3005
 
-  const transform = dev
-    ? contents => {
-        const transformed = contents
-          .toString()
-          .replace(/{\*host_url\*}/g, hostUrl)
-          .replace(/{{environment}}/g, env)
-          .replace(/{{environment_suffix}}/g, env === 'prod' ? '' : env.toUpperCase())
-        return transformed
-      }
-    : undefined
+const copyPlugin = (isDev: boolean): Plugin[] => {
+  const hostUrl = `http://${process.env.HOST || 'localhost'}:${process.env.PORT || '3005'}`
 
-  return {
-    ...copy({
-      targets: [
-        {
-          src: `./public-openfin/app.json`,
-          dest: dev ? './public' : './dist/openfin',
-          transform,
-        },
-      ],
-      verbose: true,
-      // For dev, (most) output generation hooks are not called, so this needs to be buildStart.
-      // For prod, writeBundle is the appropriate hook, otherwise it gets wiped by the dist clean.
-      // Ref: https://vitejs.dev/guide/api-plugin.html#universal-hooks
-      hook: dev ? 'buildStart' : 'writeBundle',
-    }),
-  }
-}
-
-const copyWebManifestPlugin = (dev: boolean):Plugin => {
-  const transform = dev
+  const transform: TransformOption | undefined = isDev
     ? contents =>
         contents
-          .toString()
-          // We don't want to show PROD in the PWA name
-          .replace(/{{environment_suffix}}/g, dev ? ' (DEV)' : '')
+          .replace(/{\*host_url\*}/g, hostUrl)
+          .replace(/{{environment}}/g, 'local')
+          .replace(/{{environment_suffix}}/g, ' (LOCAL)')
     : undefined
 
-  return {
-    ...copy({
-      targets: [
-        {
-          src: './public-pwa/manifest.json',
-          dest: dev ? './public' : './dist',
-          transform,
-        },
-      ],
-      verbose: true,
-      // For dev, (most) output generation hooks are not called, so this needs to be buildStart.
-      // For prod, writeBundle is the appropriate hook, otherwise it gets wiped by the dist clean.
-      // Ref: https://vitejs.dev/guide/api-plugin.html#universal-hooks
-      hook: dev ? 'buildStart' : 'writeBundle',
-    }),
-  }
+  return viteStaticCopy({
+    flatten: true,
+    targets: [
+      {
+        src: 'public-openfin/*',
+        dest: 'openfin',
+        transform,
+      },
+      {
+        src: 'public-pwa/*',
+        dest: '',
+        transform,
+      },
+    ],
+  })
 }
 
 const setConfig = ({ mode }) => {
   const isDev = mode === 'development'
-  const plugins = [react(), graphql(), copyOpenfinPlugin(isDev), copyWebManifestPlugin(isDev)]
+  const plugins = [react(), graphql(), copyPlugin(isDev)]
+
   return defineConfig({
     plugins: plugins,
+    preview: {
+      port: localPort,
+    },
     server: {
-      port: process.env.PORT ? Number(process.env.PORT) : 3005,
+      port: localPort,
     },
     resolve: {
       alias: [

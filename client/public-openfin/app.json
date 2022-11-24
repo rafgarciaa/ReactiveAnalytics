@@ -1,7 +1,7 @@
 {
   "devtools_port": 9090,
   "startup_app": {
-    "name": "Reactive Analytics {{environment_suffix}}",
+    "name": "Reactive Analytics{{environment_suffix}}",
     "description": "Desktop Reactive Analytics",
     "url": "{*host_url*}",
     "uuid": "reactive-analytics-{{environment}}",
@@ -27,6 +27,6 @@
     "company": "Adaptive Consulting",
     "description": "Desktop Reactive Analytics",
     "icon": "{*host_url*}/static/media/reactive-analytics.ico",
-    "name": "Reactive Analytics {{environment_suffix}}"
+    "name": "Reactive Analytics{{environment_suffix}}"
   }
 }

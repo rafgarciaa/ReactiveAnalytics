@@ -2,15 +2,18 @@
   "name": "@reactive-analytics/client",
   "version": "1.0.0",
   "description": "",
+  "license": "ISC",
   "scripts": {
     "start": "vite",
-    "start:local": "cross-env VITE_ANALYTICS_SERVER_HOST=localhost:4000 npm run start",
-    "start:dev": "cross-env VITE_ANALYTICS_SERVER_HOST=dev-reactive-analytics.adaptivecluster.com VITE_ANALYTICS_SERVER_HTTPS=true npm run start",
-    "start:demo": "cross-env VITE_ANALYTICS_SERVER_HOST=demo-reactive-analytics.adaptivecluster.com VITE_ANALYTICS_SERVER_HTTPS=true npm run start",
+    "start:dev": "cross-env VITE_ANALYTICS_SERVER_HOST=dev-reactive-analytics.adaptivecluster.com VITE_ANALYTICS_SERVER_HTTPS=true yarn start",
+    "start:demo": "cross-env VITE_ANALYTICS_SERVER_HOST=demo-reactive-analytics.adaptivecluster.com VITE_ANALYTICS_SERVER_HTTPS=true yarn start",
     "start:openfin": "concurrently \"yarn start\" \"yarn openfin\"",
     "start:openfin:dev": "concurrently \"yarn start:dev\" \"yarn openfin\"",
     "build": "vite build",
-    "preview": "vite preview",
+    "build:dev": "VITE_ANALYTICS_SERVER_HOST=dev-reactive-analytics.adaptivecluster.com VITE_ANALYTICS_SERVER_HTTPS=true vite build",
+    "build:demo": "VITE_ANALYTICS_SERVER_HOST=demo-reactive-analytics.adaptivecluster.com VITE_ANALYTICS_SERVER_HTTPS=true vite build",
+    "preview": "PORT=3005 vite preview",
+    "lint": "eslint . --max-warnings=0",
     "test": "echo waiting for vitest",
     "openfin": "wait-on -l http://localhost:3005/openfin/app.json && openfin -l -c http://localhost:3005/openfin/app.json"
   },
@@ -25,14 +28,15 @@
     "lodash": "^4.17.19",
     "moment": "^2.20.1",
     "numeral": "^2.0.6",
+    "prop-types": "^15.6.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-ga": "^3.1.2",
+    "react-is": "^16.8.0",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "3.4.3",
-    "recharts": "^1.8.5",
+    "recharts": "^2.1.0",
     "ress": "^2.0.4",
-    "styled-components": "^5.0.0",
+    "styled-components": "^5.3.6",
     "subscriptions-transport-ws": "^0.9.16",
     "typeface-merriweather": "^0.0.72",
     "typeface-roboto": "^0.0.75"
@@ -56,12 +60,18 @@
     "polished": "^3.2.0",
     "rollup-plugin-copy": "^3.4.0",
     "typescript": "^3.9.5",
-    "vite": "^2.8.6",
+    "vite": "^3.0.0",
+    "vite-plugin-static-copy": "^0.12.0",
     "wait-on": "^5.1.0"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
+  "eslintIgnore": [
+    "coverage",
+    "dist",
+    "public"
+  ],
   "browserslist": [
     ">0.2%",
     "not dead",

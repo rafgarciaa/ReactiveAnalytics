@@ -3,10 +3,6 @@
   "private": true,
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "openfin-fdc3": "^0.2.0"
-  },
   "devDependencies": {
     "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^8.2.0",
@@ -23,7 +19,7 @@
     "eslint-plugin-react-hooks": "^2.5.1",
     "husky": "^4.2.3",
     "openfin-cli": "^3.0.2",
-    "prettier": "^2.0.2",
+    "prettier": "^2.8.0",
     "pretty-quick": "^2.0.1",
     "typescript": "^3.9.5",
     "wsrun": "^5.2.1"

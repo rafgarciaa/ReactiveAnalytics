@@ -36,14 +36,27 @@ Reactive Analytics client has package dependencies on the parent repository that
             |-- graphql: fragments and connections for the parent container
         |-- rt-theme: files used to generate the global style of the client
 
-### Components
+## Progressive Web App (PWA)
 
-Where appropriate use
+Reactive Analytics can be installed as a progressive web application.
 
-- React.FunctionComponent over React.Component
-- Folders with index.ts exports for containers instead of placing files directly in the root container folder
-- Styled-components instead of basic HTML elements even if the style is empty
-- Strongly typed objects
+The settings for the PWA are configured in [`manifest.json`](public-pwa/manifest.json).
+
+### Token replacement
+
+The [PWA `manifest.json`](public-pwa/manifest.json) file and the [OpenFin manifest](public-openfin/app.json) contain tokens in the form `{{token}}` that can be replaced at build or run time with environment-specific values (e.g. the application name may have an environment suffix).
+
+#### Local token replacement
+
+When running the client locally with the tokens are replaced with vite [`vite-plugin-static-copy`](https://github.com/sapphi-red/vite-plugin-static-copy).
+
+It only takes place when Vite `mode === development`, i.e. when `yarn start` is used, and it uses environment variables like `ENVIRONMENT_NAME` defined in the `.env.development` file, or defaulted.
+
+#### Docker token replacement
+
+When running in docker, i.e. in a deployment environment, the token replacement is done by the nginx web server, also with environment variables.
+
+For this, we don't use the `nginx/nginx` base docker image, but instead the `openresty/openresty` docker image, which adds Lua scripting modules to nginx that allows us to do this.
 
 ### GraphQL Ecosystem
 

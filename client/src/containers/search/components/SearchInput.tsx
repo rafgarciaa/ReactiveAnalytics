@@ -98,10 +98,10 @@ const SearchInput: React.FC<ISearchBarProps> = ({
       selectedItem={initialItem}
       onChange={onChange}
       itemToString={searchResultToOptionString}
+      onInputValueChange={inputValue => onTextChange(inputValue)}
       defaultHighlightedIndex={0}
     >
-      {({ getInputProps, getItemProps, getMenuProps, getRootProps, isOpen, inputValue }) => {
-        onTextChange(inputValue || '')
+      {({ getInputProps, getItemProps, getMenuProps, getRootProps, isOpen }) => {
         return (
           <SearchWrapper {...getRootProps()}>
             <input
