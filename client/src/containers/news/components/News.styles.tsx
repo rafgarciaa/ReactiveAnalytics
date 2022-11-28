@@ -1,5 +1,5 @@
 import { SidebarDataCard } from '@/common/DataCard'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { mediaQuery } from '@/rt-theme/mediaQueries'
 
 export const NewsCard = styled(SidebarDataCard)`

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { pxToRems } from '@/utils'
 import { mediaQuery } from '@/rt-theme/mediaQueries'
 import { ButtonLink } from '@/common/StyledComponents'

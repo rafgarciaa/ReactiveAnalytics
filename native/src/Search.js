@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { TouchableOpacity } from 'react-native'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import connect from './connector'
 
 import { Text, TextInput, View, viewProps } from './styleguide/index'

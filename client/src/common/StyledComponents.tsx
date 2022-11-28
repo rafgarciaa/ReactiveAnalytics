@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components/macro'
 
 import { default as dataCard } from './DataCard'
 import { fonts } from '@/rt-theme/fonts'

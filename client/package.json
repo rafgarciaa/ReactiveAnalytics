@@ -39,7 +39,8 @@
     "styled-components": "^5.3.6",
     "subscriptions-transport-ws": "^0.9.16",
     "typeface-merriweather": "^0.0.72",
-    "typeface-roboto": "^0.0.75"
+    "typeface-roboto": "^0.0.75",
+    "vite-plugin-babel-macros": "^1.0.6"
   },
   "devDependencies": {
     "@rollup/plugin-graphql": "^2.0.2",

@@ -1,5 +1,5 @@
 import { VerticalDataContents, LightText } from '@/common/StyledComponents'
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components/macro'
 import { pxToRems } from '@/utils'
 import { Text } from '../../../common/StyledComponents'
 import { MarketDisplay } from './StockPrice'

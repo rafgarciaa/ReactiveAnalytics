@@ -1,6 +1,7 @@
 import { defineConfig, Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import graphql from '@rollup/plugin-graphql'
+import macrosPlugin from 'vite-plugin-babel-macros'
 import { TransformOption, viteStaticCopy } from 'vite-plugin-static-copy'
 
 const localPort = Number(process.env.PORT) || 3005
@@ -35,7 +36,7 @@ const copyPlugin = (isDev: boolean): Plugin[] => {
 
 const setConfig = ({ mode }) => {
   const isDev = mode === 'development'
-  const plugins = [react(), graphql(), copyPlugin(isDev)]
+  const plugins = [react(), graphql(), copyPlugin(isDev), macrosPlugin()]
 
   return defineConfig({
     plugins: plugins,

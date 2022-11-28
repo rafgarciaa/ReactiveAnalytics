@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components/macro'
 
 import { colors } from '../../../common/src/index'
 import { mapProps } from './mapProps'
