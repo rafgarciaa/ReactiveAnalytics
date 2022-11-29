@@ -2,7 +2,8 @@
 node_modules
 
 # production
-/build
+build/
+dist/
 
 # ts output
 server/lib

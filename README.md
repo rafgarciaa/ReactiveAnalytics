@@ -7,6 +7,7 @@
   - [Requirements](#requirements)
   - [Getting started](#getting-started)
     - [Data connection](#data-connection)
+    - [OpenFin](#openfin)
   - [Access IEX Sandbox token](#access-iex-sandbox-token)
   - [Generate schema and typings](#generate-schema-and-typings)
     - [Server schema](#server-schema)
@@ -15,6 +16,7 @@
   - [Useful developer add-ons](#useful-developer-add-ons)
     - [Visual Studio Code extensions from the marketplace](#visual-studio-code-extensions-from-the-marketplace)
     - [Google Chrome extensions](#google-chrome-extensions)
+    - [Deployment](#deployment)
 
 ## Overview
 
