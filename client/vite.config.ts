@@ -39,7 +39,7 @@ const setConfig = ({ mode }) => {
   const plugins = [react(), graphql(), copyPlugin(isDev)]
 
   if (isDev) {
-    plugins.push(macrosPlugin)
+    plugins.push(macrosPlugin())
   }
 
   return defineConfig({
