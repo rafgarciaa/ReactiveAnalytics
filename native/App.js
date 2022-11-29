@@ -10,7 +10,7 @@ import History from './src/containers/History'
 
 import StockPrice from './src/containers/StockPrice'
 import { ApplicationBackground, Text, Divider } from './src/styleguide/index'
-import { ThemeProvider } from 'styled-components/macro'
+import { ThemeProvider } from 'styled-components'
 import theme from './src/styleguide/theme'
 
 export default class App extends React.Component {

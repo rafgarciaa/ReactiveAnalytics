@@ -36,7 +36,11 @@ const copyPlugin = (isDev: boolean): Plugin[] => {
 
 const setConfig = ({ mode }) => {
   const isDev = mode === 'development'
-  const plugins = [react(), graphql(), copyPlugin(isDev), macrosPlugin()]
+  const plugins = [react(), graphql(), copyPlugin(isDev)]
+
+  if (isDev) {
+    plugins.push(macrosPlugin)
+  }
 
   return defineConfig({
     plugins: plugins,
