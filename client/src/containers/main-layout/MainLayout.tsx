@@ -66,10 +66,9 @@ const MainLayout: React.FunctionComponent<IApolloContainerProps & { market: Mark
           updateBanner={updateBanner}
           isModalOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}
-          data-testid="PWA"
         />
-        <AppBar data-testid="sidebar" />
-        <CurrentSymbolLayout {...props} data-testid="searchbar" />
+        <AppBar />
+        <CurrentSymbolLayout {...props} />
       </MainLayoutWrapper>
     </PlatformProvider>
   )

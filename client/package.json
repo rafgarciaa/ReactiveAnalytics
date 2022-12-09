@@ -45,7 +45,7 @@
   "devDependencies": {
     "@rollup/plugin-graphql": "^2.0.2",
     "@rollup/plugin-replace": "^5.0.1",
-    "@testing-library/react": "^12.1.2",
+    "@testing-library/react": "^12.1.5",
     "@types/lodash": "^4.14.149",
     "@types/node": "13.1.8",
     "@types/numeral": "0.0.26",
