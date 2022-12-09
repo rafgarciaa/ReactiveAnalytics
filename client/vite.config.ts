@@ -1,4 +1,5 @@
-import { defineConfig, Plugin } from 'vite'
+import { Plugin } from 'vite'
+import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import graphql from '@rollup/plugin-graphql'
 import macrosPlugin from 'vite-plugin-babel-macros'
@@ -55,6 +56,7 @@ const setConfig = ({ mode }) => {
         },
       ],
     },
+    test: { environment: 'happy-dom', coverage: { provider: 'istanbul' } },
   })
 }
 
