@@ -56,7 +56,12 @@ const setConfig = ({ mode }) => {
         },
       ],
     },
-    test: { environment: 'happy-dom', coverage: { provider: 'istanbul' } },
+    test: {
+      coverage: { provider: 'istanbul' },
+      environment: 'jsdom',
+      setupFiles: 'src/setupTests.ts',
+      globals: true,
+    },
   })
 }
 

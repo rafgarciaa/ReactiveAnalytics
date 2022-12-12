@@ -14,7 +14,7 @@
     "build:demo": "VITE_ANALYTICS_SERVER_HOST=demo-reactive-analytics.adaptivecluster.com VITE_ANALYTICS_SERVER_HTTPS=true vite build",
     "preview": "PORT=3005 vite preview",
     "lint": "eslint . --max-warnings=0",
-    "test": "vitest --ui",
+    "test": "vitest",
     "coverage": "vitest run --coverage",
     "openfin": "wait-on -l http://localhost:3005/openfin/app.json && openfin -l -c http://localhost:3005/openfin/app.json"
   },
@@ -45,6 +45,7 @@
   "devDependencies": {
     "@rollup/plugin-graphql": "^2.0.2",
     "@rollup/plugin-replace": "^5.0.1",
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^12.1.5",
     "@types/lodash": "^4.14.149",
     "@types/node": "13.1.8",
@@ -61,6 +62,7 @@
     "concurrently": "^5.2.0",
     "cross-env": "^7.0.2",
     "happy-dom": "^8.1.0",
+    "jsdom": "^20.0.3",
     "openfin-cli": "^3.0.2",
     "polished": "^3.2.0",
     "typescript": "^3.9.5",
