@@ -36,6 +36,8 @@ Reactive Analytics client has package dependencies on the parent repository that
             |-- graphql: fragments and connections for the parent container
         |-- rt-theme: files used to generate the global style of the client
 
+### Testing
+
 ## Progressive Web App (PWA)
 
 Reactive Analytics can be installed as a progressive web application.
