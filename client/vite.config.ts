@@ -57,9 +57,14 @@ const setConfig = ({ mode }) => {
       ],
     },
     test: {
+      // to setup coverage: https://vitest.dev/guide/coverage.html
       coverage: { provider: 'istanbul' },
+      //jsdom gives access to browser apis within node, so we can access objects like window: https://vitest.dev/config/#environment
       environment: 'jsdom',
+      // For the following 2 settings, this article was referenced: https://dev.to/mbarzeev/from-jest-to-vitest-migration-and-benchmark-23pl
+      // setupTests.ts imports the jest-dom before each test is run
       setupFiles: 'src/setupTests.ts',
+      // setting globals: true gives all tests access to the vitest functions without having to import them everytime
       globals: true,
     },
   })
