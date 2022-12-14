@@ -46,11 +46,11 @@ const AppBar = () => {
   return (
     <Sidebar hasPreviousSearch={previousSearch ?? false}>
       <LogoWrapper>
-        <div ref={logoBottomRef}>
-          <LogoTextBottom size={5.5} data-testid="bottom-logo" />
+        <div ref={logoBottomRef} data-testid="side-logo">
+          <LogoTextBottom size={5.5} />
         </div>
-        <div ref={logoSideRef}>
-          <LogoTextSide size={9} data-testid="side-logo" />
+        <div ref={logoSideRef} data-testid="top-logo">
+          <LogoTextSide size={9} />
         </div>
       </LogoWrapper>
       {/* {ContainerService.agent === 'desktop' && <OpenfinWindowControls />} */}
