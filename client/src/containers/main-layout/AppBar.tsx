@@ -2,7 +2,7 @@ import { default as React, useRef, useLayoutEffect } from 'react'
 import styled from 'styled-components/macro'
 import { pxToRems } from '@/utils'
 import { mediaQuery, screenSize } from '@/rt-theme/mediaQueries'
-import { LogoTextSide, LogoTextBottom } from '@/assets/logos'
+import { LogoTextTop, LogoTextSide } from '@/assets/logos'
 import { useSearch } from '@/hooks'
 
 const LogoWrapper = styled.div`
@@ -26,17 +26,17 @@ const Sidebar = styled.div<{ hasPreviousSearch: boolean }>`
 
 const AppBar = () => {
   const { previousSearch } = useSearch()
-  const logoBottomRef = useRef<HTMLDivElement>(null)
   const logoSideRef = useRef<HTMLDivElement>(null)
+  const logoTopRef = useRef<HTMLDivElement>(null)
 
   useLayoutEffect(() => {
     function callback() {
-      if (!logoBottomRef.current || !logoSideRef.current) {
+      if (!logoSideRef.current || !logoTopRef.current) {
         return
       }
       const isSmall = window.innerWidth <= screenSize.tabletL
-      logoBottomRef.current.style.display = isSmall ? 'none' : 'block'
-      logoSideRef.current.style.display = isSmall ? 'block' : 'none'
+      logoSideRef.current.style.display = isSmall ? 'none' : 'block'
+      logoTopRef.current.style.display = isSmall ? 'block' : 'none'
     }
     callback()
     window.addEventListener('resize', callback)
@@ -46,11 +46,11 @@ const AppBar = () => {
   return (
     <Sidebar hasPreviousSearch={previousSearch ?? false}>
       <LogoWrapper>
-        <div ref={logoBottomRef} data-testid="side-logo">
-          <LogoTextBottom size={5.5} />
+        <div ref={logoSideRef} data-testid="side-logo">
+          <LogoTextSide size={5.5} />
         </div>
-        <div ref={logoSideRef} data-testid="top-logo">
-          <LogoTextSide size={9} />
+        <div ref={logoTopRef} data-testid="top-logo">
+          <LogoTextTop size={9} />
         </div>
       </LogoWrapper>
       {/* {ContainerService.agent === 'desktop' && <OpenfinWindowControls />} */}
