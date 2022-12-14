@@ -17,13 +17,13 @@ describe('AppBar', () => {
   beforeEach(() => {
     windowSpy = vi.spyOn(window, 'innerWidth', 'get')
   })
-  test('logo should go to the side on desktop view', () => {
+  test('logo should float up on mobile view', () => {
     windowSpy.mockReturnValue(screenSize.tabletL - 1)
     renderComponent()
     expect(screen.getByTestId('top-logo').style.display).toBe('block')
     expect(screen.getByTestId('side-logo').style.display).toBe('none')
   })
-  test('logo should float up on mobile view', () => {
+  test('logo should go to the side on desktop view', () => {
     windowSpy.mockReturnValue(screenSize.tabletL + 1)
     renderComponent()
     expect(screen.getByTestId('top-logo').style.display).toBe('none')
