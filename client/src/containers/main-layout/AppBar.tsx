@@ -26,17 +26,17 @@ const Sidebar = styled.div<{ hasPreviousSearch: boolean }>`
 
 const AppBar = () => {
   const { previousSearch } = useSearch()
-  const logoBottomRef = useRef<HTMLDivElement>(null)
-  const logoSideRef = useRef<HTMLDivElement>(null)
+  const logoTextBottomRef = useRef<HTMLDivElement>(null)
+  const logoTextSideRef = useRef<HTMLDivElement>(null)
 
   useLayoutEffect(() => {
     function callback() {
-      if (!logoBottomRef.current || !logoSideRef.current) {
+      if (!logoTextBottomRef.current || !logoTextSideRef.current) {
         return
       }
       const isSmall = window.innerWidth <= screenSize.tabletL
-      logoBottomRef.current.style.display = isSmall ? 'none' : 'block'
-      logoSideRef.current.style.display = isSmall ? 'block' : 'none'
+      logoTextBottomRef.current.style.display = isSmall ? 'none' : 'block'
+      logoTextSideRef.current.style.display = isSmall ? 'block' : 'none'
     }
     callback()
     window.addEventListener('resize', callback)
@@ -46,10 +46,10 @@ const AppBar = () => {
   return (
     <Sidebar hasPreviousSearch={previousSearch ?? false}>
       <LogoWrapper>
-        <div ref={logoBottomRef} data-testid="side-logo">
+        <div ref={logoTextBottomRef} data-testid="side-logo">
           <LogoTextBottom size={5.5} />
         </div>
-        <div ref={logoSideRef} data-testid="top-logo">
+        <div ref={logoTextSideRef} data-testid="top-logo">
           <LogoTextSide size={9} />
         </div>
       </LogoWrapper>
