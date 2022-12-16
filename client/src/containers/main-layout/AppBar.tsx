@@ -2,7 +2,7 @@ import { default as React, useEffect, useState } from 'react'
 import styled from 'styled-components/macro'
 import { pxToRems } from '@/utils'
 import { mediaQuery, screenSize } from '@/rt-theme/mediaQueries'
-import { LogoMobileView, LogoDesktopView } from '@/assets/logos'
+import { LogoBottomLabel, LogoSideLabel } from '@/assets/logos'
 import { useSearch } from '@/hooks'
 
 const LogoWrapper = styled.div`
@@ -41,9 +41,9 @@ const AppBar = () => {
     <Sidebar hasPreviousSearch={previousSearch ?? false}>
       <LogoWrapper>
         {restrictedWidth ? (
-          <LogoMobileView size={9} data-testid="mobile-logo" />
+          <LogoSideLabel size={9} data-testid="logo-side-label" />
         ) : (
-          <LogoDesktopView size={5.5} data-testid="desktop-logo" />
+          <LogoBottomLabel size={5.5} data-testid="logo-bottom-label" />
         )}
       </LogoWrapper>
       {/* {ContainerService.agent === 'desktop' && <OpenfinWindowControls />} */}

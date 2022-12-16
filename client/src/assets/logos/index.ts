@@ -1,2 +1,2 @@
-export { default as LogoDesktopView } from './LogoDesktopView'
-export { default as LogoMobileView } from './LogoMobileView'
+export { default as LogoBottomLabel } from './LogoBottomLabel'
+export { default as LogoSideLabel } from './LogoSideLabel'
