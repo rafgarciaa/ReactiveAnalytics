@@ -48,11 +48,7 @@ Reactive Analytics client has package dependencies on the parent repository that
    - We are downloading an older version because the newest one breaks when running tests and debugging
 2. Install extension in VSCode from VSIX file
 3. yarn install Vitest at the root folder of RA (the extension expects vitest to be installed at the root folder)
-4. Configure extension
-   - navigate to the vitest extension on the extensions tab in VSCode
-   - click on the cog icon and go to Extension Settings
-   - On the folder subtab, click ReactiveAnalytics
-5. You should now see a flask on your sidebar tools, click into it and the extension should now be configured
+4. You should now see a flask on your sidebar tools, click into it and the extension should now be configured
 
 ## Progressive Web App (PWA)
 
