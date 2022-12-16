@@ -1,4 +1,4 @@
-import { default as React, useRef, useLayoutEffect } from 'react'
+import { default as React, useEffect, useState } from 'react'
 import styled from 'styled-components/macro'
 import { pxToRems } from '@/utils'
 import { mediaQuery, screenSize } from '@/rt-theme/mediaQueries'
@@ -26,17 +26,11 @@ const Sidebar = styled.div<{ hasPreviousSearch: boolean }>`
 
 const AppBar = () => {
   const { previousSearch } = useSearch()
-  const logoTextBottomRef = useRef<HTMLDivElement>(null)
-  const logoTextSideRef = useRef<HTMLDivElement>(null)
+  const [restrictedWidth, setRestrictedWidth] = useState(false)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     function callback() {
-      if (!logoTextBottomRef.current || !logoTextSideRef.current) {
-        return
-      }
-      const isSmall = window.innerWidth <= screenSize.tabletL
-      logoTextBottomRef.current.style.display = isSmall ? 'none' : 'block'
-      logoTextSideRef.current.style.display = isSmall ? 'block' : 'none'
+      setRestrictedWidth(window.innerWidth <= screenSize.tabletL)
     }
     callback()
     window.addEventListener('resize', callback)
@@ -46,12 +40,11 @@ const AppBar = () => {
   return (
     <Sidebar hasPreviousSearch={previousSearch ?? false}>
       <LogoWrapper>
-        <div ref={logoTextBottomRef} data-testid="side-logo">
-          <LogoTextBottom size={5.5} />
-        </div>
-        <div ref={logoTextSideRef} data-testid="top-logo">
-          <LogoTextSide size={9} />
-        </div>
+        {restrictedWidth ? (
+          <LogoTextSide size={9} data-testid="top-logo" />
+        ) : (
+          <LogoTextBottom size={5.5} data-testid="side-logo" />
+        )}
       </LogoWrapper>
       {/* {ContainerService.agent === 'desktop' && <OpenfinWindowControls />} */}
     </Sidebar>
