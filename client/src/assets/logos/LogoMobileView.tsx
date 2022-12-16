@@ -6,7 +6,7 @@ interface ILogoProps extends SVGAttributes<Element> {
   size?: number
 }
 
-const LogoTextSide: React.FunctionComponent<ILogoProps> = ({ fill = '#000', size = 4, style, ...props }) => {
+const LogoMobileView: React.FunctionComponent<ILogoProps> = ({ fill = '#000', size = 4, style, ...props }) => {
   style = {
     height: size - 4 + 'rem',
     width: size + 'rem',
@@ -31,7 +31,7 @@ const LogoTextSide: React.FunctionComponent<ILogoProps> = ({ fill = '#000', size
   )
 }
 
-export default styled(LogoTextSide)`
+export default styled(LogoMobileView)`
   [fill] {
     fill: ${({ theme }) => theme.primary.corePrimary};
   }

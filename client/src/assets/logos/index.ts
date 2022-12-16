@@ -1,2 +1,2 @@
-export { default as LogoTextBottom } from './LogoTextBottom'
-export { default as LogoTextSide } from './LogoTextSide'
+export { default as LogoDesktopView } from './LogoDesktopView'
+export { default as LogoMobileView } from './LogoMobileView'

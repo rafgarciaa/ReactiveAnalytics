@@ -20,13 +20,13 @@ describe('AppBar', () => {
   test('logo should float up on mobile view', () => {
     widthSpy.mockReturnValue(screenSize.tabletL - 1)
     renderComponent()
-    expect(screen.queryByTestId('top-logo')).toBeInTheDocument()
-    expect(screen.queryByTestId('side-logo')).toBeNull()
+    expect(screen.queryByTestId('mobile-logo')).toBeInTheDocument()
+    expect(screen.queryByTestId('desktop-logo')).toBeNull()
   })
   test('logo should go to the side on desktop view', () => {
     widthSpy.mockReturnValue(screenSize.tabletL + 1)
     renderComponent()
-    expect(screen.queryByTestId('top-logo')).toBeNull()
-    expect(screen.queryByTestId('side-logo')).toBeInTheDocument()
+    expect(screen.queryByTestId('mobile-logo')).toBeNull()
+    expect(screen.queryByTestId('desktop-logo')).toBeInTheDocument()
   })
 })
