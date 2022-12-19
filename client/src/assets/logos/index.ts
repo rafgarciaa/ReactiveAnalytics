@@ -1,2 +1,2 @@
-export { default as LogoTextBottom } from './LogoTextBottom'
-export { default as LogoTextSide } from './LogoTextSide'
+export { default as LogoBottomLabel } from './LogoBottomLabel'
+export { default as LogoSideLabel } from './LogoSideLabel'
