@@ -8,9 +8,9 @@
     "start:openfin": "wait-on http://localhost:5501/app.json && openfin --launch --config http://localhost:5501/app.json"
   },
   "devDependencies": {
-    "concurrently": "^5.2.0",
+    "concurrently": "^7.0.0",
     "openfin-cli": "^3.0.2",
-    "serve": "^11.3.2",
-    "wait-on": "^5.1.0"
+    "serve": "^14.0.0",
+    "wait-on": "^7.0.0"
   }
 }

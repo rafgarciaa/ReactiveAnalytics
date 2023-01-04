@@ -17,12 +17,6 @@
     "version": "29.108.73.14",
     "arguments": "--remote-debugging-port=9091"
   },
-  "services": [
-    {
-      "name": "layouts"
-    }
-  ],
-  "devtools_port": 9090,
   "shortcut": {
     "company": "Adaptive Consulting",
     "description": "Desktop Reactive Analytics",
