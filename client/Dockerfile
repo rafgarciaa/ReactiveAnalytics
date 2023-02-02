@@ -1,21 +1,6 @@
-FROM node:16-alpine as builder
-
-ARG ANALYTICS_SERVER_HOST
-ARG BUILD_VERSION
-
-ENV REACT_APP_ANALYTICS_SERVER_HOST=${ANALYTICS_SERVER_HOST}
-ENV REACT_APP_BUILD_VERSION=${BUILD_VERSION}
-
-WORKDIR /
-COPY . .
-RUN yarn install --frozen-lockfile --non-interactive
-RUN yarn run build
-
+# Use :alpine-fat variant, as it has LuaRocks (including build system)
 FROM openresty/openresty:alpine-fat
 EXPOSE 3000
-
-# Copy website resourcees
-COPY --from=builder /dist /usr/local/openresty/nginx/html
 
 # Install lua template engine
 RUN /usr/local/openresty/luajit/bin/luarocks install lua-resty-template
@@ -23,3 +8,6 @@ RUN /usr/local/openresty/luajit/bin/luarocks install lua-resty-template
 # Copy nginx config
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY ./nginx/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
+
+# Copy website resourcees
+COPY ./dist /usr/local/openresty/nginx/html
