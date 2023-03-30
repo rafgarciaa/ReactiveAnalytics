@@ -1,4 +1,3 @@
-import { usePlatform } from '@/ra-platforms'
 import React, { useCallback, useEffect, useState } from 'react'
 import ReactGA from 'react-ga'
 import { RouteComponentProps } from 'react-router'
@@ -32,7 +31,6 @@ const ApolloSearchContainer: React.FunctionComponent<Props> = ({ id, history, ur
 
   const placeholderText = 'Enter a stock, symbol, or currency pair...'
 
-  const platform = usePlatform()
   const { fdc3Symbol, clearSymbol } = useFDC3Context()
 
   const handleChange = useCallback(
@@ -51,14 +49,12 @@ const ApolloSearchContainer: React.FunctionComponent<Props> = ({ id, history, ur
       }
       if (symbol) {
         clearSymbol()
-        // This causes a loop with itself which will need addressing if this funtionality is one day required.
-        // platform.symbolSelected(symbol)
         history.push(`/${(symbol.marketSegment || url || '').toLowerCase()}/${symbol.id}`)
       } else {
         history.push(`/${url}`)
       }
     },
-    [dispatch, history, url, platform],
+    [dispatch, history, url, clearSymbol],
   )
 
   useEffect(() => {
@@ -68,7 +64,7 @@ const ApolloSearchContainer: React.FunctionComponent<Props> = ({ id, history, ur
         if (checkedSymbol) {
           handleChange(checkedSymbol)
         } else {
-          console.info(`The FDC3 symbol ${fdc3Symbol} did not match any known symbols`)
+          console.info(`The received symbol ${fdc3Symbol} did not match any known symbols`)
         }
       }
     })()

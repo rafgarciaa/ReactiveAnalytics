@@ -21,7 +21,7 @@
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
-    "types": ["vite/client", "vitest/globals"],
+    "types": ["vite/client", "vitest/globals", "./fin"],
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"]

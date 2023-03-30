@@ -1,16 +1,7 @@
 import { DataCard } from '@/common/StyledComponents'
 import { maxBy, minBy, round } from 'lodash'
 import React from 'react'
-import {
-  CartesianGrid,
-  Line,
-  LineChart,
-  ReferenceLine,
-  ResponsiveContainer,
-  TickFormatterFunction,
-  XAxis,
-  YAxis,
-} from 'recharts'
+import { CartesianGrid, Line, LineChart, ReferenceLine, ResponsiveContainer, XAxis, YAxis } from 'recharts'
 import { getThemeColor, ThemeConsumer, themes } from '@/rt-theme'
 import { StockHistoryQuery } from '../graphql/types/StockHistoryQuery'
 
@@ -22,7 +13,7 @@ export const StockHistoryChart = ({ stock: { id, quote, chart } }: StockHistoryQ
 
   const { low: lowestPrice } = minBy(chartData, 'low') || { low: undefined }
   const { high: highestPrice } = maxBy(chartData, 'high') || { high: undefined }
-  const tickFormatter: TickFormatterFunction = (tick: number) => (tick < 100 ? tick.toFixed(2) : tick.toFixed(0))
+  const tickFormatter = (tick: number) => (tick < 100 ? tick.toFixed(2) : tick.toFixed(0))
 
   if (!chartData.length) {
     return <>No chart data to display</>

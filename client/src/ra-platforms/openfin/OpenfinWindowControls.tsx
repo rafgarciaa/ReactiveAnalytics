@@ -9,14 +9,14 @@ interface IProps {
 }
 
 const OpenfinWindowControls: React.FunctionComponent<IProps> = ({ styles }) => {
-  const [window, setWindow] = useState<fin.OpenFinWindow | undefined>()
+  const [window, setWindow] = useState<OpenFin.Window | undefined>()
   const [maximized, setMaximized] = useState(false)
   useEffect(() => {
     const getWindow = async () => {
-      const currentWindow = await fin.desktop.Window.getCurrent()
+      const currentWindow = await fin.Window.getCurrent()
       setWindow(currentWindow)
-      currentWindow.addEventListener('maximized', () => setMaximized(true))
-      currentWindow.addEventListener('restored', () => setMaximized(false))
+      currentWindow.addListener('maximized', () => setMaximized(true))
+      currentWindow.addListener('restored', () => setMaximized(false))
     }
     getWindow()
   }, [])
