@@ -62,6 +62,7 @@ export default class {
   }
 
   public async getPriceHistory(id: string): Promise<IPriceHistory[]> {
+    console.log("Get Price History for ccy pair: ", id)
     return PricingService.getPriceHistory({ symbol: id })
       .pipe(
         map(({ prices }) =>
