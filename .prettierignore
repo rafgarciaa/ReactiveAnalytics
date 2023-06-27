@@ -1,4 +1,0 @@
-node_modules
-server/schema.graphql
-client/src/schema.json
-**/__generated__/*.ts
