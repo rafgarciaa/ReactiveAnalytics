@@ -1,7 +1,7 @@
-import React from 'react'
-import { useContext } from 'react'
-import { Platform } from './platform'
-import BrowserPlatform from './browser/browserPlatform'
+import React from "react"
+import { useContext } from "react"
+import { Platform } from "./platform"
+import BrowserPlatform from "./browser/browserPlatform"
 
 // default context is browser
 const PlatformContext = React.createContext<Platform>(new BrowserPlatform())

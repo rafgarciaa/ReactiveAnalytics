@@ -1,4 +1,4 @@
-import { WindowConfig } from './types'
+import { WindowConfig } from "./types"
 
 export type PlatformWindowApi = {
   open: (

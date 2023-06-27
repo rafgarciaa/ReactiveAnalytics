@@ -1,1 +1,1 @@
-export { default as MarketsList } from './ApolloMarketsListContainer'
+export { default as MarketsList } from "./ApolloMarketsListContainer"

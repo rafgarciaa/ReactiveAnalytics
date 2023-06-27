@@ -8,20 +8,20 @@
 // ====================================================
 
 export interface NewsQuery_news {
-  __typename: "News";
-  id: string;
-  datetime: any;
-  headline: string;
-  source: string;
-  url: string;
-  summary: string;
-  related: string;
+  __typename: "News"
+  id: string
+  datetime: any
+  headline: string
+  source: string
+  url: string
+  summary: string
+  related: string
 }
 
 export interface NewsQuery {
-  news: NewsQuery_news[];
+  news: NewsQuery_news[]
 }
 
 export interface NewsQueryVariables {
-  id: string;
+  id: string
 }

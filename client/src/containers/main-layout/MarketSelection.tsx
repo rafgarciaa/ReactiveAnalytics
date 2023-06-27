@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import { RouteComponentProps, withRouter } from 'react-router'
-import styled from 'styled-components/macro'
+import React, { useEffect, useState } from "react"
+import { RouteComponentProps, withRouter } from "react-router"
+import styled from "styled-components/macro"
 
-const MarketSelection: React.FunctionComponent<RouteComponentProps & {}> = ({ history, location }) => {
-  const [currentMarket, setCurrentMarket] = useState('')
+const MarketSelection: React.FunctionComponent<RouteComponentProps & {}> = ({
+  history,
+  location,
+}) => {
+  const [currentMarket, setCurrentMarket] = useState("")
 
   useEffect(() => {
-    const [, market] = location.pathname.split('/')
+    const [, market] = location.pathname.split("/")
     if (market) {
       setCurrentMarket(market)
     } else {
-      setCurrentMarket('stock')
+      setCurrentMarket("stock")
     }
   }, [location])
 
@@ -21,19 +24,39 @@ const MarketSelection: React.FunctionComponent<RouteComponentProps & {}> = ({ hi
   return (
     <LeftNav>
       <LeftNavItemFirst style={{ fontWeight: 500 }}>Markets</LeftNavItemFirst>
-      <NavItem data-market="fx" active={currentMarket === 'fx'} onClick={onMarketClick}>
+      <NavItem
+        data-market="fx"
+        active={currentMarket === "fx"}
+        onClick={onMarketClick}
+      >
         Currencies
       </NavItem>
-      <NavItem data-market="stock" active={currentMarket === 'stock'} onClick={onMarketClick}>
+      <NavItem
+        data-market="stock"
+        active={currentMarket === "stock"}
+        onClick={onMarketClick}
+      >
         Stocks
       </NavItem>
-      <NavItem data-market="index" active={currentMarket === 'index'} style={{ cursor: 'not-allowed' }}>
+      <NavItem
+        data-market="index"
+        active={currentMarket === "index"}
+        style={{ cursor: "not-allowed" }}
+      >
         Indicies
       </NavItem>
-      <NavItem data-market="future" active={currentMarket === 'future'} style={{ cursor: 'not-allowed' }}>
+      <NavItem
+        data-market="future"
+        active={currentMarket === "future"}
+        style={{ cursor: "not-allowed" }}
+      >
         Futures
       </NavItem>
-      <NavItem data-market="bond" active={currentMarket === 'bond'} style={{ cursor: 'not-allowed' }}>
+      <NavItem
+        data-market="bond"
+        active={currentMarket === "bond"}
+        style={{ cursor: "not-allowed" }}
+      >
         Bonds
       </NavItem>
     </LeftNav>
@@ -62,8 +85,9 @@ const LeftNavItemFirst = styled(LiStyle)`
 
 const NavItem = styled(LiStyle)<{ active: boolean }>`
   list-style-type: none;
-  opacity: ${({ active }) => (active ? '1' : '0.52')};
-  background: ${({ active, theme }) => (active ? theme.primary.corePrimary : 'initial')};
+  opacity: ${({ active }) => (active ? "1" : "0.52")};
+  background: ${({ active, theme }) =>
+    active ? theme.primary.corePrimary : "initial"};
   border-radius: 0.25rem;
   padding: 1rem 2.5rem;
   &:hover {

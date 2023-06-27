@@ -1,15 +1,23 @@
-import { HistoryWrapper } from '@/common/StyledComponents'
-import React from 'react'
-import { AppQuery } from '../../common/AppQuery'
-import { IApolloContainerProps } from '../../common/IApolloContainerProps'
-import { ABMHistoryQuery, ABMHistoryQueryVariables } from './graphql/types/ABMHistoryQuery'
-import { FXHistoryChart } from './components/FXHistoryChart'
-import ABMHistoryConnection from './graphql/ABMHistoryConnection.graphql'
+import { HistoryWrapper } from "@/common/StyledComponents"
+import React from "react"
+import { AppQuery } from "../../common/AppQuery"
+import { IApolloContainerProps } from "../../common/IApolloContainerProps"
+import {
+  ABMHistoryQuery,
+  ABMHistoryQueryVariables,
+} from "./graphql/types/ABMHistoryQuery"
+import { FXHistoryChart } from "./components/FXHistoryChart"
+import ABMHistoryConnection from "./graphql/ABMHistoryConnection.graphql"
 
 const FXHistory: React.FC<IApolloContainerProps> = ({ id }) => (
   <>
-    <AppQuery<ABMHistoryQuery, ABMHistoryQueryVariables> query={ABMHistoryConnection} variables={{ id }}>
-      {(data: ABMHistoryQuery) => <FXHistoryChart getPriceHistory={data.getPriceHistory} />}
+    <AppQuery<ABMHistoryQuery, ABMHistoryQueryVariables>
+      query={ABMHistoryConnection}
+      variables={{ id }}
+    >
+      {(data: ABMHistoryQuery) => (
+        <FXHistoryChart getPriceHistory={data.getPriceHistory} />
+      )}
     </AppQuery>
   </>
 )

@@ -1,8 +1,8 @@
-import { SidebarDataCard } from '@/common/DataCard'
-import styled from 'styled-components/macro'
-import { pxToRems } from '@/utils'
-import { Text } from '../../../common/StyledComponents'
-import { mediaQuery } from '@/rt-theme/mediaQueries'
+import { SidebarDataCard } from "@/common/DataCard"
+import styled from "styled-components/macro"
+import { pxToRems } from "@/utils"
+import { Text } from "../../../common/StyledComponents"
+import { mediaQuery } from "@/rt-theme/mediaQueries"
 
 export const CompanyDescription = styled(Text)`
   font-size: ${pxToRems(12)};

@@ -1,9 +1,9 @@
-import { IResolvers } from 'graphql-tools'
-import FxService from './Fx.service'
-import { Container } from 'typedi'
-import { pubsub } from '../../pubsub'
-import logger from '../../services/logger'
-import { withCancel } from '../../utils/asyncIteratorUtils'
+import { IResolvers } from "graphql-tools"
+import FxService from "./Fx.service"
+import { Container } from "typedi"
+import { pubsub } from "../../pubsub"
+import logger from "../../services/logger"
+import { withCancel } from "../../utils/asyncIteratorUtils"
 
 const fxService = Container.get(FxService)
 

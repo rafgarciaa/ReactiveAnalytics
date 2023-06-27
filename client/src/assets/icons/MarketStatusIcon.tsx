@@ -1,9 +1,9 @@
-import React from 'react'
-import styled from 'styled-components/macro'
+import React from "react"
+import styled from "styled-components/macro"
 
 enum Direction {
-  Positive = 'positive',
-  Negative = 'negative',
+  Positive = "positive",
+  Negative = "negative",
 }
 
 const MarketStatus = styled.svg`
@@ -12,11 +12,18 @@ const MarketStatus = styled.svg`
 
 const Arrow = styled.path<{ direction: Direction }>`
   fill: ${({ theme, direction }) =>
-    direction === Direction.Negative ? theme.accents.accentNegative : theme.accents.accentPositive};
+    direction === Direction.Negative
+      ? theme.accents.accentNegative
+      : theme.accents.accentPositive};
 `
 
 export const MarketStatusIcon: React.FC<{ change: number }> = ({ change }) => (
-  <MarketStatus xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <MarketStatus
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+  >
     <g fill="none" fillRule="evenodd">
       <path d="M0 0H24V24H0z" />
       {change < 0 ? (

@@ -8,18 +8,18 @@
 // ====================================================
 
 export interface onFXPriceSubscription_getFXPriceUpdates {
-  __typename: "FxRate";
-  Bid: number | null;
-  Ask: number | null;
-  Mid: number | null;
-  ValueDate: any | null;
-  CreationTimestamp: number | null;
+  __typename: "FxRate"
+  Bid: number | null
+  Ask: number | null
+  Mid: number | null
+  ValueDate: any | null
+  CreationTimestamp: number | null
 }
 
 export interface onFXPriceSubscription {
-  getFXPriceUpdates: onFXPriceSubscription_getFXPriceUpdates;
+  getFXPriceUpdates: onFXPriceSubscription_getFXPriceUpdates
 }
 
 export interface onFXPriceSubscriptionVariables {
-  id: string;
+  id: string
 }

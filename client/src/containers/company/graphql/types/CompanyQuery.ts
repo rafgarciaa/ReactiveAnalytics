@@ -8,24 +8,24 @@
 // ====================================================
 
 export interface CompanyQuery_stock_company {
-  __typename: "Company";
-  id: string;
-  symbol: string;
-  name: string | null;
-  website: string | null;
-  description: string | null;
+  __typename: "Company"
+  id: string
+  symbol: string
+  name: string | null
+  website: string | null
+  description: string | null
 }
 
 export interface CompanyQuery_stock {
-  __typename: "Stock";
-  id: string;
-  company: CompanyQuery_stock_company;
+  __typename: "Stock"
+  id: string
+  company: CompanyQuery_stock_company
 }
 
 export interface CompanyQuery {
-  stock: CompanyQuery_stock;
+  stock: CompanyQuery_stock
 }
 
 export interface CompanyQueryVariables {
-  id: string;
+  id: string
 }

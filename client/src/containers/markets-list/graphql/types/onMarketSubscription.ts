@@ -8,17 +8,17 @@
 // ====================================================
 
 export interface onMarketSubscription_getQuotes {
-  __typename: "Quote";
-  id: string;
-  change: number | null;
-  changePercent: number | null;
-  latestPrice: number | null;
+  __typename: "Quote"
+  id: string
+  change: number | null
+  changePercent: number | null
+  latestPrice: number | null
 }
 
 export interface onMarketSubscription {
-  getQuotes: onMarketSubscription_getQuotes;
+  getQuotes: onMarketSubscription_getQuotes
 }
 
 export interface onMarketSubscriptionVariables {
-  markets: string[];
+  markets: string[]
 }

@@ -8,11 +8,11 @@
 // ====================================================
 
 export interface News {
-  __typename: "News";
-  datetime: any;
-  headline: string;
-  source: string;
-  url: string;
-  summary: string;
-  related: string;
+  __typename: "News"
+  datetime: any
+  headline: string
+  source: string
+  url: string
+  summary: string
+  related: string
 }

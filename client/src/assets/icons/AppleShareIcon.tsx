@@ -1,7 +1,12 @@
-import React from 'react'
+import React from "react"
 
 export const AppleShareIcon = (
-  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23" viewBox="0 0 22 23">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="22"
+    height="23"
+    viewBox="0 0 22 23"
+  >
     <g fill="none" fill-rule="evenodd" transform="translate(0 .5)">
       <circle cx="11" cy="11" r="11" fill="#AAABD1" />
       <path

@@ -8,6 +8,6 @@
 // ====================================================
 
 export interface Peers {
-  __typename: "Stock";
-  peers: string[];
+  __typename: "Stock"
+  peers: string[]
 }

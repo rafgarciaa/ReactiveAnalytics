@@ -13,7 +13,7 @@
  *
  * Here we use "ress", a modern CSS reset based off normalize
  */
-import 'ress'
+import "ress"
 
 /**
  * Adding Typefaces
@@ -26,8 +26,8 @@ import 'ress'
  * benefit between maintainence, functional guarantees, and
  * trade offs in initial load times.
  */
-import 'typeface-merriweather'
-import 'typeface-roboto'
+import "typeface-merriweather"
+import "typeface-roboto"
 
 /**
  * Establishing a Baseline
@@ -47,8 +47,8 @@ import 'typeface-roboto'
  * achieve a consistent vertical rhythm.
  */
 
-import { baselineFontSize } from './fonts'
-import { createGlobalStyle } from 'styled-components/macro'
+import { baselineFontSize } from "./fonts"
+import { createGlobalStyle } from "styled-components/macro"
 
 export default createGlobalStyle`
   :root, body {

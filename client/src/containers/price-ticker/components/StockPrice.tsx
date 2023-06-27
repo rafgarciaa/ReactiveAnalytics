@@ -1,7 +1,12 @@
-import { MarketStatusIcon } from '@/assets/icons'
-import React from 'react'
-import { BoldText, Text } from '../../../common/StyledComponents'
-import { LatestPrice, StockPriceChangeWrapper, StockPriceWrapper, MainPrices } from './StockPrice.styles'
+import { MarketStatusIcon } from "@/assets/icons"
+import React from "react"
+import { BoldText, Text } from "../../../common/StyledComponents"
+import {
+  LatestPrice,
+  StockPriceChangeWrapper,
+  StockPriceWrapper,
+  MainPrices,
+} from "./StockPrice.styles"
 
 export interface IStockPriceData {
   change: number | null
@@ -10,8 +15,8 @@ export interface IStockPriceData {
 }
 
 export enum MarketDisplay {
-  Large = 'large',
-  Small = 'small',
+  Large = "large",
+  Small = "small",
 }
 
 export interface IStockPriceProps {
@@ -20,7 +25,11 @@ export interface IStockPriceProps {
   stockPrice: IStockPriceData | null
 }
 
-const StockPrice: React.FunctionComponent<IStockPriceProps> = ({ symbol, size, stockPrice }) => {
+const StockPrice: React.FunctionComponent<IStockPriceProps> = ({
+  symbol,
+  size,
+  stockPrice,
+}) => {
   if (stockPrice === null) {
     return <div>N/A</div>
   }
@@ -28,15 +37,17 @@ const StockPrice: React.FunctionComponent<IStockPriceProps> = ({ symbol, size, s
 
   const fixedFormat = (e: number | null, isPercentage?: Boolean) => {
     if (e === null) {
-      return '-'
+      return "-"
     }
     let decimalPlaces = 0
     if (isPercentage) {
       decimalPlaces = e < 1 ? 2 : 0
-    } else if (e.toString().indexOf('.') >= 0) {
-      decimalPlaces = e.toString().split('.')[1].length || 2
+    } else if (e.toString().indexOf(".") >= 0) {
+      decimalPlaces = e.toString().split(".")[1].length || 2
     }
-    return (isPercentage ? e * 100 : e).toFixed(decimalPlaces > 4 ? 4 : decimalPlaces)
+    return (isPercentage ? e * 100 : e).toFixed(
+      decimalPlaces > 4 ? 4 : decimalPlaces,
+    )
   }
 
   return (

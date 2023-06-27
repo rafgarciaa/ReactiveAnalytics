@@ -1,9 +1,9 @@
-import { FXHistory } from '@/containers/history'
-import React from 'react'
-import { RouteComponentProps } from 'react-router'
-import { Company, MainLayout, News, Peers, Search, Stats } from '@/containers'
-import { StockHistoryContainer } from '@/containers/history/StockHistoryContainer'
-import { Currencies, Stocks } from '@/containers/main-layout/Markets'
+import { FXHistory } from "@/containers/history"
+import React from "react"
+import { RouteComponentProps } from "react-router"
+import { Company, MainLayout, News, Peers, Search, Stats } from "@/containers"
+import { StockHistoryContainer } from "@/containers/history/StockHistoryContainer"
+import { Currencies, Stocks } from "@/containers/main-layout/Markets"
 
 interface IComponentElement {
   component: React.ElementType
@@ -17,7 +17,7 @@ interface IComponentWithProps {
 }
 
 interface IPathParams {
-  '0'?: string
+  "0"?: string
   to?: string
   from?: string
   id?: string
@@ -49,30 +49,34 @@ export default class RouterHelper {
   }
 
   private static rootRouterItems: IComponentWithProps = {
-    '/': { component: MainLayout },
-    '/(bond|crypto|fx|future|index|stock)/:id?': { component: MainLayout },
-    '/(fx)/:from:to': { component: MainLayout },
-    '/abm/:from:to': { component: FXHistory },
-    '/company/:id?': { component: Company },
-    '/history/:id?': { component: StockHistoryContainer },
-    '/news/:id?': { component: News },
-    '/peers/:id?': { component: Peers },
-    '/search/:id?': { component: Search, props: { url: /search/ } },
-    '/stats/:id?': { component: Stats },
+    "/": { component: MainLayout },
+    "/(bond|crypto|fx|future|index|stock)/:id?": { component: MainLayout },
+    "/(fx)/:from:to": { component: MainLayout },
+    "/abm/:from:to": { component: FXHistory },
+    "/company/:id?": { component: Company },
+    "/history/:id?": { component: StockHistoryContainer },
+    "/news/:id?": { component: News },
+    "/peers/:id?": { component: Peers },
+    "/search/:id?": { component: Search, props: { url: /search/ } },
+    "/stats/:id?": { component: Stats },
   }
 
   private static mainRouterItems: IComponentWithProps = {
-    '/': { component: Stocks },
-    '/bond/:id?': { component: News },
-    '/fx/:from?:to?': { component: Currencies },
-    '/future/:id?': { component: News },
-    '/index/:id?': { component: News },
-    '/stock/:id?': { component: Stocks },
+    "/": { component: Stocks },
+    "/bond/:id?": { component: News },
+    "/fx/:from?:to?": { component: Currencies },
+    "/future/:id?": { component: News },
+    "/index/:id?": { component: News },
+    "/stock/:id?": { component: Stocks },
   }
 
-  private static renderRouterElement(element: IComponentElement, params: IPathParams, isRoot: boolean) {
+  private static renderRouterElement(
+    element: IComponentElement,
+    params: IPathParams,
+    isRoot: boolean,
+  ) {
     if (element) {
-      const market = params[0] || 'stock'
+      const market = params[0] || "stock"
       let id
       if (params.id) {
         id = params.id
@@ -87,6 +91,6 @@ export default class RouterHelper {
         })
       }
     }
-    return React.createElement('div')
+    return React.createElement("div")
   }
 }

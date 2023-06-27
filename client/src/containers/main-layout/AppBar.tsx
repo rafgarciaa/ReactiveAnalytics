@@ -1,9 +1,9 @@
-import { default as React, useEffect, useState } from 'react'
-import styled from 'styled-components/macro'
-import { pxToRems } from '@/utils'
-import { mediaQuery, screenSize } from '@/rt-theme/mediaQueries'
-import { LogoBottomLabel, LogoSideLabel } from '@/assets/logos'
-import { useSearch } from '@/hooks'
+import { default as React, useEffect, useState } from "react"
+import styled from "styled-components/macro"
+import { pxToRems } from "@/utils"
+import { mediaQuery, screenSize } from "@/rt-theme/mediaQueries"
+import { LogoBottomLabel, LogoSideLabel } from "@/assets/logos"
+import { useSearch } from "@/hooks"
 
 const LogoWrapper = styled.div`
   margin: ${pxToRems(32)} 0;
@@ -11,7 +11,8 @@ const LogoWrapper = styled.div`
 
 const Sidebar = styled.div<{ hasPreviousSearch: boolean }>`
   display: flex;
-  align-items: ${({ hasPreviousSearch }) => (hasPreviousSearch ? 'flex-start' : 'center')};
+  align-items: ${({ hasPreviousSearch }) =>
+    hasPreviousSearch ? "flex-start" : "center"};
   justify-content: center;
   background: ${({ theme }) => theme.secondary.coreSecondary2};
   width: ${pxToRems(129)};
@@ -33,8 +34,8 @@ const AppBar = () => {
       setRestrictedWidth(window.innerWidth <= screenSize.tabletL)
     }
     callback()
-    window.addEventListener('resize', callback)
-    return () => window.removeEventListener('resize', callback)
+    window.addEventListener("resize", callback)
+    return () => window.removeEventListener("resize", callback)
   }, [])
 
   return (

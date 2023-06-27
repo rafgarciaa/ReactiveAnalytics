@@ -1,14 +1,14 @@
-import { NetworkStatus, QueryResult, useQuery } from '@apollo/client'
-import { DocumentNode } from 'graphql'
-import React, { ReactNode } from 'react'
-import styled from 'styled-components/macro'
-import AdaptiveLoader from '../common/AdaptiveLoader'
+import { NetworkStatus, QueryResult, useQuery } from "@apollo/client"
+import { DocumentNode } from "graphql"
+import React, { ReactNode } from "react"
+import styled from "styled-components/macro"
+import AdaptiveLoader from "../common/AdaptiveLoader"
 
 const LoadableStyle = styled.div<{ minWidth?: string; minHeight?: string }>`
   width: 100%;
-  min-width: ${({ minWidth = '100%' }) => minWidth};
+  min-width: ${({ minWidth = "100%" }) => minWidth};
   height: 100%;
-  min-height: ${({ minHeight = '100%' }) => minHeight};
+  min-height: ${({ minHeight = "100%" }) => minHeight};
   border-radius: 0.1875rem;
   color: ${({ theme }) => theme.textColorPrimary};
   display: flex;
@@ -19,25 +19,35 @@ const LoadableStyle = styled.div<{ minWidth?: string; minHeight?: string }>`
   fill: ${({ theme }) => theme.textColorPrimary};
 `
 
-export const AppQueryDefaultLoadingIndicator: React.FunctionComponent<{ renderLoadingHeight?: string }> = React.memo(
-  ({ renderLoadingHeight }) => (
-    <LoadableStyle minHeight={renderLoadingHeight}>
-      <AdaptiveLoader size={50} speed={1.4} />
-    </LoadableStyle>
-  ),
-)
+export const AppQueryDefaultLoadingIndicator: React.FunctionComponent<{
+  renderLoadingHeight?: string
+}> = React.memo(({ renderLoadingHeight }) => (
+  <LoadableStyle minHeight={renderLoadingHeight}>
+    <AdaptiveLoader size={50} speed={1.4} />
+  </LoadableStyle>
+))
 
 interface IAppQueryProps<Data, Variables> {
   query: DocumentNode
   children: (data: Data, result: QueryResult<Data, Variables>) => ReactNode
-  renderNetworkStatus?: (networkStatus: NetworkStatus, result: QueryResult<Data, Variables>) => ReactNode
-  renderError?: (error: Error, result: QueryResult<Data, Variables>) => ReactNode
+  renderNetworkStatus?: (
+    networkStatus: NetworkStatus,
+    result: QueryResult<Data, Variables>,
+  ) => ReactNode
+  renderError?: (
+    error: Error,
+    result: QueryResult<Data, Variables>,
+  ) => ReactNode
   renderNoData?: (result: QueryResult<Data, Variables>) => ReactNode
   renderLoadingHeight?: string
   variables?: Variables
 }
 
-export const AppQuery = <Data, Variables>({ query, variables, ...props }: IAppQueryProps<Data, Variables>) => {
+export const AppQuery = <Data, Variables>({
+  query,
+  variables,
+  ...props
+}: IAppQueryProps<Data, Variables>) => {
   const result = useQuery(query, { variables })
 
   const errorMessage = (
@@ -47,9 +57,16 @@ export const AppQuery = <Data, Variables>({ query, variables, ...props }: IAppQu
     </span>
   )
 
-  const defaultRenderNetworkStatus = (networkStatus: NetworkStatus, _: QueryResult<Data, Variables>) => {
+  const defaultRenderNetworkStatus = (
+    networkStatus: NetworkStatus,
+    _: QueryResult<Data, Variables>,
+  ) => {
     if (networkStatus === NetworkStatus.loading) {
-      return <AppQueryDefaultLoadingIndicator renderLoadingHeight={props.renderLoadingHeight} />
+      return (
+        <AppQueryDefaultLoadingIndicator
+          renderLoadingHeight={props.renderLoadingHeight}
+        />
+      )
     } else if (networkStatus === NetworkStatus.error) {
       return errorMessage
     }
@@ -63,10 +80,9 @@ export const AppQuery = <Data, Variables>({ query, variables, ...props }: IAppQu
   const onQueryResults = (queryResult: QueryResult<Data, Variables>) => {
     const { children, renderNetworkStatus, renderNoData } = props
 
-    const networkStatusNode = (renderNetworkStatus || defaultRenderNetworkStatus)(
-      queryResult!.networkStatus,
-      queryResult,
-    )
+    const networkStatusNode = (
+      renderNetworkStatus || defaultRenderNetworkStatus
+    )(queryResult!.networkStatus, queryResult)
     if (networkStatusNode) {
       return networkStatusNode
     }

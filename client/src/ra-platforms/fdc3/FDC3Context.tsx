@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { addContextListener, Context, joinChannel } from '@finos/fdc3'
+import React, { useState, useEffect } from "react"
+import { addContextListener, Context, joinChannel } from "@finos/fdc3"
 
 interface FDC3Context {
   fdc3Symbol: string | null
@@ -16,13 +16,13 @@ export const FDC3Provider: React.FC = ({ children }) => {
 
   useEffect(() => {
     const setContext = (context: Context) => {
-      if (context.type === 'fdc3.instrument' && context.id?.ticker) {
+      if (context.type === "fdc3.instrument" && context.id?.ticker) {
         setCurrentSymbol(context.id?.ticker)
       }
     }
 
     if (window.fdc3) {
-      joinChannel('green').then(() => {
+      joinChannel("green").then(() => {
         // @ts-ignore
         const listener = addContextListener(null, setContext)
         return () => {
@@ -36,5 +36,9 @@ export const FDC3Provider: React.FC = ({ children }) => {
     setCurrentSymbol(null)
   }
 
-  return <FDC3Context.Provider value={{ fdc3Symbol, clearSymbol }}>{children}</FDC3Context.Provider>
+  return (
+    <FDC3Context.Provider value={{ fdc3Symbol, clearSymbol }}>
+      {children}
+    </FDC3Context.Provider>
+  )
 }

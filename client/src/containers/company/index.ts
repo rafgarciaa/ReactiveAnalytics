@@ -1,1 +1,1 @@
-export { default as Company } from './ApolloCompanyContainer'
+export { default as Company } from "./ApolloCompanyContainer"

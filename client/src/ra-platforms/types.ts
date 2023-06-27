@@ -1,5 +1,5 @@
-export type PlatformName = 'browser' | 'openfin'
-export type PlatformType = 'browser' | 'desktop'
+export type PlatformName = "browser" | "openfin"
+export type PlatformType = "browser" | "desktop"
 
 export interface WindowPosition {
   visible: boolean
@@ -20,7 +20,7 @@ export interface WindowConfig {
   minWidth?: number
   maxHeight?: number
   maxWidth?: number
-  center?: 'parent' | 'screen'
+  center?: "parent" | "screen"
   x?: number
   y?: number
   saveWindowState?: boolean

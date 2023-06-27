@@ -8,18 +8,18 @@
 // ====================================================
 
 export interface ABMHistoryQuery_getPriceHistory {
-  __typename: "FxPricing";
-  ask: number;
-  bid: number;
-  mid: number;
-  valueDate: any;
-  creationTimestamp: number;
+  __typename: "FxPricing"
+  ask: number
+  bid: number
+  mid: number
+  valueDate: any
+  creationTimestamp: number
 }
 
 export interface ABMHistoryQuery {
-  getPriceHistory: ABMHistoryQuery_getPriceHistory[];
+  getPriceHistory: ABMHistoryQuery_getPriceHistory[]
 }
 
 export interface ABMHistoryQueryVariables {
-  id: string;
+  id: string
 }

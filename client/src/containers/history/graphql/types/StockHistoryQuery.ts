@@ -8,34 +8,34 @@
 // ====================================================
 
 export interface StockHistoryQuery_stock_chart {
-  __typename: "Tick";
-  label: string;
-  datetime: any;
-  average: number | null;
-  open: number | null;
-  low: number | null;
-  high: number | null;
-  close: number | null;
-  volume: number | null;
+  __typename: "Tick"
+  label: string
+  datetime: any
+  average: number | null
+  open: number | null
+  low: number | null
+  high: number | null
+  close: number | null
+  volume: number | null
 }
 
 export interface StockHistoryQuery_stock_quote {
-  __typename: "Quote";
-  id: string;
-  previousClose: number | null;
+  __typename: "Quote"
+  id: string
+  previousClose: number | null
 }
 
 export interface StockHistoryQuery_stock {
-  __typename: "Stock";
-  id: string;
-  chart: StockHistoryQuery_stock_chart[];
-  quote: StockHistoryQuery_stock_quote;
+  __typename: "Stock"
+  id: string
+  chart: StockHistoryQuery_stock_chart[]
+  quote: StockHistoryQuery_stock_quote
 }
 
 export interface StockHistoryQuery {
-  stock: StockHistoryQuery_stock;
+  stock: StockHistoryQuery_stock
 }
 
 export interface StockHistoryQueryVariables {
-  id: string;
+  id: string
 }

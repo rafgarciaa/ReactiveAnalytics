@@ -1,6 +1,6 @@
-import logger from '../services/logger'
+import logger from "../services/logger"
 
-const ERROR_MESSAGE = 'Max retries hit for query to IEX cloud'
+const ERROR_MESSAGE = "Max retries hit for query to IEX cloud"
 const MIN_INTERVAL = 500
 const MAX_INTERVAL = 1200
 const MAX_RETRIES = 5
@@ -18,7 +18,7 @@ export async function queryResolver<T>(
     return await fn()
   } catch (error) {
     if (retries) {
-      await new Promise(res => setTimeout(res, interval))
+      await new Promise((res) => setTimeout(res, interval))
       return queryResolver(fn, retries - 1, interval * 2)
     } else {
       logger.error(ERROR_MESSAGE)

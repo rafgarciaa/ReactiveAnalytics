@@ -1,10 +1,10 @@
-export { MainLayout } from './main-layout'
+export { MainLayout } from "./main-layout"
 
-export { Company } from './company'
-export { News } from './news'
-export { MarketsList } from './markets-list'
-export { Peers } from './peers'
-export { Stats } from './stats'
-export { PriceTicker } from './price-ticker'
-export { Search } from './search'
-export { StockHistory as History } from './history'
+export { Company } from "./company"
+export { News } from "./news"
+export { MarketsList } from "./markets-list"
+export { Peers } from "./peers"
+export { Stats } from "./stats"
+export { PriceTicker } from "./price-ticker"
+export { Search } from "./search"
+export { StockHistory as History } from "./history"

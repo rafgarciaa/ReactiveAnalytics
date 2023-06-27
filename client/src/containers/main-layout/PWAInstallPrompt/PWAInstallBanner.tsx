@@ -1,16 +1,21 @@
-import React, { Dispatch, SetStateAction, useEffect } from 'react'
-import { usePWABannerPrompt } from './usePWABannerPrompt'
-import { Banner, CrossButton, BannerText, InstallButton } from './PWAPrompt.styles'
-import Environment from '@/system/environment'
-import { isiOS, isMobileDevice } from '@/utils'
-import { CrossIcon } from '@/assets/icons'
-import { AppleInstallModal } from './AppleInstallModal'
+import React, { Dispatch, SetStateAction, useEffect } from "react"
+import { usePWABannerPrompt } from "./usePWABannerPrompt"
+import {
+  Banner,
+  CrossButton,
+  BannerText,
+  InstallButton,
+} from "./PWAPrompt.styles"
+import Environment from "@/system/environment"
+import { isiOS, isMobileDevice } from "@/utils"
+import { CrossIcon } from "@/assets/icons"
+import { AppleInstallModal } from "./AppleInstallModal"
 
 export enum PWABanner {
-  Shown = 'shown',
-  Hidden = 'hidden',
-  NotSet = 'notset',
-  Installed = 'installed',
+  Shown = "shown",
+  Hidden = "hidden",
+  NotSet = "notset",
+  Installed = "installed",
 }
 
 interface InstallBannerProps {
@@ -28,7 +33,8 @@ export const PWAInstallBanner: React.FC<InstallBannerProps> = ({
 }) => {
   const [prompt, promptToInstall] = usePWABannerPrompt()
 
-  const isHidden = banner !== PWABanner.Shown || (!prompt && !isiOS) || Environment.isPWA()
+  const isHidden =
+    banner !== PWABanner.Shown || (!prompt && !isiOS) || Environment.isPWA()
 
   useEffect(() => {
     if (prompt && banner === PWABanner.NotSet) {
@@ -43,9 +49,9 @@ export const PWAInstallBanner: React.FC<InstallBannerProps> = ({
       updateBanner(PWABanner.Installed)
     }
 
-    window.addEventListener('appinstalled', handler)
+    window.addEventListener("appinstalled", handler)
 
-    return () => window.removeEventListener('appinstalled', handler)
+    return () => window.removeEventListener("appinstalled", handler)
   }, [updateBanner])
 
   const closeBanner = () => {
@@ -68,7 +74,9 @@ export const PWAInstallBanner: React.FC<InstallBannerProps> = ({
     <Banner isHidden={isHidden}>
       <CrossButton onClick={closeBanner}>{CrossIcon}</CrossButton>
       <BannerText>
-        {isMobileDevice ? 'Experience Reactive Analytics as an app' : 'Experience Reactive Analytics on your desktop'}
+        {isMobileDevice
+          ? "Experience Reactive Analytics as an app"
+          : "Experience Reactive Analytics on your desktop"}
       </BannerText>
       <InstallButton onClick={() => installPWA(isiOS)}>Install</InstallButton>
     </Banner>

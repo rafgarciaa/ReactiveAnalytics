@@ -1,11 +1,11 @@
-import Downshift, { GetItemPropsOptions } from 'downshift'
-import React, { useCallback } from 'react'
-import { search_symbols as SearchResult } from '../graphql/types/search'
+import Downshift, { GetItemPropsOptions } from "downshift"
+import React, { useCallback } from "react"
+import { search_symbols as SearchResult } from "../graphql/types/search"
 
-import { fonts } from '@/rt-theme/fonts'
-import styled from 'styled-components/macro'
-import { MarketSegment } from '@/containers/global-types'
-import { useSearchFocus } from '@/hooks'
+import { fonts } from "@/rt-theme/fonts"
+import styled from "styled-components/macro"
+import { MarketSegment } from "@/containers/global-types"
+import { useSearchFocus } from "@/hooks"
 interface ISearchBarProps {
   items: SearchResult[]
   initialItem: SearchResult | null
@@ -28,15 +28,19 @@ const getItemId = ({ id, marketSegment }: SearchResult) => {
 }
 
 const searchResultToOptionString = (item: SearchResult | null): string => {
-  return item ? `${getItemId(item)} - ${item.name}` : ''
+  return item ? `${getItemId(item)} - ${item.name}` : ""
 }
 
 const generateHighlightedText = (text: string, searchTerm: string) => {
-  const searchInput = searchTerm.replace(/[^a-zA-Z0-9]/g, '')
-  const splitText = text.split(new RegExp(`(${searchInput})`, 'gi'))
+  const searchInput = searchTerm.replace(/[^a-zA-Z0-9]/g, "")
+  const splitText = text.split(new RegExp(`(${searchInput})`, "gi"))
   return splitText.map((text, i) => (
     <span key={i}>
-      {text.toLowerCase() === searchTerm.toLowerCase() ? <SearchResultMatch>{text}</SearchResultMatch> : text}
+      {text.toLowerCase() === searchTerm.toLowerCase() ? (
+        <SearchResultMatch>{text}</SearchResultMatch>
+      ) : (
+        text
+      )}
     </span>
   ))
 }
@@ -50,13 +54,15 @@ const SearchInput: React.FC<ISearchBarProps> = ({
   currentText,
 }) => {
   const { setFocus } = useSearchFocus()
-  const renderItems = (getItemProps: (options: GetItemPropsOptions<SearchResult>) => any) => {
+  const renderItems = (
+    getItemProps: (options: GetItemPropsOptions<SearchResult>) => any,
+  ) => {
     if (items.length === 0) {
       return <SearchResultNoItem>No results found...</SearchResultNoItem>
     }
 
     const marketSegments = items
-      .filter(i => i.marketSegment)
+      .filter((i) => i.marketSegment)
       .reduce((acc, searchResult, index) => {
         if (acc[searchResult.marketSegment]) {
           acc[searchResult.marketSegment].push({ ...searchResult, index })
@@ -69,13 +75,18 @@ const SearchInput: React.FC<ISearchBarProps> = ({
     return Object.keys(marketSegments).map((segment, i) => {
       return (
         <div key={i}>
-          <SegmentLabel>{segment === 'FX' ? segment : segment.toLowerCase()}</SegmentLabel>
+          <SegmentLabel>
+            {segment === "FX" ? segment : segment.toLowerCase()}
+          </SegmentLabel>
           {marketSegments[segment].map((item: SearchResultWithIndex) => {
             const itemName = generateHighlightedText(item.name, currentText)
             const itemId = generateHighlightedText(getItemId(item), currentText)
 
             return (
-              <SearchResultItem key={item.id} {...getItemProps({ index: item.index, item })}>
+              <SearchResultItem
+                key={item.id}
+                {...getItemProps({ index: item.index, item })}
+              >
                 {itemId} - {itemName}
               </SearchResultItem>
             )
@@ -98,19 +109,33 @@ const SearchInput: React.FC<ISearchBarProps> = ({
       selectedItem={initialItem}
       onChange={onChange}
       itemToString={searchResultToOptionString}
-      onInputValueChange={inputValue => onTextChange(inputValue)}
+      onInputValueChange={(inputValue) => onTextChange(inputValue)}
       defaultHighlightedIndex={0}
     >
-      {({ getInputProps, getItemProps, getMenuProps, getRootProps, isOpen }) => {
+      {({
+        getInputProps,
+        getItemProps,
+        getMenuProps,
+        getRootProps,
+        isOpen,
+      }) => {
         return (
           <SearchWrapper {...getRootProps()}>
             <input
-              {...getInputProps({ placeholder: placeholder, onFocus: onInputFocus, onBlur: onInputBlur })}
-              style={{ width: '100%' }}
+              {...getInputProps({
+                placeholder: placeholder,
+                onFocus: onInputFocus,
+                onBlur: onInputBlur,
+              })}
+              style={{ width: "100%" }}
               autoFocus={false}
               spellCheck={false}
             />
-            {isOpen ? <SearchResults {...getMenuProps()}>{renderItems(getItemProps)}</SearchResults> : null}
+            {isOpen ? (
+              <SearchResults {...getMenuProps()}>
+                {renderItems(getItemProps)}
+              </SearchResults>
+            ) : null}
           </SearchWrapper>
         )
       }}
@@ -178,7 +203,7 @@ const SearchResultItem = styled(SearchResultItemBase)`
     font-size: 0.5em;
     padding-right: 5px;
   }
-  &[aria-selected='true'] {
+  &[aria-selected="true"] {
     color: ${({ theme }) => theme.primary.corePrimary};
     background: ${({ theme }) => theme.secondary.coreSecondary2};
     border-radius: 20px;

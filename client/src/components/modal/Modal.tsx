@@ -1,6 +1,6 @@
-import { darken } from 'polished'
-import React from 'react'
-import styled from 'styled-components/macro'
+import { darken } from "polished"
+import React from "react"
+import styled from "styled-components/macro"
 
 const ModalContainer = styled.div`
   position: fixed;
@@ -41,7 +41,8 @@ const ModalPanel = styled.div`
   background: ${({ theme }) => theme.primary.corePrimary};
   color: ${({ theme }) => theme.secondary.coreSecondary};
   border-radius: 0.25rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 1rem 3rem -1rem ${props => darken(0.1, props.theme.primary.corePrimary)};
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
+    0 1rem 3rem -1rem ${(props) => darken(0.1, props.theme.primary.corePrimary)};
 `
 
 const Header = styled.div`

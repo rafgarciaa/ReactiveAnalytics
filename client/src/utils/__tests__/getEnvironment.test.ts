@@ -1,6 +1,6 @@
-import { getEnvironment } from '../getEnvironment'
+import { getEnvironment } from "../getEnvironment"
 
-describe('getEnvironment', () => {
+describe("getEnvironment", () => {
   let mockHost: string
   const originalLocation = window.location
   afterEach(() => {
@@ -8,19 +8,22 @@ describe('getEnvironment', () => {
   })
 
   beforeAll(() => {
-    vi.spyOn(window, 'location', 'get').mockImplementation(() => ({ ...originalLocation, host: mockHost }))
+    vi.spyOn(window, "location", "get").mockImplementation(() => ({
+      ...originalLocation,
+      host: mockHost,
+    }))
   })
 
-  test('getEnvironment parses deployed environemnts', () => {
-    mockHost = 'https://dev-reactive-analytics.adaptivecluster.com/'
+  test("getEnvironment parses deployed environemnts", () => {
+    mockHost = "https://dev-reactive-analytics.adaptivecluster.com/"
     getEnvironment()
-    expect(getEnvironment()).toBe('dev')
+    expect(getEnvironment()).toBe("dev")
   })
 
-  test('getEnvironment parses localhost environment', () => {
-    mockHost = 'http://localhost:3005'
+  test("getEnvironment parses localhost environment", () => {
+    mockHost = "http://localhost:3005"
     getEnvironment()
-    expect(getEnvironment()).toBe('local')
+    expect(getEnvironment()).toBe("local")
   })
 })
 

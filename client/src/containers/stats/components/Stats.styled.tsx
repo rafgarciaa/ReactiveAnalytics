@@ -1,7 +1,7 @@
-import styled from 'styled-components/macro'
-import { DataContents } from '@/common/StyledComponents'
-import { pxToRems } from '@/utils'
-import { mediaQuery } from '@/rt-theme/mediaQueries'
+import styled from "styled-components/macro"
+import { DataContents } from "@/common/StyledComponents"
+import { pxToRems } from "@/utils"
+import { mediaQuery } from "@/rt-theme/mediaQueries"
 
 export const FieldsWrapper = styled(DataContents)`
   margin-top: ${pxToRems(8)};
@@ -10,7 +10,7 @@ export const FieldsWrapper = styled(DataContents)`
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   position: relative;
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     top: -2px;
     left: 0;

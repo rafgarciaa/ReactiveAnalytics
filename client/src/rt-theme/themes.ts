@@ -1,7 +1,7 @@
-import { darken } from 'polished'
-import { DefaultTheme, keyframes } from 'styled-components/macro'
-import { Color, colors } from './colors'
-import { baselineFontSize } from './fonts'
+import { darken } from "polished"
+import { DefaultTheme, keyframes } from "styled-components/macro"
+import { Color, colors } from "./colors"
+import { baselineFontSize } from "./fonts"
 
 export interface IMotion {
   duration: number
@@ -20,13 +20,19 @@ export interface ITouchable {
   active: IColorPair
   disabled: IColorPair
 }
-export type TouchableIntentName = 'primary' | 'secondary' | 'mute'
+export type TouchableIntentName = "primary" | "secondary" | "mute"
 export type TouchableStyleSet = { [style in TouchableIntentName]: ITouchable }
 
-const createTheme = ({ accents, primary, secondary, motion, button }: DefaultTheme) => ({
-  black: '#000000',
-  transparent: '#00000000',
-  white: '#FFFFFF',
+const createTheme = ({
+  accents,
+  primary,
+  secondary,
+  motion,
+  button,
+}: DefaultTheme) => ({
+  black: "#000000",
+  transparent: "#00000000",
+  white: "#FFFFFF",
 
   backgroundColor: primary.corePrimary,
 
@@ -70,10 +76,18 @@ export type Theme = DefaultTheme & GeneratedTheme
 export type ThemeSelector = (theme: Theme) => Color
 
 function isColor(value: string | ThemeSelector): value is Color {
-  return typeof value === 'string' && /^(#|rgb|hsl)/.test(value)
+  return typeof value === "string" && /^(#|rgb|hsl)/.test(value)
 }
-export const getThemeColor = (theme: Theme, color: Color | ThemeSelector, fallback?: Color) =>
-  typeof color === 'function' ? color(theme) || fallback : isColor(color) ? color : fallback
+export const getThemeColor = (
+  theme: Theme,
+  color: Color | ThemeSelector,
+  fallback?: Color,
+) =>
+  typeof color === "function"
+    ? color(theme) || fallback
+    : isColor(color)
+    ? color
+    : fallback
 
 const light = createTheme(colors.light)
 const dark = createTheme(colors.dark)

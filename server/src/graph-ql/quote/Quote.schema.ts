@@ -1,6 +1,6 @@
-import { gql } from 'apollo-server'
- export default gql`
- type Quote {
+import { gql } from "apollo-server"
+export default gql`
+  type Quote {
     id: ID!
     symbol: String!
     company: Company
@@ -38,4 +38,4 @@ import { gql } from 'apollo-server'
     week52Low: Float
     ytdChange: Float
   }
- `;
+`
