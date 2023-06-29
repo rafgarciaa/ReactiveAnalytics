@@ -1,6 +1,11 @@
-import { DataCard, Link, Text, DataContents } from '../../common/StyledComponents'
-import React, { useMemo } from 'react'
-import { search_symbols } from './graphql/types/search'
+import {
+  DataCard,
+  Link,
+  Text,
+  DataContents,
+} from "../../common/StyledComponents"
+import React, { useMemo } from "react"
+import { search_symbols } from "./graphql/types/search"
 
 interface IProps {
   foundSymbol?: search_symbols
@@ -9,7 +14,12 @@ interface IProps {
   onClick?: Function
 }
 
-export const SearchErrorCard: React.FunctionComponent<IProps> = ({ foundSymbol, id, market, onClick }) => {
+export const SearchErrorCard: React.FunctionComponent<IProps> = ({
+  foundSymbol,
+  id,
+  market,
+  onClick,
+}) => {
   const message = useMemo(() => {
     if (foundSymbol && onClick) {
       return (

@@ -1,40 +1,40 @@
-import { DefaultTheme } from 'styled-components/macro'
+import { DefaultTheme } from "styled-components/macro"
 
-export const buttons: Pick<DefaultTheme, 'button'> = {
+export const buttons: Pick<DefaultTheme, "button"> = {
   button: {
     mute: {
-      backgroundColor: 'corePrimary',
-      textColor: 'coreSecondary',
+      backgroundColor: "corePrimary",
+      textColor: "coreSecondary",
 
       active: {
-        backgroundColor: 'corePrimary4',
+        backgroundColor: "corePrimary4",
       },
       disabled: {
-        backgroundColor: 'corePrimary3',
+        backgroundColor: "corePrimary3",
       },
     },
 
     primary: {
-      backgroundColor: 'accentPositive',
-      textColor: 'corePrimary',
+      backgroundColor: "accentPositive",
+      textColor: "corePrimary",
 
       active: {
-        backgroundColor: 'accentPositive3',
+        backgroundColor: "accentPositive3",
       },
       disabled: {
-        backgroundColor: 'accentNegative3',
+        backgroundColor: "accentNegative3",
       },
     },
 
     secondary: {
-      backgroundColor: 'coreSecondary',
-      textColor: 'corePrimary',
+      backgroundColor: "coreSecondary",
+      textColor: "corePrimary",
 
       active: {
-        backgroundColor: 'coreSecondary3',
+        backgroundColor: "coreSecondary3",
       },
       disabled: {
-        backgroundColor: 'coreSecondary4',
+        backgroundColor: "coreSecondary4",
       },
     },
   },

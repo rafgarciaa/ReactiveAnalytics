@@ -1,6 +1,6 @@
-import React, { useMemo } from 'react'
-import { keyframes, Keyframes } from 'styled-components/macro'
-import styled from 'styled-components/macro'
+import React, { useMemo } from "react"
+import { keyframes, Keyframes } from "styled-components/macro"
+import styled from "styled-components/macro"
 
 const ANIMATION_SPEED = 2
 const BAR_NUMBER = 4
@@ -16,14 +16,15 @@ interface IBarProps {
   type: LoaderType
 }
 
-const Bar = styled('rect')<IBarProps>`
-  animation: ${({ bouceKeyframes }: IBarProps) => bouceKeyframes} ${({ speed }) => speed}s infinite;
+const Bar = styled("rect")<IBarProps>`
+  animation: ${({ bouceKeyframes }: IBarProps) => bouceKeyframes}
+    ${({ speed }) => speed}s infinite;
   animation-delay: ${({ order, speed }) => order * (speed / 1.3 / BAR_NUMBER)}s;
   fill: ${({ theme }) => theme.primary.corePrimary};
   will-change: transform;
 `
 
-type LoaderType = 'primary' | 'secondary'
+type LoaderType = "primary" | "secondary"
 
 interface IProps {
   size: number | string
@@ -34,7 +35,7 @@ interface IProps {
 
 const AdaptiveLoader: React.FunctionComponent<IProps> = ({
   size,
-  type = 'primary',
+  type = "primary",
   seperation,
   speed = ANIMATION_SPEED,
   children,
@@ -42,9 +43,11 @@ const AdaptiveLoader: React.FunctionComponent<IProps> = ({
   const sizeNum = Number(size)
   const barHeight = sizeNum * 0.75
   const barWidth = barHeight / 4
-  const seperationDistance = (seperation !== undefined ? seperation : sizeNum / 25) - 0.5
+  const seperationDistance =
+    (seperation !== undefined ? seperation : sizeNum / 25) - 0.5
   const moveDistance = barHeight / 3
-  const totalBarWidth = barWidth * BAR_NUMBER + seperationDistance * (BAR_NUMBER - 1)
+  const totalBarWidth =
+    barWidth * BAR_NUMBER + seperationDistance * (BAR_NUMBER - 1)
   const extraWidth = sizeNum - totalBarWidth
 
   const getBounce = (distance: number) => keyframes`

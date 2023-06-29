@@ -8,17 +8,17 @@
 // ====================================================
 
 export interface searchQuery_symbol {
-  __typename: "SearchResult";
-  id: string;
-  name: string;
-  marketSegment: string;
+  __typename: "SearchResult"
+  id: string
+  name: string
+  marketSegment: string
 }
 
 export interface searchQuery {
-  symbol: searchQuery_symbol;
+  symbol: searchQuery_symbol
 }
 
 export interface searchQueryVariables {
-  id: string;
-  market: string;
+  id: string
+  market: string
 }

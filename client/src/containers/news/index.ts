@@ -1,1 +1,1 @@
-export { default as News } from './ApolloNewsContainer'
+export { default as News } from "./ApolloNewsContainer"

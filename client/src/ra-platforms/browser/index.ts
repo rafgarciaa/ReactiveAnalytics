@@ -1,1 +1,1 @@
-export { default as Browser } from './browserPlatform'
+export { default as Browser } from "./browserPlatform"

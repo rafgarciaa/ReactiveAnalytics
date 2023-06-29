@@ -1,12 +1,12 @@
-import { Quote } from 'iexcloud_api_wrapper'
-import { Service } from 'typedi'
-import * as iex from 'iexcloud_api_wrapper'
-import { IIexBatchQuote } from '../../types'
-import { Subject, NEVER, timer } from 'rxjs'
-import { switchMap, flatMap, tap } from 'rxjs/operators'
-import { pubsub } from '../../pubsub'
-import logger from '../../services/logger'
-import { queryResolver } from '../../utils/queryResolver'
+import { Quote } from "iexcloud_api_wrapper"
+import { Service } from "typedi"
+import * as iex from "iexcloud_api_wrapper"
+import { IIexBatchQuote } from "../../types"
+import { Subject, NEVER, timer } from "rxjs"
+import { switchMap, flatMap, tap } from "rxjs/operators"
+import { pubsub } from "../../pubsub"
+import logger from "../../services/logger"
+import { queryResolver } from "../../utils/queryResolver"
 
 interface IMarketSubscription {
   [symbol: string]: {
@@ -23,19 +23,25 @@ export default class {
     this.subject
       .pipe(
         switchMap(
-          symbols => (symbols.length > 0 ? timer(500, 3000) : NEVER),
+          (symbols) => (symbols.length > 0 ? timer(500, 3000) : NEVER),
           (symbols, _) => symbols,
         ),
-        tap(symbols => logger.debug(`Get quotes from IEX Cloud for ${symbols}`)),
-        flatMap(symbols => this.getQuotes(symbols)),
-        flatMap(quotes => quotes),
+        tap((symbols) =>
+          logger.debug(`Get quotes from IEX Cloud for ${symbols}`),
+        ),
+        flatMap((symbols) => this.getQuotes(symbols)),
+        flatMap((quotes) => quotes),
       )
       .subscribe({
-        next: quote => {
-          logger.debug(`Publishing quote for ${this.getQuoteTopic(quote.symbol)}: ${quote.latestPrice}`)
+        next: (quote) => {
+          logger.debug(
+            `Publishing quote for ${this.getQuoteTopic(quote.symbol)}: ${
+              quote.latestPrice
+            }`,
+          )
           pubsub.publish(this.getQuoteTopic(quote.symbol), quote)
         },
-        error: err => logger.error(`Get quotes error: ${err}`),
+        error: (err) => logger.error(`Get quotes error: ${err}`),
       })
   }
 
@@ -45,16 +51,18 @@ export default class {
 
   public async getQuotes(symbols: string[]): Promise<Quote[]> {
     const batchQuotes: IIexBatchQuote = await queryResolver(() =>
-      iex.iexApiRequest(`/stock/market/batch?symbols=${symbols.join(',')}&types=quote`),
+      iex.iexApiRequest(
+        `/stock/market/batch?symbols=${symbols.join(",")}&types=quote`,
+      ),
     )
 
-    return symbols.map(symbol => batchQuotes[symbol].quote)
+    return symbols.map((symbol) => batchQuotes[symbol].quote)
   }
 
   public getQuoteTopic = (symbol: string) => `MARKET_UPDATE.${symbol}`
 
   public unsubscribeQuotes(symbols: string[]) {
-    symbols.forEach(symbol => {
+    symbols.forEach((symbol) => {
       if (this.currentSymbols[symbol]) {
         this.currentSymbols[symbol].listenerCount--
         if (!this.currentSymbols[symbol].listenerCount) {
@@ -67,7 +75,7 @@ export default class {
   }
 
   public subscribeQuotes(symbols: string[]) {
-    symbols.forEach(symbol => {
+    symbols.forEach((symbol) => {
       if (this.currentSymbols[symbol]) {
         this.currentSymbols[symbol].listenerCount++
       } else {

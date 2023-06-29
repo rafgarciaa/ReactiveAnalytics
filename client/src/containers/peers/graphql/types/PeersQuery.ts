@@ -8,15 +8,15 @@
 // ====================================================
 
 export interface PeersQuery_stock {
-  __typename: "Stock";
-  id: string;
-  peers: string[];
+  __typename: "Stock"
+  id: string
+  peers: string[]
 }
 
 export interface PeersQuery {
-  stock: PeersQuery_stock;
+  stock: PeersQuery_stock
 }
 
 export interface PeersQueryVariables {
-  id: string;
+  id: string
 }

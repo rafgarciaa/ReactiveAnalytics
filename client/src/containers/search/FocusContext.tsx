@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from "react"
 
 interface FocusContext {
   isFocused: boolean
@@ -17,5 +17,9 @@ export const FocusProvider: React.FC = ({ children }) => {
     setIsFocused(isFocused)
   }
 
-  return <FocusContext.Provider value={{ isFocused, setFocus }}>{children}</FocusContext.Provider>
+  return (
+    <FocusContext.Provider value={{ isFocused, setFocus }}>
+      {children}
+    </FocusContext.Provider>
+  )
 }

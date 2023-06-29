@@ -1,12 +1,12 @@
-import { noop, Subscription } from 'rxjs'
-import { connectToGateway } from '@adaptive/hydra-platform'
-import { map } from 'rxjs/operators'
-import { Service } from 'typedi'
-import data from '../../mock-data/currencySymbols.json'
-import { pubsub } from '../../pubsub'
-import { MarketSegments } from '../ref-data/RefData.schema'
-import { SearchResultSchema as SearchResult } from '../stock/Stock.schema'
-import { PricingService } from '../../generated/TradingGateway'
+import { noop, Subscription } from "rxjs"
+import { connectToGateway } from "@adaptive/hydra-platform"
+import { map } from "rxjs/operators"
+import { Service } from "typedi"
+import data from "../../mock-data/currencySymbols.json"
+import { pubsub } from "../../pubsub"
+import { MarketSegments } from "../ref-data/RefData.schema"
+import { SearchResultSchema as SearchResult } from "../stock/Stock.schema"
+import { PricingService } from "../../generated/TradingGateway"
 
 interface ISymbolData {
   [key: string]: {
@@ -27,11 +27,11 @@ interface IPriceHistory {
   valueDate: any
 }
 
-const { Crypto } = require('@peculiar/webcrypto')
+const { Crypto } = require("@peculiar/webcrypto")
 
 // Global packages required by @adaptive/hydra-platform that aren't available in node by default
 Object.assign(global, {
-  WebSocket: require('ws'),
+  WebSocket: require("ws"),
   crypto: new Crypto(),
 })
 
@@ -57,8 +57,15 @@ export default class {
   public getSymbols(filterText: string): SearchResult[] {
     const symbolData = data as ISymbolData
     return Object.keys(symbolData)
-      .filter(key => key.includes(filterText) || symbolData[key].name.includes(filterText))
-      .map(key => ({ id: key, marketSegment: MarketSegments.FX, ...symbolData[key] }))
+      .filter(
+        (key) =>
+          key.includes(filterText) || symbolData[key].name.includes(filterText),
+      )
+      .map((key) => ({
+        id: key,
+        marketSegment: MarketSegments.FX,
+        ...symbolData[key],
+      }))
   }
 
   public async getPriceHistory(id: string): Promise<IPriceHistory[]> {
@@ -66,7 +73,7 @@ export default class {
     return PricingService.getPriceHistory({ symbol: id })
       .pipe(
         map(({ prices }) =>
-          prices.map(price => ({
+          prices.map((price) => ({
             ask: price.ask,
             bid: price.bid,
             mid: price.mid,
@@ -80,7 +87,9 @@ export default class {
   }
 
   public subscribePriceUpdates(id: string) {
-    this.fxSubscription = PricingService.getPriceUpdates({ symbol: id }).subscribe(value => {
+    this.fxSubscription = PricingService.getPriceUpdates({
+      symbol: id,
+    }).subscribe((value) => {
       pubsub.publish(`FX_CURRENT_PRICING.${id}`, {
         getFXPriceUpdates: {
           Bid: value.bid,

@@ -1,12 +1,12 @@
-import { IResolvers } from 'graphql-tools'
-import NewsService from './News.service'
-import { Container } from 'typedi'
+import { IResolvers } from "graphql-tools"
+import NewsService from "./News.service"
+import { Container } from "typedi"
 
 const newsService = Container.get(NewsService)
 
 const resolvers: IResolvers = {
   News: {
-    id: parent => {
+    id: (parent) => {
       return parent.url
     },
   },

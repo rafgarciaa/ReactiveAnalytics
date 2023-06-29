@@ -1,1 +1,1 @@
-export { default as PriceTicker } from './ApolloPriceTickerContainer'
+export { default as PriceTicker } from "./ApolloPriceTickerContainer"

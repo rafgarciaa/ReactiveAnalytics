@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { ThemeProvider as StyledThemeProvider } from 'styled-components/macro'
-import { themes } from './themes'
+import React, { useContext, useEffect, useState } from "react"
+import { ThemeProvider as StyledThemeProvider } from "styled-components/macro"
+import { themes } from "./themes"
 
 export enum ThemeName {
-  Light = 'light',
-  Dark = 'dark',
+  Light = "light",
+  Dark = "dark",
 }
 
 interface IContextValue {
@@ -17,18 +17,17 @@ const ThemeContext = React.createContext<IContextValue>({
   themeName: ThemeName.Light,
 })
 
-const STORAGE_KEY = 'themeName'
+const STORAGE_KEY = "themeName"
 
-const ThemeStorageProvider: React.FunctionComponent<{ storage?: typeof localStorage | typeof sessionStorage }> = ({
-  storage,
-  children,
-}) => {
+const ThemeStorageProvider: React.FunctionComponent<{
+  storage?: typeof localStorage | typeof sessionStorage
+}> = ({ storage, children }) => {
   const [initialized, setInitialized] = useState(false)
   const [themeName, setThemeName] = useState<ThemeName>(ThemeName.Light)
 
   const internalStorage = storage || localStorage
 
-  const setTheme: (selector: { themeName: ThemeName }) => void = selector => {
+  const setTheme: (selector: { themeName: ThemeName }) => void = (selector) => {
     if (selector.themeName !== themeName) {
       setThemeName(selector.themeName)
       internalStorage.setItem(STORAGE_KEY, selector.themeName)
@@ -38,7 +37,9 @@ const ThemeStorageProvider: React.FunctionComponent<{ storage?: typeof localStor
   useEffect(() => {
     const setThemeFromStorage = (event: StorageEvent) => {
       if (event.key === STORAGE_KEY) {
-        const storedThemeName = internalStorage.getItem(STORAGE_KEY) as ThemeName
+        const storedThemeName = internalStorage.getItem(
+          STORAGE_KEY,
+        ) as ThemeName
         if (storedThemeName && themes[storedThemeName] !== null) {
           setThemeName(storedThemeName)
         }
@@ -47,8 +48,10 @@ const ThemeStorageProvider: React.FunctionComponent<{ storage?: typeof localStor
 
     if (!initialized) {
       setInitialized(true)
-      setThemeName((internalStorage.getItem(STORAGE_KEY) as ThemeName) || ThemeName.Light)
-      window.addEventListener('storage', setThemeFromStorage)
+      setThemeName(
+        (internalStorage.getItem(STORAGE_KEY) as ThemeName) || ThemeName.Light,
+      )
+      window.addEventListener("storage", setThemeFromStorage)
     }
   }, [initialized, internalStorage, themeName])
 
@@ -65,7 +68,8 @@ export const useTheme = () => {
   const { themeName, setTheme } = useContext(ThemeContext)
   const toggleTheme = () =>
     setTheme({
-      themeName: themeName === ThemeName.Dark ? ThemeName.Light : ThemeName.Dark,
+      themeName:
+        themeName === ThemeName.Dark ? ThemeName.Light : ThemeName.Dark,
     })
   return { themeName, setTheme, toggleTheme }
 }

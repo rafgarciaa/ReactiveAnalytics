@@ -1,8 +1,8 @@
-import { IResolvers } from 'graphql-tools'
-import search from '../../services/searchIndex'
-import { FxService } from '../fx'
-import { Container } from 'typedi'
-import { MarketSegments } from './RefData.schema'
+import { IResolvers } from "graphql-tools"
+import search from "../../services/searchIndex"
+import { FxService } from "../fx"
+import { Container } from "typedi"
+import { MarketSegments } from "./RefData.schema"
 
 const fxService = Container.get(FxService)
 
@@ -12,7 +12,7 @@ const resolvers: IResolvers = {
       switch (args.market.toLowerCase()) {
         case MarketSegments.STOCK: {
           const results = search(args.id)
-          return results.find(s => s.id === args.id) || results[0]
+          return results.find((s) => s.id === args.id) || results[0]
         }
         case MarketSegments.FX: {
           return fxService.getSymbol(args.id)
@@ -22,7 +22,10 @@ const resolvers: IResolvers = {
         }
       }
     },
-    symbols: async (_, args: { text: string; marketSegment: MarketSegments }) => {
+    symbols: async (
+      _,
+      args: { text: string; marketSegment: MarketSegments },
+    ) => {
       switch (args.marketSegment.toLowerCase()) {
         case MarketSegments.STOCK: {
           return search(args.text)

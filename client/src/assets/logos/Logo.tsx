@@ -1,15 +1,20 @@
-import React, { SVGAttributes } from 'react'
-import styled from 'styled-components/macro'
+import React, { SVGAttributes } from "react"
+import styled from "styled-components/macro"
 
 interface ILogoProps extends SVGAttributes<Element> {
   fill?: string
   size?: number
 }
 
-const Logo: React.FunctionComponent<ILogoProps> = ({ fill = '#000', size = 4, style, ...props }) => {
+const Logo: React.FunctionComponent<ILogoProps> = ({
+  fill = "#000",
+  size = 4,
+  style,
+  ...props
+}) => {
   style = {
-    height: size + 'rem',
-    width: size + 'rem',
+    height: size + "rem",
+    width: size + "rem",
     ...style,
   }
 
@@ -22,7 +27,7 @@ const Logo: React.FunctionComponent<ILogoProps> = ({ fill = '#000', size = 4, st
       style={style}
       {...props}
     >
-      {' '}
+      {" "}
       <path
         fill="#FFF"
         fill-rule="evenodd"

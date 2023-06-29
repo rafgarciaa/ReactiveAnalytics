@@ -1,11 +1,11 @@
-import { IResolvers } from 'graphql-tools'
-import StatsService from '../stats/Stats.service'
-import CompanyService from '../company/Company.service'
-import * as iex from 'iexcloud_api_wrapper'
-import { TickService } from '../tick'
-import { QuoteService } from '../quote'
-import { Container } from 'typedi'
-import { queryResolver } from '../../utils/queryResolver'
+import { IResolvers } from "graphql-tools"
+import StatsService from "../stats/Stats.service"
+import CompanyService from "../company/Company.service"
+import * as iex from "iexcloud_api_wrapper"
+import { TickService } from "../tick"
+import { QuoteService } from "../quote"
+import { Container } from "typedi"
+import { queryResolver } from "../../utils/queryResolver"
 
 const companyService = Container.get(CompanyService)
 const statsService = Container.get(StatsService)

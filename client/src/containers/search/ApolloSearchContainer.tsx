@@ -1,21 +1,25 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import ReactGA from 'react-ga'
-import { RouteComponentProps } from 'react-router'
-import { withRouter } from 'react-router-dom'
-import apolloClient from '../../apollo/client'
-import AdaptiveLoader from '../../common/AdaptiveLoader'
-import { AppQuery } from '../../common/AppQuery'
-import { IApolloContainerProps } from '../../common/IApolloContainerProps'
-import { search as SimpleSearchQuery, searchVariables, search_symbols } from './graphql/types/search'
-import { searchQuery, searchQueryVariables } from './graphql/types/searchQuery'
-import { SearchInput } from './components'
-import SearchConnection from './graphql/SearchConnection.graphql'
-import SimpleSearchConnection from './graphql/SimpleSearchConnection.graphql'
-import { SearchContextActionTypes } from './SearchContext'
-import { SearchErrorCard } from './SearchErrorCard'
-import { MarketSegment } from '@/containers/global-types'
-import { checkIncomingSymbol } from './components'
-import { useSearch, useFDC3Context } from '@/hooks'
+import React, { useCallback, useEffect, useState } from "react"
+import ReactGA from "react-ga"
+import { RouteComponentProps } from "react-router"
+import { withRouter } from "react-router-dom"
+import apolloClient from "../../apollo/client"
+import AdaptiveLoader from "../../common/AdaptiveLoader"
+import { AppQuery } from "../../common/AppQuery"
+import { IApolloContainerProps } from "../../common/IApolloContainerProps"
+import {
+  search as SimpleSearchQuery,
+  searchVariables,
+  search_symbols,
+} from "./graphql/types/search"
+import { searchQuery, searchQueryVariables } from "./graphql/types/searchQuery"
+import { SearchInput } from "./components"
+import SearchConnection from "./graphql/SearchConnection.graphql"
+import SimpleSearchConnection from "./graphql/SimpleSearchConnection.graphql"
+import { SearchContextActionTypes } from "./SearchContext"
+import { SearchErrorCard } from "./SearchErrorCard"
+import { MarketSegment } from "@/containers/global-types"
+import { checkIncomingSymbol } from "./components"
+import { useSearch, useFDC3Context } from "@/hooks"
 
 interface IProps extends IApolloContainerProps {
   url?: string
@@ -24,12 +28,17 @@ interface IProps extends IApolloContainerProps {
 
 type Props = RouteComponentProps & IProps
 
-const ApolloSearchContainer: React.FunctionComponent<Props> = ({ id, history, url, market }) => {
-  const [currentText, setCurrentText] = useState<string>('')
+const ApolloSearchContainer: React.FunctionComponent<Props> = ({
+  id,
+  history,
+  url,
+  market,
+}) => {
+  const [currentText, setCurrentText] = useState<string>("")
 
   const { currentSymbol, refetchAttempts, searching, dispatch } = useSearch()
 
-  const placeholderText = 'Enter a stock, symbol, or currency pair...'
+  const placeholderText = "Enter a stock, symbol, or currency pair..."
 
   const { fdc3Symbol, clearSymbol } = useFDC3Context()
 
@@ -37,10 +46,10 @@ const ApolloSearchContainer: React.FunctionComponent<Props> = ({ id, history, ur
     (symbol: search_symbols | null) => {
       if (dispatch) {
         ReactGA.event({
-          category: 'RA - Search',
-          action: 'search',
+          category: "RA - Search",
+          action: "search",
           label: symbol?.id,
-          transport: 'beacon',
+          transport: "beacon",
         })
         dispatch({
           type: SearchContextActionTypes.SelectedSymbol,
@@ -49,7 +58,9 @@ const ApolloSearchContainer: React.FunctionComponent<Props> = ({ id, history, ur
       }
       if (symbol) {
         clearSymbol()
-        history.push(`/${(symbol.marketSegment || url || '').toLowerCase()}/${symbol.id}`)
+        history.push(
+          `/${(symbol.marketSegment || url || "").toLowerCase()}/${symbol.id}`,
+        )
       } else {
         history.push(`/${url}`)
       }
@@ -64,7 +75,9 @@ const ApolloSearchContainer: React.FunctionComponent<Props> = ({ id, history, ur
         if (checkedSymbol) {
           handleChange(checkedSymbol)
         } else {
-          console.info(`The received symbol ${fdc3Symbol} did not match any known symbols`)
+          console.info(
+            `The received symbol ${fdc3Symbol} did not match any known symbols`,
+          )
         }
       }
     })()
@@ -84,11 +97,11 @@ const ApolloSearchContainer: React.FunctionComponent<Props> = ({ id, history, ur
     if (searching && dispatch && id) {
       apolloClient
         .query<searchQuery, searchQueryVariables>({
-          errorPolicy: 'all',
+          errorPolicy: "all",
           query: SearchConnection,
           variables: { id: id.toUpperCase(), market: market.toUpperCase() },
         })
-        .then(result => {
+        .then((result) => {
           if (result.data && result.data.symbol) {
             if (result.data.symbol.id === id.toUpperCase()) {
               dispatch({
@@ -97,23 +110,40 @@ const ApolloSearchContainer: React.FunctionComponent<Props> = ({ id, history, ur
               })
               return Promise.resolve()
             } else {
-              throw new Error('Returned symbol does not match requested symbol.')
+              throw new Error(
+                "Returned symbol does not match requested symbol.",
+              )
             }
           } else {
-            throw new Error('Symbol not recognized.')
+            throw new Error("Symbol not recognized.")
           }
         })
-        .catch(ex => {
+        .catch((ex) => {
           console.error(ex)
           dispatch({
             type: SearchContextActionTypes.UnrecognizedSymbol,
             payload: {
-              errorMessage: <SearchErrorCard id={id} market={market} onClick={handleChange} />,
+              errorMessage: (
+                <SearchErrorCard
+                  id={id}
+                  market={market}
+                  onClick={handleChange}
+                />
+              ),
             },
           })
         })
     }
-  }, [dispatch, history, id, market, refetchAttempts, searching, url, handleChange])
+  }, [
+    dispatch,
+    history,
+    id,
+    market,
+    refetchAttempts,
+    searching,
+    url,
+    handleChange,
+  ])
 
   const onTextChange = (text: string) => {
     setCurrentText(text)
@@ -127,8 +157,15 @@ const ApolloSearchContainer: React.FunctionComponent<Props> = ({ id, history, ur
       return <AdaptiveLoader size={50} speed={1.4} />
     }
 
-    const stockSymbols = stockSearch ? stockSearch.symbols.map(s => ({ ...s, marketSegment: MarketSegment.STOCK })) : []
-    const fxSymbols = fxSearch ? fxSearch.symbols.map(s => ({ ...s, marketSegment: MarketSegment.FX })) : []
+    const stockSymbols = stockSearch
+      ? stockSearch.symbols.map((s) => ({
+          ...s,
+          marketSegment: MarketSegment.STOCK,
+        }))
+      : []
+    const fxSymbols = fxSearch
+      ? fxSearch.symbols.map((s) => ({ ...s, marketSegment: MarketSegment.FX }))
+      : []
     const symbols = stockSymbols
       .concat(fxSymbols)
       .sort((a, b) => {
@@ -161,17 +198,25 @@ const ApolloSearchContainer: React.FunctionComponent<Props> = ({ id, history, ur
   return (
     <AppQuery<SimpleSearchQuery, searchVariables>
       query={SimpleSearchConnection}
-      variables={{ text: currentText.toUpperCase(), marketSegment: MarketSegment.STOCK }}
+      variables={{
+        text: currentText.toUpperCase(),
+        marketSegment: MarketSegment.STOCK,
+      }}
       renderNoData={() => null}
     >
       {(stockSearch: SimpleSearchQuery) => {
         return (
           <AppQuery<SimpleSearchQuery, searchVariables>
             query={SimpleSearchConnection}
-            variables={{ text: currentText.toUpperCase(), marketSegment: MarketSegment.FX }}
+            variables={{
+              text: currentText.toUpperCase(),
+              marketSegment: MarketSegment.FX,
+            }}
             renderNoData={() => onSearchInputResults(stockSearch)}
           >
-            {(fxSearch: SimpleSearchQuery) => onSearchInputResults(stockSearch, fxSearch)}
+            {(fxSearch: SimpleSearchQuery) =>
+              onSearchInputResults(stockSearch, fxSearch)
+            }
           </AppQuery>
         )
       }}

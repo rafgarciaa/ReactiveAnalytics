@@ -1,3 +1,3 @@
-export * from './MarketStatusIcon'
-export * from './CrossIcon'
-export * from './AppleShareIcon'
+export * from "./MarketStatusIcon"
+export * from "./CrossIcon"
+export * from "./AppleShareIcon"

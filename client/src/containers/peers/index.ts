@@ -1,1 +1,1 @@
-export { default as Peers } from './ApolloPeersContainer'
+export { default as Peers } from "./ApolloPeersContainer"

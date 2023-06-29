@@ -1,7 +1,7 @@
-import React from 'react'
-import styled, { CSSObject } from 'styled-components/macro'
-import { pxToRems } from '@/utils'
-import { Heading } from './StyledComponents'
+import React from "react"
+import styled, { CSSObject } from "styled-components/macro"
+import { pxToRems } from "@/utils"
+import { Heading } from "./StyledComponents"
 
 interface IProps {
   style?: CSSObject
@@ -10,7 +10,7 @@ interface IProps {
   instrument: string
 }
 
-const DataContents: React.FunctionComponent<IProps> = props => {
+const DataContents: React.FunctionComponent<IProps> = (props) => {
   return (
     <VanillaDataCard style={props.style}>
       <Heading style={props.headingStyle}>{props.title}</Heading>

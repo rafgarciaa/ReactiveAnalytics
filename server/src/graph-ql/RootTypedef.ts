@@ -1,12 +1,12 @@
-import { gql } from 'apollo-server'
-import companySchema from './company/Company.schema'
-import fxSchema from './fx/Fx.schema'
-import newsSchema from './news/News.schema'
-import quoteSchema from './quote/Quote.schema'
-import refSchema from './ref-data/RefData.schema'
-import tickSchema from './tick/Tick.schema'
-import stockSchema from './stock/Stock.schema'
-import statsSchema from './stats/Stats.schema'
+import { gql } from "apollo-server"
+import companySchema from "./company/Company.schema"
+import fxSchema from "./fx/Fx.schema"
+import newsSchema from "./news/News.schema"
+import quoteSchema from "./quote/Quote.schema"
+import refSchema from "./ref-data/RefData.schema"
+import tickSchema from "./tick/Tick.schema"
+import stockSchema from "./stock/Stock.schema"
+import statsSchema from "./stats/Stats.schema"
 
 const baseSchema = gql`
   scalar Time

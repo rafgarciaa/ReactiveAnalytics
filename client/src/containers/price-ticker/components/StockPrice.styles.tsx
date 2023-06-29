@@ -1,9 +1,9 @@
-import { VerticalDataContents, LightText } from '@/common/StyledComponents'
-import styled, { css } from 'styled-components/macro'
-import { pxToRems } from '@/utils'
-import { Text } from '../../../common/StyledComponents'
-import { MarketDisplay } from './StockPrice'
-import { mediaQuery } from '@/rt-theme/mediaQueries'
+import { VerticalDataContents, LightText } from "@/common/StyledComponents"
+import styled, { css } from "styled-components/macro"
+import { pxToRems } from "@/utils"
+import { Text } from "../../../common/StyledComponents"
+import { MarketDisplay } from "./StockPrice"
+import { mediaQuery } from "@/rt-theme/mediaQueries"
 
 interface PriceWrapperProps {
   size?: MarketDisplay
@@ -20,7 +20,8 @@ export const StockPriceChangeWrapper = styled.div<{ change: number }>`
   align-self: end;
   margin-left: ${pxToRems(4)};
   ${Text} {
-    color: ${({ theme, change }) => (change < 0 ? theme.accents.accentNegative : theme.accents.accentPositive)};
+    color: ${({ theme, change }) =>
+      change < 0 ? theme.accents.accentNegative : theme.accents.accentPositive};
   }
   @media ${mediaQuery.mobile} {
     justify-content: start;
@@ -48,7 +49,9 @@ const StockPriceLarge = css`
   }
 `
 
-export const StockPriceWrapper = styled(VerticalDataContents)<PriceWrapperProps>`
+export const StockPriceWrapper = styled(
+  VerticalDataContents,
+)<PriceWrapperProps>`
   min-width: ${pxToRems(240)};
   align-items: center;
   font-size: ${pxToRems(12)};

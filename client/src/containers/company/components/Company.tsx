@@ -1,8 +1,8 @@
-import React, { MouseEvent } from 'react'
-import { DataCard, Subheading } from '../../../common/StyledComponents'
-import { CompanyQuery_stock_company as CompanyDetails } from '../graphql/types/CompanyQuery'
-import { CompanyCard, CompanyDescription, CompanyLink } from './Company.styles'
-import { usePlatform } from '@/ra-platforms'
+import React, { MouseEvent } from "react"
+import { DataCard, Subheading } from "../../../common/StyledComponents"
+import { CompanyQuery_stock_company as CompanyDetails } from "../graphql/types/CompanyQuery"
+import { CompanyCard, CompanyDescription, CompanyLink } from "./Company.styles"
+import { usePlatform } from "@/ra-platforms"
 
 const URL = /(http(s)?:\/\/)?/
 
@@ -22,8 +22,12 @@ const Company: React.FunctionComponent<{ company: CompanyDetails }> = ({
         <Subheading>
           {name} ({symbol})
         </Subheading>
-        <CompanyLink target="_blank" href={website || ''} onClick={clickHandler}>
-          {(website || '').replace(URL, '')}
+        <CompanyLink
+          target="_blank"
+          href={website || ""}
+          onClick={clickHandler}
+        >
+          {(website || "").replace(URL, "")}
         </CompanyLink>
         <CompanyDescription>{description}</CompanyDescription>
       </DataCard>

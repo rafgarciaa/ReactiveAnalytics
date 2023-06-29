@@ -1,6 +1,6 @@
-import styled from 'styled-components/macro'
-import { pxToRems } from '@/utils'
-import { fonts } from '@/rt-theme/fonts'
+import styled from "styled-components/macro"
+import { pxToRems } from "@/utils"
+import { fonts } from "@/rt-theme/fonts"
 
 export const NewsHeadline = styled.div`
   font-size: ${pxToRems(13)};
@@ -25,7 +25,7 @@ export const NewsCaption = styled.span`
 export const NewsItemContents = styled.div`
   position: relative;
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 50%;

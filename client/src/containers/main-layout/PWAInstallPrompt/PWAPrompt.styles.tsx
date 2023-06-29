@@ -1,11 +1,11 @@
-import styled from 'styled-components/macro'
-import { pxToRems } from '@/utils'
-import { mediaQuery } from '@/rt-theme/mediaQueries'
-import { ButtonLink } from '@/common/StyledComponents'
+import styled from "styled-components/macro"
+import { pxToRems } from "@/utils"
+import { mediaQuery } from "@/rt-theme/mediaQueries"
+import { ButtonLink } from "@/common/StyledComponents"
 
 export const Banner = styled.div<{ isHidden: boolean }>`
   position: relative;
-  display: ${({ isHidden }) => (isHidden ? 'none' : 'grid')};
+  display: ${({ isHidden }) => (isHidden ? "none" : "grid")};
   grid-row: 1;
   grid-column: 1 / -1;
   height: ${pxToRems(56)};
@@ -16,7 +16,7 @@ export const Banner = styled.div<{ isHidden: boolean }>`
   grid-auto-flow: column;
 
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     top: 0;

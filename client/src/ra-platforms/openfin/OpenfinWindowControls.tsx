@@ -1,8 +1,11 @@
-import { faWindowMaximize, faWindowRestore } from '@fortawesome/free-regular-svg-icons'
-import { faMinus, faTimes } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { CSSProperties, useEffect, useState } from 'react'
-import styled from 'styled-components/macro'
+import {
+  faWindowMaximize,
+  faWindowRestore,
+} from "@fortawesome/free-regular-svg-icons"
+import { faMinus, faTimes } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import React, { CSSProperties, useEffect, useState } from "react"
+import styled from "styled-components/macro"
 
 interface IProps {
   styles?: CSSProperties
@@ -15,8 +18,8 @@ const OpenfinWindowControls: React.FunctionComponent<IProps> = ({ styles }) => {
     const getWindow = async () => {
       const currentWindow = await fin.Window.getCurrent()
       setWindow(currentWindow)
-      currentWindow.addListener('maximized', () => setMaximized(true))
-      currentWindow.addListener('restored', () => setMaximized(false))
+      currentWindow.addListener("maximized", () => setMaximized(true))
+      currentWindow.addListener("restored", () => setMaximized(false))
     }
     getWindow()
   }, [])

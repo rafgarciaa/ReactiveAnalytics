@@ -1,1 +1,1 @@
-export { default as Search } from './ApolloSearchContainer'
+export { default as Search } from "./ApolloSearchContainer"

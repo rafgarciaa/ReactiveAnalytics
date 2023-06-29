@@ -8,14 +8,14 @@
 // ====================================================
 
 export interface MarketQuery_markets {
-  __typename: "Quote";
-  id: string;
-  companyName: string | null;
-  change: number | null;
-  changePercent: number | null;
-  latestPrice: number | null;
+  __typename: "Quote"
+  id: string
+  companyName: string | null
+  change: number | null
+  changePercent: number | null
+  latestPrice: number | null
 }
 
 export interface MarketQuery {
-  markets: MarketQuery_markets[];
+  markets: MarketQuery_markets[]
 }

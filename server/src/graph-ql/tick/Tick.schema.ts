@@ -1,6 +1,6 @@
-import { gql } from 'apollo-server'
- export default gql`
- type Intraday {
+import { gql } from "apollo-server"
+export default gql`
+  type Intraday {
     date: Date
     minute: Time
     datetime: ISODateTime
@@ -36,5 +36,4 @@ import { gql } from 'apollo-server'
     marketNumberOfTrades: Float!
     marketChangeOverTime: Float!
   }
-  
- `;
+`

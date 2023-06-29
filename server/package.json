@@ -6,6 +6,9 @@
     "start": "tsc && babel-node lib/index.js",
     "start:prod": "babel-node lib/index.js",
     "start:dev": "nodemon --watch src -e js,json,ts,graphql,gql --exec \"npm run start\"",
+    "_format": "prettier README.md \"src/**/*.{js,jsx,ts,tsx,json,md}\"",
+    "format": "npm run _format -- --write",
+    "format:check": "npm run _format -- --check",
     "test": "echo Add some tests!",
     "build": "tsc",
     "generateCod": "hydra-web-codegen -i trading-gateway.hyer -o src/generated"
@@ -43,6 +46,7 @@
     "babel-plugin-inline-import": "^2.0.6",
     "mocha": "^8.1.2",
     "nodemon": "^2.0.4",
+    "prettier": "2.8.8",
     "tslint": "^5.15.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.9.6"

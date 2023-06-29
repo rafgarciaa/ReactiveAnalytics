@@ -1,7 +1,7 @@
-import { rgba } from 'polished'
-import React from 'react'
-import { createGlobalStyle, withTheme } from 'styled-components/macro'
-import { Theme } from '../rt-theme'
+import { rgba } from "polished"
+import React from "react"
+import { createGlobalStyle, withTheme } from "styled-components/macro"
+import { Theme } from "../rt-theme"
 
 const ScrollbarGlobal = createGlobalStyle`
 ::-webkit-scrollbar {
@@ -27,7 +27,9 @@ const ScrollbarGlobal = createGlobalStyle`
 }
 `
 
-const GlobalScrollbarStyle: React.FunctionComponent<{ theme: Theme }> = ({ theme }) => (
+const GlobalScrollbarStyle: React.FunctionComponent<{ theme: Theme }> = ({
+  theme,
+}) => (
   <React.Fragment>
     <ScrollbarGlobal />
     <style>
