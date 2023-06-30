@@ -1,9 +1,10 @@
 import { default as React, useEffect, useState } from "react"
 import styled from "styled-components/macro"
-import { pxToRems } from "@/utils"
-import { mediaQuery, screenSize } from "@/rt-theme/mediaQueries"
+
 import { LogoBottomLabel, LogoSideLabel } from "@/assets/logos"
 import { useSearch } from "@/hooks"
+import { mediaQuery, screenSize } from "@/rt-theme/mediaQueries"
+import { pxToRems } from "@/utils"
 
 const LogoWrapper = styled.div`
   margin: ${pxToRems(32)} 0;

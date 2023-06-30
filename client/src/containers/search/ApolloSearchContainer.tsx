@@ -1,25 +1,26 @@
 import React, { useCallback, useEffect, useState } from "react"
-import ReactGA from "react-ga"
 import { RouteComponentProps } from "react-router"
 import { withRouter } from "react-router-dom"
+
+import { MarketSegment } from "@/containers/global-types"
+import { useFDC3Context, useSearch } from "@/hooks"
+
 import apolloClient from "../../apollo/client"
 import AdaptiveLoader from "../../common/AdaptiveLoader"
 import { AppQuery } from "../../common/AppQuery"
 import { IApolloContainerProps } from "../../common/IApolloContainerProps"
-import {
-  search as SimpleSearchQuery,
-  searchVariables,
-  search_symbols,
-} from "./graphql/types/search"
-import { searchQuery, searchQueryVariables } from "./graphql/types/searchQuery"
 import { SearchInput } from "./components"
+import { checkIncomingSymbol } from "./components"
 import SearchConnection from "./graphql/SearchConnection.graphql"
 import SimpleSearchConnection from "./graphql/SimpleSearchConnection.graphql"
+import {
+  search as SimpleSearchQuery,
+  search_symbols,
+  searchVariables,
+} from "./graphql/types/search"
+import { searchQuery, searchQueryVariables } from "./graphql/types/searchQuery"
 import { SearchContextActionTypes } from "./SearchContext"
 import { SearchErrorCard } from "./SearchErrorCard"
-import { MarketSegment } from "@/containers/global-types"
-import { checkIncomingSymbol } from "./components"
-import { useSearch, useFDC3Context } from "@/hooks"
 
 interface IProps extends IApolloContainerProps {
   url?: string
@@ -45,11 +46,8 @@ const ApolloSearchContainer: React.FunctionComponent<Props> = ({
   const handleChange = useCallback(
     (symbol: search_symbols | null) => {
       if (dispatch) {
-        ReactGA.event({
-          category: "RA - Search",
-          action: "search",
-          label: symbol?.id,
-          transport: "beacon",
+        window.gtag("event", "ra_search", {
+          symbol: symbol?.id,
         })
         dispatch({
           type: SearchContextActionTypes.SelectedSymbol,

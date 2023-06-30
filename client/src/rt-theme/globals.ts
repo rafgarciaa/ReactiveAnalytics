@@ -14,7 +14,6 @@
  * Here we use "ress", a modern CSS reset based off normalize
  */
 import "ress"
-
 /**
  * Adding Typefaces
  *
@@ -28,6 +27,8 @@ import "ress"
  */
 import "typeface-merriweather"
 import "typeface-roboto"
+
+import { createGlobalStyle } from "styled-components/macro"
 
 /**
  * Establishing a Baseline
@@ -46,9 +47,7 @@ import "typeface-roboto"
  * line-height explicit in our styles will allow us to
  * achieve a consistent vertical rhythm.
  */
-
 import { baselineFontSize } from "./fonts"
-import { createGlobalStyle } from "styled-components/macro"
 
 export default createGlobalStyle`
   :root, body {

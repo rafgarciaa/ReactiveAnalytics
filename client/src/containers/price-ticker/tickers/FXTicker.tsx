@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react"
-import { IApolloContainerProps } from "@/common/IApolloContainerProps"
 import { useSubscription } from "@apollo/client"
+import React, { useEffect, useState } from "react"
+
 import AdaptiveLoader from "@/common/AdaptiveLoader"
+import { IApolloContainerProps } from "@/common/IApolloContainerProps"
+
+import FXPriceSubscription from "../graphql/FXPriceSubscription.graphql"
 import {
   onFXPriceSubscription,
   onFXPriceSubscriptionVariables,
 } from "../graphql/types/onFXPriceSubscription"
-import FXPriceSubscription from "../graphql/FXPriceSubscription.graphql"
 
 export const FXTicker: React.FC<IApolloContainerProps> = ({ id }) => {
   const [shouldResubscribe, setShouldResubscribe] = useState<boolean>(true)

@@ -1,4 +1,5 @@
 import React from "react"
+
 import { IApolloContainerProps } from "../../../common/IApolloContainerProps"
 import { MainGridArea, NewsGridArea } from "../../../common/StyledComponents"
 import { Company, History, News, Peers, Stats } from "../../index"

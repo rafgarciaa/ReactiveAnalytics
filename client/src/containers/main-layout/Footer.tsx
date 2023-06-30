@@ -1,7 +1,9 @@
 import * as React from "react"
 import styled from "styled-components/macro"
-import { MarketsList } from "../index"
+
 import { pxToRems } from "@/utils"
+
+import { MarketsList } from "../index"
 
 export const FooterMarket = styled.div``
 

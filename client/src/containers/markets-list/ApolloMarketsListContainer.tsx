@@ -1,11 +1,13 @@
 import React from "react"
 import styled from "styled-components/macro"
+
+import { useSearch } from "@/hooks"
+import { mediaQuery } from "@/rt-theme/mediaQueries"
+
 import { AppQuery } from "../../common/AppQuery"
 import MarketsConnection from "./graphql/MarketConnection.graphql"
-import MarketSubscription from "./MarketSubscription"
-import { mediaQuery } from "@/rt-theme/mediaQueries"
 import { MarketQuery } from "./graphql/types/MarketQuery"
-import { useSearch } from "@/hooks"
+import MarketSubscription from "./MarketSubscription"
 
 const ApolloMarketsListContainer = () => {
   const { currentSymbol } = useSearch()
@@ -26,7 +28,7 @@ const ApolloMarketsListContainer = () => {
   }
 
   return (
-    <AppQuery<MarketQuery, {}> query={MarketsConnection}>
+    <AppQuery<MarketQuery, object> query={MarketsConnection}>
       {onMarketQueryResults}
     </AppQuery>
   )

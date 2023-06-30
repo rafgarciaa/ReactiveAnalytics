@@ -1,9 +1,10 @@
 import styled, { css } from "styled-components/macro"
 
-import { default as dataCard } from "./DataCard"
 import { fonts } from "@/rt-theme/fonts"
-import { pxToRems } from "@/utils"
 import { mediaQuery } from "@/rt-theme/mediaQueries"
+import { pxToRems } from "@/utils"
+
+import { default as dataCard } from "./DataCard"
 
 interface MainLayoutProps {
   hasCurrentSymbol?: boolean

@@ -1,9 +1,10 @@
-import { Plugin } from "vite"
-import { defineConfig } from "vitest/config"
-import react from "@vitejs/plugin-react"
 import graphql from "@rollup/plugin-graphql"
+import react from "@vitejs/plugin-react"
+import { Plugin, PluginOption } from "vite"
 import macrosPlugin from "vite-plugin-babel-macros"
+import { createHtmlPlugin } from "vite-plugin-html"
 import { TransformOption, viteStaticCopy } from "vite-plugin-static-copy"
+import { defineConfig } from "vitest/config"
 
 const localPort = Number(process.env.PORT) || 3005
 
@@ -40,12 +41,33 @@ const copyPlugin = (isDev: boolean): Plugin[] => {
   })
 }
 
+const injectScriptIntoHtml = (env: string) =>
+  createHtmlPlugin({
+    inject: {
+      data: {
+        injectScript: `
+          <link rel="manifest" href="/manifest.json" />
+          <script async src="https://www.googletagmanager.com/gtag/js?id=${
+            env === "demo" ? "G-HHXS2LJP6P" : "G-Y28QSEPEC8"
+          }"></script>
+        `,
+      },
+    },
+  })
+
 const setConfig = ({ mode }) => {
+  const env = process.env.ENV || "local"
   const isDev = mode === "development"
-  const plugins = [react(), graphql(), copyPlugin(isDev), macrosPlugin()]
+  const plugins: PluginOption[] = [
+    react(),
+    graphql(),
+    injectScriptIntoHtml(env),
+    copyPlugin(isDev),
+    macrosPlugin(),
+  ]
 
   return defineConfig({
-    plugins: plugins,
+    plugins,
     preview: {
       port: localPort,
     },
@@ -63,7 +85,6 @@ const setConfig = ({ mode }) => {
     },
     test: {
       // to setup coverage: https://vitest.dev/guide/coverage.html
-      coverage: { provider: "istanbul" },
       //jsdom gives access to browser apis within node, so we can access objects like window: https://vitest.dev/config/#environment
       environment: "jsdom",
       // For the following 2 settings, this article was referenced: https://dev.to/mbarzeev/from-jest-to-vitest-migration-and-benchmark-23pl

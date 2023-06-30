@@ -1,9 +1,10 @@
 import React from "react"
-import { NewsQuery, NewsQueryVariables } from "./graphql/types/NewsQuery"
+
 import { AppQuery } from "../../common/AppQuery"
 import { IApolloContainerProps } from "../../common/IApolloContainerProps"
 import { News } from "./components"
 import NewsConnection from "./graphql/NewsConnection.graphql"
+import { NewsQuery, NewsQueryVariables } from "./graphql/types/NewsQuery"
 
 const ApolloNewsContainer: React.FunctionComponent<IApolloContainerProps> = ({
   id,

@@ -2,13 +2,33 @@
 
 Reactive Analytics client is a GraphQL driven React application that showcases how to consume GraphQL queries and subscriptions within a strong-typed React application.
 
-## Installation
+## Basics
 
-Reactive Analytics client has package dependencies on the parent repository that gets injected using yarn workspaces. From the root directory run `yarn install` to install all dependencies.
+`$ yarn`
 
-```sh
-  [ReactiveAnalytics] $ yarn install
-```
+Dev server
+
+`$ yarn start`
+
+Prod build
+
+`$ yarn build`
+
+Pre-commit verification (inc linting and tests)
+
+`$ yarn verify`
+
+### Testing
+
+`$ yarn test`
+
+### Setup Vitest VSCode extension
+
+1. Download Version 0.2.32 of Vitest VSCode extension here: https://marketplace.visualstudio.com/items?itemName=ZixuanChen.vitest-explorer&ssr=false#version-history
+   - We are downloading an older version because the newest one breaks when running tests and debugging
+2. Install extension in VSCode from VSIX file
+3. yarn install Vitest at the root folder of RA (the extension expects vitest to be installed at the root folder)
+4. You should now see a flask on your sidebar tools, click into it and the extension should now be configured
 
 ## Working with the Client
 
@@ -35,20 +55,6 @@ Reactive Analytics client has package dependencies on the parent repository that
             |-- components: rendering elements for the parent container
             |-- graphql: fragments and connections for the parent container
         |-- rt-theme: files used to generate the global style of the client
-
-## Testing
-
-### Run Tests:
-
-`$ yarn test`
-
-### Setup Vitest VSCode extension
-
-1. Download Version 0.2.32 of Vitest VSCode extension here: https://marketplace.visualstudio.com/items?itemName=ZixuanChen.vitest-explorer&ssr=false#version-history
-   - We are downloading an older version because the newest one breaks when running tests and debugging
-2. Install extension in VSCode from VSIX file
-3. yarn install Vitest at the root folder of RA (the extension expects vitest to be installed at the root folder)
-4. You should now see a flask on your sidebar tools, click into it and the extension should now be configured
 
 ## Progressive Web App (PWA)
 

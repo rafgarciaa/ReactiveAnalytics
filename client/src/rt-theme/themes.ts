@@ -1,5 +1,6 @@
 import { darken } from "polished"
 import { DefaultTheme, keyframes } from "styled-components/macro"
+
 import { Color, colors } from "./colors"
 import { baselineFontSize } from "./fonts"
 

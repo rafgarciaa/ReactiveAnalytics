@@ -5,15 +5,16 @@ import { faLightbulb as fasLightBulb } from "@fortawesome/free-solid-svg-icons"
 import React from "react"
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 import styled from "styled-components/macro"
+
 import apolloClient from "@/apollo/client"
 import GlobalScrollbarStyle from "@/common/GlobalScrollbarStyle"
-import { RouterHelpers } from "@/helpers"
-import GlobalStyle from "@/rt-theme/globals"
-import { ThemeProvider } from "@/rt-theme/ThemeContext"
 import { PWAToolbar } from "@/containers/main-layout/PWAInstallPrompt"
-import { FDC3Provider } from "@/ra-platforms/fdc3"
 import { FocusProvider } from "@/containers/search/FocusContext"
 import { SearchContextProvider } from "@/containers/search/SearchContext"
+import { RouterHelpers } from "@/helpers"
+import { FDC3Provider } from "@/ra-platforms/fdc3"
+import GlobalStyle from "@/rt-theme/globals"
+import { ThemeProvider } from "@/rt-theme/ThemeContext"
 
 library.add(fasLightBulb, farLightBulb)
 

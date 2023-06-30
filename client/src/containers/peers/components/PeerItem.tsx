@@ -1,5 +1,6 @@
 import React, { MouseEventHandler } from "react"
 import { RouteComponentProps, withRouter } from "react-router-dom"
+
 import { PeersLink } from "./Peers.styles"
 
 type PeerItemProps = RouteComponentProps & {

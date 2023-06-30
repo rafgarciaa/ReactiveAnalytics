@@ -1,4 +1,3 @@
-import { DataCard } from "@/common/StyledComponents"
 import { maxBy, minBy, round } from "lodash"
 import React from "react"
 import {
@@ -10,7 +9,10 @@ import {
   XAxis,
   YAxis,
 } from "recharts"
+
+import { DataCard } from "@/common/StyledComponents"
 import { getThemeColor, ThemeConsumer, themes } from "@/rt-theme"
+
 import { StockHistoryQuery } from "../graphql/types/StockHistoryQuery"
 
 export const StockHistoryChart = ({

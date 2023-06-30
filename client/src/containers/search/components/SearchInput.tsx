@@ -1,11 +1,12 @@
 import Downshift, { GetItemPropsOptions } from "downshift"
 import React, { useCallback } from "react"
-import { search_symbols as SearchResult } from "../graphql/types/search"
-
-import { fonts } from "@/rt-theme/fonts"
 import styled from "styled-components/macro"
+
 import { MarketSegment } from "@/containers/global-types"
 import { useSearchFocus } from "@/hooks"
+import { fonts } from "@/rt-theme/fonts"
+
+import { search_symbols as SearchResult } from "../graphql/types/search"
 interface ISearchBarProps {
   items: SearchResult[]
   initialItem: SearchResult | null
@@ -63,14 +64,17 @@ const SearchInput: React.FC<ISearchBarProps> = ({
 
     const marketSegments = items
       .filter((i) => i.marketSegment)
-      .reduce((acc, searchResult, index) => {
-        if (acc[searchResult.marketSegment]) {
-          acc[searchResult.marketSegment].push({ ...searchResult, index })
+      .reduce<Record<string, SearchResultWithIndex[]>>(
+        (acc, searchResult, index) => {
+          if (acc[searchResult.marketSegment]) {
+            acc[searchResult.marketSegment].push({ ...searchResult, index })
+            return acc
+          }
+          acc[searchResult.marketSegment] = [{ ...searchResult, index }]
           return acc
-        }
-        acc[searchResult.marketSegment] = [{ ...searchResult, index }]
-        return acc
-      }, {})
+        },
+        {},
+      )
 
     return Object.keys(marketSegments).map((segment, i) => {
       return (

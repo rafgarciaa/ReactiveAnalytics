@@ -26,8 +26,7 @@ Both the server-side and client-side code use strong types which are used to gen
 
 ## Requirements
 
-- [NodeJS v10](https://nodejs.org/en/download/)
-- [Typescript v3](https://www.npmjs.com/package/typescript)
+- [Node](https://nodejs.org/en/download/)
 
 ## Getting started
 
@@ -87,10 +86,9 @@ Note, rate limiting with a free IEX account token can cause failed API calls
 
 ## Core technologies used
 
-- [Yarn workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) - Multi-package manager to simplify the codebase in a single repository
-- [Apollo GraphQL](https://www.apollographql.com/) - GraphQL framework to allow rapid and reliable development of client-server communication
 - [React](https://reactjs.org/) - Interface framework
 - [Styled Components](https://www.styled-components.com/) - Interface styling framework
+- [Apollo GraphQL](https://www.apollographql.com/) - GraphQL framework to allow rapid and reliable development of client-server communication
 
 ## Useful developer add-ons
 

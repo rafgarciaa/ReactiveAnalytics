@@ -3,6 +3,7 @@ export {}
 declare global {
   interface Window {
     beforeInstallPromptEvent: BeforeInstallPromptEvent
+    gtag: gtag
   }
 
   interface WindowEventMap {

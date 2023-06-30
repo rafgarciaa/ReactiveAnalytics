@@ -1,6 +1,7 @@
 import styled from "styled-components/macro"
-import { pxToRems } from "@/utils"
+
 import { fonts } from "@/rt-theme/fonts"
+import { pxToRems } from "@/utils"
 
 export const NewsHeadline = styled.div`
   font-size: ${pxToRems(13)};

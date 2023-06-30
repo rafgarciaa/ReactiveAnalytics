@@ -1,6 +1,7 @@
 import { DefaultTheme } from "styled-components/macro"
-import { buttons } from "./buttons"
+
 import { animations } from "./animations"
+import { buttons } from "./buttons"
 
 export type Color = string
 

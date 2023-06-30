@@ -1,8 +1,10 @@
 import moment from "moment/moment"
 import React, { MouseEvent } from "react"
-import { Link } from "../../../common/StyledComponents"
-import { NewsItemContents, NewsHeadline, NewsCaption } from "./NewsItem.styles"
+
 import { usePlatform } from "@/ra-platforms"
+
+import { Link } from "../../../common/StyledComponents"
+import { NewsCaption, NewsHeadline, NewsItemContents } from "./NewsItem.styles"
 
 export interface INewsArticle {
   id: string

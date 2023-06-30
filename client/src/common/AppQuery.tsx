@@ -2,6 +2,7 @@ import { NetworkStatus, QueryResult, useQuery } from "@apollo/client"
 import { DocumentNode } from "graphql"
 import React, { ReactNode } from "react"
 import styled from "styled-components/macro"
+
 import AdaptiveLoader from "../common/AdaptiveLoader"
 
 const LoadableStyle = styled.div<{ minWidth?: string; minHeight?: string }>`
@@ -19,13 +20,19 @@ const LoadableStyle = styled.div<{ minWidth?: string; minHeight?: string }>`
   fill: ${({ theme }) => theme.textColorPrimary};
 `
 
-export const AppQueryDefaultLoadingIndicator: React.FunctionComponent<{
+type IndicatorProps = {
   renderLoadingHeight?: string
-}> = React.memo(({ renderLoadingHeight }) => (
-  <LoadableStyle minHeight={renderLoadingHeight}>
-    <AdaptiveLoader size={50} speed={1.4} />
-  </LoadableStyle>
-))
+}
+export const AppQueryDefaultLoadingIndicator: React.FunctionComponent<IndicatorProps> =
+  React.memo(function LoadingIndicator({
+    renderLoadingHeight,
+  }: IndicatorProps) {
+    return (
+      <LoadableStyle minHeight={renderLoadingHeight}>
+        <AdaptiveLoader size={50} speed={1.4} />
+      </LoadableStyle>
+    )
+  })
 
 interface IAppQueryProps<Data, Variables> {
   query: DocumentNode

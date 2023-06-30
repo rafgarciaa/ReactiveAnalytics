@@ -4,6 +4,7 @@ import {
 } from "@fortawesome/free-regular-svg-icons"
 import { faMinus, faTimes } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import OpenFin from "@openfin/core"
 import React, { CSSProperties, useEffect, useState } from "react"
 import styled from "styled-components/macro"
 
@@ -82,8 +83,8 @@ const AppButton = styled.button`
 `
 const NormalButton = styled(AppButton)`
   &:hover {
-    background-color: ${({ theme }) => theme.secondary[4]};
-    color: ${({ theme }) => theme.primary[4]};
+    background-color: ${({ theme }) => theme.secondary.coreSecondary4};
+    color: ${({ theme }) => theme.primary.corePrimary4};
   }
 `
 

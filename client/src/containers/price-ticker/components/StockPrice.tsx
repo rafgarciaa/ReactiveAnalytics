@@ -1,11 +1,13 @@
-import { MarketStatusIcon } from "@/assets/icons"
 import React from "react"
+
+import { MarketStatusIcon } from "@/assets/icons"
+
 import { BoldText, Text } from "../../../common/StyledComponents"
 import {
   LatestPrice,
+  MainPrices,
   StockPriceChangeWrapper,
   StockPriceWrapper,
-  MainPrices,
 } from "./StockPrice.styles"
 
 export interface IStockPriceData {
@@ -35,7 +37,7 @@ const StockPrice: React.FunctionComponent<IStockPriceProps> = ({
   }
   const { change, changePercent, latestPrice } = stockPrice
 
-  const fixedFormat = (e: number | null, isPercentage?: Boolean) => {
+  const fixedFormat = (e: number | null, isPercentage?: boolean) => {
     if (e === null) {
       return "-"
     }
