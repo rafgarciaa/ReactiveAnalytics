@@ -22,4 +22,4 @@ yarn-error.log*
 
 # Directories
 notes
-node_modules
+# we need this to copy to server docker build:  node_modules
