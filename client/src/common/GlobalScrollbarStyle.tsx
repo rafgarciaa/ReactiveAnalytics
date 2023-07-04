@@ -1,6 +1,7 @@
 import { rgba } from "polished"
 import React from "react"
 import { createGlobalStyle, withTheme } from "styled-components/macro"
+
 import { Theme } from "../rt-theme"
 
 const ScrollbarGlobal = createGlobalStyle`

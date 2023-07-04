@@ -1,8 +1,10 @@
 import React, { MouseEvent } from "react"
+
+import { usePlatform } from "@/ra-platforms"
+
 import { DataCard, Subheading } from "../../../common/StyledComponents"
 import { CompanyQuery_stock_company as CompanyDetails } from "../graphql/types/CompanyQuery"
 import { CompanyCard, CompanyDescription, CompanyLink } from "./Company.styles"
-import { usePlatform } from "@/ra-platforms"
 
 const URL = /(http(s)?:\/\/)?/
 

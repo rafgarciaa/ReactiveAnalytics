@@ -1,8 +1,9 @@
-import { ButtonLink } from "@/common/StyledComponents"
 import styled from "styled-components/macro"
-import { pxToRems } from "@/utils"
+
 import { SidebarDataCard } from "@/common/DataCard"
+import { ButtonLink } from "@/common/StyledComponents"
 import { mediaQuery } from "@/rt-theme/mediaQueries"
+import { pxToRems } from "@/utils"
 
 export const PeersCard = styled(SidebarDataCard)`
   border-top: ${({ theme }) => `1px solid ${theme.secondary.coreSecondary4}`};

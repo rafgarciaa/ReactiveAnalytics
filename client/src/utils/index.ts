@@ -1,4 +1,4 @@
-export * from "./pxToRems"
-export * from "./isMobile"
-export * from "./utilityTypes"
 export * from "./getEnvironment"
+export * from "./isMobile"
+export * from "./pxToRems"
+export * from "./utilityTypes"

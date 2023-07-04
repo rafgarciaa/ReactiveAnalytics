@@ -1,7 +1,8 @@
 import React from "react"
+
 import { DataCard, Text } from "../../../common/StyledComponents"
-import { default as NewsItem, INewsArticle } from "./NewsItem"
 import { NewsCard } from "./News.styles"
+import { default as NewsItem, INewsArticle } from "./NewsItem"
 
 const News: React.FunctionComponent<{ news: INewsArticle[]; id: string }> = ({
   news,

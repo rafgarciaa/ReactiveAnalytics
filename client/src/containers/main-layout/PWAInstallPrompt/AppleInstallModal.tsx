@@ -1,8 +1,10 @@
 import React from "react"
 import styled from "styled-components/macro"
-import { Modal } from "@/components/modal"
-import { InstallButton } from "./PWAPrompt.styles"
+
 import { AppleShareIcon } from "@/assets/icons"
+import { Modal } from "@/components/modal"
+
+import { InstallButton } from "./PWAPrompt.styles"
 
 const MainTitle = styled.div`
   font-size: 1.19rem;
@@ -43,8 +45,8 @@ export const AppleInstallModal: React.FC<InstallModalProps> = ({
       <MainTitle>Install Reactive Trader</MainTitle>
       <Text>This must be done manually</Text>
       <DeviceText>
-        Tap <Icon>{AppleShareIcon}</Icon> from the browsers menu and select "Add
-        to Home Screen"
+        Tap <Icon>{AppleShareIcon}</Icon> from the browsers menu and select
+        &quot;Add to Home Screen&quot;
       </DeviceText>
       <InstallButton onClick={closeModal}>Close</InstallButton>
     </ModalWrapper>

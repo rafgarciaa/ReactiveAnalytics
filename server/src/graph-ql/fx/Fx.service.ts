@@ -1,5 +1,5 @@
-import { noop, Subscription } from "rxjs"
 import { connectToGateway } from "@adaptive/hydra-platform"
+import { firstValueFrom, noop, Subscription } from "rxjs"
 import { map } from "rxjs/operators"
 import { Service } from "typedi"
 import data from "../../mock-data/currencySymbols.json"
@@ -27,12 +27,10 @@ interface IPriceHistory {
   valueDate: any
 }
 
-const { Crypto } = require("@peculiar/webcrypto")
-
 // Global packages required by @adaptive/hydra-platform that aren't available in node by default
 Object.assign(global, {
   WebSocket: require("ws"),
-  crypto: new Crypto(),
+  crypto: require("crypto").webcrypto,
 })
 
 @Service()
@@ -70,8 +68,8 @@ export default class {
 
   public async getPriceHistory(id: string): Promise<IPriceHistory[]> {
     console.log("Get Price History for ccy pair: ", id)
-    return PricingService.getPriceHistory({ symbol: id })
-      .pipe(
+    return firstValueFrom(
+      PricingService.getPriceHistory({ symbol: id }).pipe(
         map(({ prices }) =>
           prices.map((price) => ({
             ask: price.ask,
@@ -82,8 +80,8 @@ export default class {
             valueDate: price.valueDate,
           })),
         ),
-      )
-      .toPromise()
+      ),
+    )
   }
 
   public subscribePriceUpdates(id: string) {

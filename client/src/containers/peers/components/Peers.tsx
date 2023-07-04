@@ -1,7 +1,8 @@
 import React from "react"
+
 import { DataCard, Text } from "../../../common/StyledComponents"
 import { default as Peer } from "./PeerItem"
-import { PeersWrapper, PeersCard } from "./Peers.styles"
+import { PeersCard, PeersWrapper } from "./Peers.styles"
 
 const Peers: React.FunctionComponent<{ peers: string[]; id: string }> = ({
   peers,

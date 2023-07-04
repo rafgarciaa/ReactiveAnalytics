@@ -1,7 +1,8 @@
-import { FXHistory } from "@/containers/history"
 import React from "react"
+
 import { IApolloContainerProps } from "@/common/IApolloContainerProps"
 import { MainGridArea } from "@/common/StyledComponents"
+import { FXHistory } from "@/containers/history"
 
 const Currencies: React.FunctionComponent<IApolloContainerProps> = ({ id }) => {
   return (

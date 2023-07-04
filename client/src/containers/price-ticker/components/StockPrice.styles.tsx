@@ -1,9 +1,11 @@
-import { VerticalDataContents, LightText } from "@/common/StyledComponents"
 import styled, { css } from "styled-components/macro"
+
+import { LightText, VerticalDataContents } from "@/common/StyledComponents"
+import { mediaQuery } from "@/rt-theme/mediaQueries"
 import { pxToRems } from "@/utils"
+
 import { Text } from "../../../common/StyledComponents"
 import { MarketDisplay } from "./StockPrice"
-import { mediaQuery } from "@/rt-theme/mediaQueries"
 
 interface PriceWrapperProps {
   size?: MarketDisplay

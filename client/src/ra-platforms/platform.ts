@@ -1,5 +1,6 @@
-import { PlatformType } from "./types"
 import { search_symbols } from "@/containers/search/graphql/types/search"
+
+import { PlatformType } from "./types"
 
 export interface Platform {
   readonly name: string
@@ -17,5 +18,5 @@ export abstract class PlatformBase implements Platform {
     window.open(href)
   }
 
-  readonly symbolSelected = (symbol: search_symbols) => {}
+  readonly symbolSelected = (symbol: search_symbols) => undefined
 }

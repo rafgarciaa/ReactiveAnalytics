@@ -1,7 +1,8 @@
-import { FXHistory } from "@/containers/history"
 import React from "react"
 import { RouteComponentProps } from "react-router"
+
 import { Company, MainLayout, News, Peers, Search, Stats } from "@/containers"
+import { FXHistory } from "@/containers/history"
 import { StockHistoryContainer } from "@/containers/history/StockHistoryContainer"
 import { Currencies, Stocks } from "@/containers/main-layout/Markets"
 

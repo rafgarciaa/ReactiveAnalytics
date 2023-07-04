@@ -1,7 +1,8 @@
 import styled from "styled-components/macro"
+
 import { DataContents } from "@/common/StyledComponents"
-import { pxToRems } from "@/utils"
 import { mediaQuery } from "@/rt-theme/mediaQueries"
+import { pxToRems } from "@/utils"
 
 export const FieldsWrapper = styled(DataContents)`
   margin-top: ${pxToRems(8)};

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react"
 import { addContextListener, Context, joinChannel } from "@finos/fdc3"
+import React, { useEffect, useState } from "react"
 
 interface FDC3Context {
   fdc3Symbol: string | null
@@ -23,7 +23,8 @@ export const FDC3Provider: React.FC = ({ children }) => {
 
     if (window.fdc3) {
       joinChannel("green").then(() => {
-        // @ts-ignore
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore ... FDC3 types not caught up with spec yet
         const listener = addContextListener(null, setContext)
         return () => {
           listener.unsubscribe()

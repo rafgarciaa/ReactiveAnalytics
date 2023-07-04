@@ -1,6 +1,8 @@
-import { MarketSegment } from "@/containers/global-types"
 import React from "react"
+
 import { IApolloContainerProps } from "@/common/IApolloContainerProps"
+import { MarketSegment } from "@/containers/global-types"
+
 import { FXTicker } from "./tickers/FXTicker"
 import { StockTicker } from "./tickers/StockTicker"
 

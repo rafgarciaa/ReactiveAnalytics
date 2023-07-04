@@ -1,9 +1,10 @@
+import React, { useCallback, useEffect, useState } from "react"
+
 import { MarketSegment } from "@/containers/global-types"
 import { useSearch, useSearchFocus } from "@/hooks"
 import { getPlatformAsync, PlatformProvider } from "@/ra-platforms"
-import React, { useCallback, useEffect, useState } from "react"
-import ReactGA from "react-ga"
 import { AsyncReturnType } from "@/utils"
+
 import { IApolloContainerProps } from "../../common/IApolloContainerProps"
 import { MainLayoutWrapper } from "../../common/StyledComponents"
 import AppBar from "./AppBar"
@@ -40,23 +41,6 @@ const MainLayout: React.FunctionComponent<
     }
     getPlatform()
   }, [])
-
-  useEffect(() => {
-    if (platform) {
-      ReactGA.set({
-        dimension1: platform.type,
-        dimension2: platform.name,
-        page: "/",
-      })
-      ReactGA.event({
-        category: "RA - Launch",
-        action: "launch",
-        label: platform.name,
-        transport: "beacon",
-      })
-      ReactGA.pageview("/")
-    }
-  }, [platform])
 
   if (!platform) {
     return <></>

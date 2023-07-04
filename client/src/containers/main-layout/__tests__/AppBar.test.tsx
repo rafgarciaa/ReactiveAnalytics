@@ -1,8 +1,10 @@
-import AppBar from "../AppBar"
 import { render, screen } from "@testing-library/react"
-import { ThemeProvider } from "@/rt-theme/ThemeContext"
-import { screenSize } from "@/rt-theme/mediaQueries"
 import React from "react"
+
+import { screenSize } from "@/rt-theme/mediaQueries"
+import { ThemeProvider } from "@/rt-theme/ThemeContext"
+
+import AppBar from "../AppBar"
 
 const renderComponent = () =>
   render(

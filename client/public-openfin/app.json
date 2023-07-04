@@ -1,4 +1,5 @@
 {
+  "licenseKey": "695aecfa-0329-41a2-b44f-c2e8fe28241d",
   "platform": {
     "uuid": "reactive-analytics-{{environment}}",
     "name": "Reactive Analytics{{environment_suffix}}",
@@ -18,7 +19,7 @@
     "arguments": "--remote-debugging-port=9091"
   },
   "shortcut": {
-    "company": "Adaptive Consulting",
+    "company": "Adaptive Financial Consulting",
     "description": "Desktop Reactive Analytics",
     "icon": "{*host_url*}/static/media/reactive-analytics.ico",
     "name": "Reactive Analytics{{environment_suffix}}"

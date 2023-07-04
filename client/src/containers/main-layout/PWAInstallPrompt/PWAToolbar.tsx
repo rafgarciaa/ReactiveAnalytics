@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
-import { useTheme, ThemeName } from "@/rt-theme"
+
+import { ThemeName, useTheme } from "@/rt-theme"
 
 const getBarColor = (color: ThemeName) =>
   color === ThemeName.Dark ? "#4D4D4D" : "#F9FAFA"

@@ -1,17 +1,18 @@
+import React, { useMemo } from "react"
+
 import {
   DataCard,
+  DataContents,
   Link,
   Text,
-  DataContents,
 } from "../../common/StyledComponents"
-import React, { useMemo } from "react"
 import { search_symbols } from "./graphql/types/search"
 
 interface IProps {
   foundSymbol?: search_symbols
   id: string
   market: string
-  onClick?: Function
+  onClick?: (symbol: search_symbols | null) => void
 }
 
 export const SearchErrorCard: React.FunctionComponent<IProps> = ({

@@ -1,10 +1,11 @@
 import numeral from "numeral"
 import * as React from "react"
-import { DataCard, BoldText, LightText } from "../../../common/StyledComponents"
+
+import { BoldText, DataCard, LightText } from "../../../common/StyledComponents"
 import { StatsQuery_stock as StatsQueryStock } from "../graphql/types/StatsQuery"
 import { FieldsWrapper, LabeledData } from "./Stats.styled"
 
-const formats = {
+const formats: Record<string, string> = {
   approximate: "(0.00 a)",
   dollars: "$ 0,0[.]00",
   integer: "0,0",
@@ -77,11 +78,15 @@ const Stats: React.FunctionComponent<{
               {Array.isArray(Field.field) ? (
                 <LightText>
                   {Field.field
-                    .map((field) => format(Field.format)(data[field]))
+                    .map((field) =>
+                      format(Field.format)((data as never)[field]),
+                    )
                     .join(" - ")}
                 </LightText>
               ) : (
-                <LightText>{format(Field.format)(data[Field.field])}</LightText>
+                <LightText>
+                  {format(Field.format)((data as never)[Field.field])}
+                </LightText>
               )}
             </LabeledData>
           )

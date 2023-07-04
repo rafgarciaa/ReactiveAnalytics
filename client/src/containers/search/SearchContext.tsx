@@ -1,11 +1,12 @@
 import React, { createContext, Dispatch, useReducer } from "react"
+
 import { search_symbols } from "./graphql/types/search"
 
 interface IState {
   currentSymbol?: search_symbols | null
   errorMessage?: string | JSX.Element
   refetchAttempts?: number
-  searching?: Boolean
+  searching?: boolean
   previousSearch?: boolean
 }
 

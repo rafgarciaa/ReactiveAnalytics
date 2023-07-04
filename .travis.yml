@@ -17,7 +17,7 @@ job_configs:
   - gcloud_cache: &gcloud_cache
       cache:
         directories:
-          - '$HOME/google-cloud-sdk/'
+          - "$HOME/google-cloud-sdk/"
   - gcloud_install: &gcloud_install
       # Install the Google Cloud SDK, if not added from Travis cache (see https://cloud.google.com/sdk/docs/downloads-interactive#silent)
       # Piping the output to /dev/null is important, as the verbose install script can cause issues on Travis
@@ -27,7 +27,8 @@ job_configs:
       - gcloud --quiet components update kubectl
       - gcloud version
 
-  - gcloud_auth: &gcloud_auth # The Google Cloud key is JSON, but has to be stored as Base64, so decode it
+  - gcloud_auth:
+      &gcloud_auth # The Google Cloud key is JSON, but has to be stored as Base64, so decode it
       - echo $GCLOUD_SERVICE_KEY | base64 --decode > gcloud.p12
       - gcloud auth activate-service-account --key-file gcloud.p12
       - gcloud config set project ${GOOGLE_PROJECT_ID}
@@ -41,7 +42,7 @@ job_configs:
         - echo "Building ${BUILD_TYPE} docker image ${BUILD_VERSION}"
       script:
         - cd ${BUILD_TYPE}
-        - yarn install --frozen-lockfile --non-interactive && yarn test && yarn build && docker build -t reactive-analytics-${BUILD_TYPE}:${BUILD_VERSION} --build-arg BUILD_VERSION=${BUILD_VERSION} .
+        - yarn install --frozen-lockfile --non-interactive && yarn verify && yarn build && docker build -t reactive-analytics-${BUILD_TYPE}:${BUILD_VERSION} --build-arg BUILD_VERSION=${BUILD_VERSION} .
 
   - build_and_push_job: &build_and_push_job
       <<: *gcloud_cache
@@ -53,7 +54,7 @@ job_configs:
         - *gcloud_auth
       script:
         - cd ${BUILD_TYPE}
-        - yarn install --frozen-lockfile --non-interactive && yarn build && docker build -t ${GOOGLE_GCR_HANDLE}/${GOOGLE_PROJECT_ID}/reactive-analytics-${BUILD_TYPE}:${BUILD_VERSION} --build-arg BUILD_VERSION=${BUILD_VERSION} .
+        - yarn install --frozen-lockfile --non-interactive && yarn verify && yarn build && docker build -t ${GOOGLE_GCR_HANDLE}/${GOOGLE_PROJECT_ID}/reactive-analytics-${BUILD_TYPE}:${BUILD_VERSION} --build-arg BUILD_VERSION=${BUILD_VERSION} .
         - gcloud docker -- push ${GOOGLE_GCR_HANDLE}/${GOOGLE_PROJECT_ID}/reactive-analytics-${BUILD_TYPE}:${BUILD_VERSION}
 
   - deploy_job: &deploy_job

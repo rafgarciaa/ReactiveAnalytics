@@ -1,14 +1,15 @@
 import React from "react"
 
+import { AppQuery } from "@/common/AppQuery"
+import { IApolloContainerProps } from "@/common/IApolloContainerProps"
+import { HistoryWrapper } from "@/common/StyledComponents"
+
+import { StockHistoryChart } from "./components/StockHistoryChart"
+import StockHistoryConnection from "./graphql/StockHistoryConnection.graphql"
 import {
   StockHistoryQuery,
   StockHistoryQueryVariables,
 } from "./graphql/types/StockHistoryQuery"
-import { AppQuery } from "@/common/AppQuery"
-import { IApolloContainerProps } from "@/common/IApolloContainerProps"
-import { StockHistoryChart } from "./components/StockHistoryChart"
-import StockHistoryConnection from "./graphql/StockHistoryConnection.graphql"
-import { HistoryWrapper } from "@/common/StyledComponents"
 
 const History: React.FC<IApolloContainerProps> = ({ id }) => {
   return (

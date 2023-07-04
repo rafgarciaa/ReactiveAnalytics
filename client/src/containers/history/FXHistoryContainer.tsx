@@ -1,13 +1,15 @@
-import { HistoryWrapper } from "@/common/StyledComponents"
 import React from "react"
+
+import { HistoryWrapper } from "@/common/StyledComponents"
+
 import { AppQuery } from "../../common/AppQuery"
 import { IApolloContainerProps } from "../../common/IApolloContainerProps"
+import { FXHistoryChart } from "./components/FXHistoryChart"
+import ABMHistoryConnection from "./graphql/ABMHistoryConnection.graphql"
 import {
   ABMHistoryQuery,
   ABMHistoryQueryVariables,
 } from "./graphql/types/ABMHistoryQuery"
-import { FXHistoryChart } from "./components/FXHistoryChart"
-import ABMHistoryConnection from "./graphql/ABMHistoryConnection.graphql"
 
 const FXHistory: React.FC<IApolloContainerProps> = ({ id }) => (
   <>

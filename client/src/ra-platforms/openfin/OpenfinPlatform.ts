@@ -1,5 +1,5 @@
-import { PlatformBase } from "@/ra-platforms/platform"
 import { search_symbols } from "@/containers/search/graphql/types/search"
+import { PlatformBase } from "@/ra-platforms/platform"
 
 export default class OpenfinPlatform extends PlatformBase {
   readonly name = "openfin"
@@ -9,7 +9,5 @@ export default class OpenfinPlatform extends PlatformBase {
     fin.System.openUrlWithBrowser(href)
   }
 
-  readonly symbolSelected = (symbol: search_symbols) => {
-    // not currently implemented
-  }
+  readonly symbolSelected = (symbol: search_symbols) => undefined // not currently implemented
 }
