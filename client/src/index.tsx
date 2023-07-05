@@ -27,7 +27,7 @@ async function init() {
   serviceWorker.register()
 
   window.gtag("js", new Date())
-  window.gtag("config", env === "demo" ? "G-HHXS2LJP6P" : "G-Y28QSEPEC8")
+  window.gtag("config", env === "demo" ? "G-Z3PC9MRCH9" : "G-Y28QSEPEC8")
 }
 
 init()

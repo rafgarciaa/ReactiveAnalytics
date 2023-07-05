@@ -48,7 +48,7 @@ const injectScriptIntoHtml = (env: string) =>
         injectScript: `
           <link rel="manifest" href="/manifest.json" />
           <script async src="https://www.googletagmanager.com/gtag/js?id=${
-            env === "demo" ? "G-HHXS2LJP6P" : "G-Y28QSEPEC8"
+            env === "demo" ? "G-Z3PC9MRCH9" : "G-Y28QSEPEC8"
           }"></script>
         `,
       },
