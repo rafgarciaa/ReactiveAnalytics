@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "tsc && babel-node lib/index.js",
-    "start:prod": "babel-node lib/index.js",
+    "start": "tsc && node lib/index.js",
+    "start:prod": "node lib/index.js",
     "start:dev": "nodemon --watch src -e js,json,ts,graphql,gql --exec \"npm run start\"",
     "_format": "prettier README.md \"src/**/*.{js,jsx,ts,tsx,json,md}\"",
     "format": "npm run _format -- --write",
@@ -26,7 +26,6 @@
     "graphql-tools": "^4.0.4",
     "iexcloud_api_wrapper": "^1.1.5",
     "moment": "^2.20.1",
-    "node-fetch": "^2.6.1",
     "ramda": "^0.25.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.5.4",
@@ -35,23 +34,12 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.4",
-    "@babel/node": "^7.10.4",
-    "@babel/preset-env": "^7.10.4",
     "@types/graphql": "14.2.0",
     "@types/node": "14.0.23",
-    "@types/node-fetch": "^2.3.1",
     "@types/ramda": "^0.26.6",
     "@types/ws": "^6.0.1",
-    "babel-plugin-inline-import": "^2.0.6",
-    "mocha": "^8.1.2",
     "nodemon": "^2.0.4",
     "prettier": "2.8.8",
-    "tslint": "^5.15.0",
-    "tslint-config-prettier": "^1.18.0",
     "typescript": "5.0.4"
-  },
-  "resolutions": {
-    "@types/express-serve-static-core": "4.17.21"
   }
 }
