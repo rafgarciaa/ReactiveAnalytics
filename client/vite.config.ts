@@ -15,14 +15,14 @@ const copyPlugin = (isDev: boolean): Plugin[] => {
     process.env.PORT || "3005"
   }`
 
-  const transform: TransformOption | undefined = isDev
-    ? (contents) =>
-        contents
+  const transform: TransformOption | undefined = (contents) =>
+    isDev
+      ? contents
           .replace(/{\*host_url\*}/g, hostUrl)
           .replace(/{{environment}}/g, "local")
           .replace(/{{environment_suffix}}/g, " (LOCAL)")
           .replace(/<OPENFIN_RUNTIME>/, OPENFIN_RUNTIME)
-    : undefined
+      : contents.replace(/<OPENFIN_RUNTIME>/, OPENFIN_RUNTIME)
 
   return viteStaticCopy({
     flatten: true,
