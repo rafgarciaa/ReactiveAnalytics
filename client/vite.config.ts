@@ -22,7 +22,7 @@ const copyPlugin = (isDev: boolean): Plugin[] => {
           .replace(/{{environment}}/g, "local")
           .replace(/{{environment_suffix}}/g, " (LOCAL)")
           .replace(/<OPENFIN_RUNTIME>/, OPENFIN_RUNTIME)
-    : undefined
+    : (contents) => contents.replace(/<OPENFIN_RUNTIME>/, OPENFIN_RUNTIME)
 
   return viteStaticCopy({
     flatten: true,
