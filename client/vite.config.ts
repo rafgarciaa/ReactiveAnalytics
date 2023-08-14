@@ -8,7 +8,7 @@ import { defineConfig } from "vitest/config"
 
 const localPort = Number(process.env.PORT) || 3005
 
-const OPENFIN_RUNTIME = "31.112.75.4"
+const OPENFIN_RUNTIME = "29.108.73.14"
 
 const copyPlugin = (isDev: boolean): Plugin[] => {
   const hostUrl = `http://${process.env.HOST || "localhost"}:${
