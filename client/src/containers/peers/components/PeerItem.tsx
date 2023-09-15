@@ -1,22 +1,20 @@
 import React, { MouseEventHandler } from "react"
-import { RouteComponentProps, withRouter } from "react-router-dom"
 
 import { PeersLink } from "./Peers.styles"
 
-type PeerItemProps = RouteComponentProps & {
+type PeerItemProps = {
   symbol: string
 }
 
 const PeerItem: React.FunctionComponent<PeerItemProps> = ({
   symbol,
-  history,
 }) => {
   const navClickHandler: MouseEventHandler<HTMLAnchorElement> = async (
     event,
   ) => {
     const newSymbol = event.currentTarget.dataset.symbol
 
-    history.push(`/stock/${newSymbol}`)
+    //history.push(`/stock/${newSymbol}`)
   }
 
   return (
@@ -26,4 +24,4 @@ const PeerItem: React.FunctionComponent<PeerItemProps> = ({
   )
 }
 
-export default withRouter(PeerItem)
+//export default withRouter(PeerItem)

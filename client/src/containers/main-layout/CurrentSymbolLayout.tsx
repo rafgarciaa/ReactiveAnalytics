@@ -1,11 +1,10 @@
 import React, { useMemo } from "react"
-import { Route } from "react-router"
+import { Route, Routes } from "react-router-dom"
 
 import { MarketSegment } from "@/containers/global-types"
 import { PriceTicker } from "@/containers/price-ticker"
 import { useSearch } from "@/hooks"
 
-import { IApolloContainerProps } from "../../common/IApolloContainerProps"
 import {
   MainContent,
   MainSearchContent,
@@ -13,12 +12,12 @@ import {
   SearchGridArea,
   WrapperContent,
 } from "../../common/StyledComponents"
-import { RouterHelpers } from "../../helpers"
 import { Search } from "../index"
 import Footer from "./Footer"
+import { Stocks } from "./Markets"
 
 export const CurrentSymbolLayout: React.FunctionComponent<
-  IApolloContainerProps & { market: MarketSegment }
+  { id: string, market: MarketSegment }
 > = ({ id, market }) => {
   const { currentSymbol, errorMessage, previousSearch } = useSearch()
 
@@ -34,21 +33,25 @@ export const CurrentSymbolLayout: React.FunctionComponent<
     }
     return null
   }, [currentSymbol, errorMessage, id])
+  
+
 
   const renderedRoutes = useMemo(() => {
-    return Object.keys(RouterHelpers.MainRouterItems).map((route) => (
-      <Route
-        key={route}
-        exact={true}
-        path={route}
-        component={RouterHelpers.RenderMainRouterElement}
-      />
-    ))
+    return (
+      <Routes>
+          <Route path="/" element={<Stocks id={id}/> }/>
+          {/*<Route path="/bond/:id?" element={<News/> }/>
+          <Route path="/fx/:from?:to?" element={<Currencies/> }/>
+          <Route path="/future/:id?" element={<News/> }/>
+          <Route path="/index/:id?" element={<News/> }/>
+    <Route path="/stock/:id?" element={<Stocks/> }/>*/}
+      </Routes>
+    )
   }, [])
 
   return (
     <WrapperContent>
-      <MainSearchContent hasPreviousSearch={previousSearch ?? false}>
+      <MainSearchContent $hasPreviousSearch={previousSearch ?? false}>
         <SearchGridArea>
           <Search id={id} url={market} market={market} />
           {currentSymbol && <PriceTicker id={id} market={market} />}

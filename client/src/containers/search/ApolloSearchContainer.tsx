@@ -1,6 +1,4 @@
 import React, { useCallback, useEffect, useState } from "react"
-import { RouteComponentProps } from "react-router"
-import { withRouter } from "react-router-dom"
 
 import { MarketSegment } from "@/containers/global-types"
 import { useFDC3Context, useSearch } from "@/hooks"
@@ -27,11 +25,10 @@ interface IProps extends IApolloContainerProps {
   market: MarketSegment
 }
 
-type Props = RouteComponentProps & IProps
+type Props =  IProps
 
 const ApolloSearchContainer: React.FunctionComponent<Props> = ({
   id,
-  history,
   url,
   market,
 }) => {
@@ -54,6 +51,7 @@ const ApolloSearchContainer: React.FunctionComponent<Props> = ({
           payload: { currentSymbol: symbol },
         })
       }
+      /*
       if (symbol) {
         clearSymbol()
         history.push(
@@ -62,6 +60,7 @@ const ApolloSearchContainer: React.FunctionComponent<Props> = ({
       } else {
         history.push(`/${url}`)
       }
+      */
     },
     [dispatch, history, url, clearSymbol],
   )
@@ -222,4 +221,4 @@ const ApolloSearchContainer: React.FunctionComponent<Props> = ({
   )
 }
 
-export default withRouter(ApolloSearchContainer)
+export default ApolloSearchContainer

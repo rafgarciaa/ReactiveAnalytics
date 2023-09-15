@@ -1,5 +1,4 @@
 import React from "react"
-import { RouteComponentProps } from "react-router"
 
 import { Company, MainLayout, News, Peers, Search, Stats } from "@/containers"
 import { FXHistory } from "@/containers/history"
@@ -33,7 +32,7 @@ export default class RouterHelper {
     return RouterHelper.mainRouterItems
   }
 
-  public static RenderRootRouterElement(e: RouteComponentProps): JSX.Element {
+  public static RenderRootRouterElement(e:any): JSX.Element {
     return RouterHelper.renderRouterElement(
       RouterHelper.RootRouterItems[e.match.path],
       e.match.params as IPathParams,
@@ -41,7 +40,7 @@ export default class RouterHelper {
     )
   }
 
-  public static RenderMainRouterElement(e: RouteComponentProps): JSX.Element {
+  public static RenderMainRouterElement(e:any): JSX.Element {
     return RouterHelper.renderRouterElement(
       RouterHelper.MainRouterItems[e.match.path],
       e.match.params as IPathParams,
