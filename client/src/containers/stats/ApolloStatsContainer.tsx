@@ -7,8 +7,10 @@ import { IApolloContainerProps } from "../../common/IApolloContainerProps"
 import { Stats } from "./components"
 import StatsConnection from "./graphql/StatsConnection.graphql"
 import { StatsQuery, StatsQueryVariables } from "./graphql/types/StatsQuery"
+import { useParams } from "react-router-dom"
 
-const Statistics: React.FunctionComponent<IApolloContainerProps> = ({ id }) => {
+const Statistics= () =>{
+  const id = useParams()['id'] || "";
   const onStatsQueryResults: (data: StatsQuery) => JSX.Element = ({
     stock,
   }) => {
@@ -28,7 +30,7 @@ const Statistics: React.FunctionComponent<IApolloContainerProps> = ({ id }) => {
 
 const ApolloStatsContainer: React.FC<IApolloContainerProps> = ({ id }) => (
   <StatisticsWrapper>
-    <Statistics id={id} />
+    <Statistics />
   </StatisticsWrapper>
 )
 

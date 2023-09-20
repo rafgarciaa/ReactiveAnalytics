@@ -19,6 +19,7 @@ import {
 import { searchQuery, searchQueryVariables } from "./graphql/types/searchQuery"
 import { SearchContextActionTypes } from "./SearchContext"
 import { SearchErrorCard } from "./SearchErrorCard"
+import { useNavigate } from "react-router-dom"
 
 interface IProps extends IApolloContainerProps {
   url?: string
@@ -33,7 +34,7 @@ const ApolloSearchContainer: React.FunctionComponent<Props> = ({
   market,
 }) => {
   const [currentText, setCurrentText] = useState<string>("")
-
+  const navigate = useNavigate();
   const { currentSymbol, refetchAttempts, searching, dispatch } = useSearch()
 
   const placeholderText = "Enter a stock, symbol, or currency pair..."
@@ -51,18 +52,18 @@ const ApolloSearchContainer: React.FunctionComponent<Props> = ({
           payload: { currentSymbol: symbol },
         })
       }
-      /*
+      
       if (symbol) {
         clearSymbol()
-        history.push(
+        navigate(
           `/${(symbol.marketSegment || url || "").toLowerCase()}/${symbol.id}`,
         )
       } else {
-        history.push(`/${url}`)
+        navigate(`/${url}`)
       }
-      */
+      
     },
-    [dispatch, history, url, clearSymbol],
+    [dispatch, navigate, url, clearSymbol],
   )
 
   useEffect(() => {
@@ -133,7 +134,7 @@ const ApolloSearchContainer: React.FunctionComponent<Props> = ({
     }
   }, [
     dispatch,
-    history,
+    navigate,
     id,
     market,
     refetchAttempts,

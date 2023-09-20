@@ -1,10 +1,11 @@
 import React from "react"
 
-import { IApolloContainerProps } from "@/common/IApolloContainerProps"
 import { MainGridArea } from "@/common/StyledComponents"
 import { FXHistory } from "@/containers/history"
+import { useParams } from "react-router-dom"
 
-const Currencies: React.FunctionComponent<IApolloContainerProps> = ({ id }) => {
+const Currencies= () =>{
+  const id = useParams()['id'] || "";
   return (
     <>
       <MainGridArea>
