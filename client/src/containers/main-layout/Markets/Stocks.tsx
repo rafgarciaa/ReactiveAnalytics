@@ -14,8 +14,8 @@ const Stocks= () =>{
       </MainGridArea>
       <NewsGridArea>
         <Company id={id} />
-        <Peers id={id} />
-        <News id={id} />
+        <Peers />
+        <News />
       </NewsGridArea>
     </>
   )
