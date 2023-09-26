@@ -12,7 +12,7 @@ import { useParams } from "react-router-dom"
 
 const SESSION = "PWABanner"
 
-const MainLayout = ({market} : {market?:MarketSegment}) => {
+const MainLayout = ({market} : {market:MarketSegment}) => {
   const {id} = useParams()
   const [banner, setBanner] = useState<string>(
     sessionStorage.getItem(SESSION) || PWABanner.NotSet,

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useMemo } from "react"
 import { Outlet} from "react-router-dom"
 import { MarketSegment } from "@/containers/global-types"
 import { PriceTicker } from "@/containers/price-ticker"
@@ -12,20 +12,18 @@ import {
 import { Search } from "../index"
 import Footer from "./Footer"
 
-export const CurrentSymbolLayout: React.FunctionComponent<
-  { id?: string, market?: MarketSegment }
-> = ({ id, market }) => {
+export const CurrentSymbolLayout = ({ id, market } :   { id?: string, market: MarketSegment }) => {
   const { currentSymbol, previousSearch } = useSearch()
 
   return (
     <WrapperContent>
       <MainSearchContent $hasPreviousSearch={previousSearch ?? false}>
         <SearchGridArea>
-          <Search id={id} url={market} market={market || MarketSegment.STOCK} />
+          <Search id={id} url={market} market={market} />
           {currentSymbol && <PriceTicker market={market} />}
         </SearchGridArea>
       </MainSearchContent>
-      {id && <Outlet/>}
+      {currentSymbol && <Outlet/>}
       <Footer hasNoSearch={!currentSymbol} />
     </WrapperContent>
   )
