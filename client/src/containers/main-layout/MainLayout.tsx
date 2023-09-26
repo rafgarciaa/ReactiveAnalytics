@@ -13,8 +13,8 @@ import { PWABanner, PWAInstallBanner } from "./PWAInstallPrompt"
 
 const SESSION = "PWABanner"
 
-const MainLayout = ({market} : {market:MarketSegment}) => {
-  const {id} = useParams()
+const MainLayout = ({ market }: { market: MarketSegment }) => {
+  const { id } = useParams()
   const [banner, setBanner] = useState<string>(
     sessionStorage.getItem(SESSION) || PWABanner.NotSet,
   )

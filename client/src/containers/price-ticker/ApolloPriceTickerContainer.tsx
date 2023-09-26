@@ -10,7 +10,7 @@ import { StockTicker } from "./tickers/StockTicker"
 const ApolloPriceTickerContainer: React.FunctionComponent<
   IApolloContainerProps
 > = ({ market }) => {
-  const id = useParams()['id'] || "";
+  const id = useParams()["id"] || ""
   if (market === MarketSegment.FX) {
     return <FXTicker id={id} />
   }

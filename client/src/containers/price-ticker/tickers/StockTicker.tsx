@@ -11,7 +11,7 @@ import {
   onStockPriceSubscriptionVariables,
 } from "../graphql/types/onStockPriceSubscription"
 
-export const StockTicker = ({id}:{id:string}) => {
+export const StockTicker = ({ id }: { id: string }) => {
   const [shouldResubscribe, setShouldResubscribe] = useState<boolean>(true)
   const [currentId, setCurrentId] = useState<string>(id)
 

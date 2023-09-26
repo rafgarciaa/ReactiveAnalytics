@@ -8,7 +8,7 @@ import { MarketsList } from "../index"
 export const FooterMarket = styled.div``
 
 const FooterWrapper = styled.div<{ $hasNoSearch: boolean }>`
-  display: ${props => (props.$hasNoSearch ? "none" : "grid")};
+  display: ${(props) => (props.$hasNoSearch ? "none" : "grid")};
   grid-column: 1 / 3;
   border-top: 1px solid ${({ theme }) => theme.secondary.coreSecondary3};
   margin: 0 ${pxToRems(22)};

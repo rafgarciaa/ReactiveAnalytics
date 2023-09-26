@@ -20,7 +20,13 @@ const ThemeContext = React.createContext<IContextValue>({
 
 const STORAGE_KEY = "themeName"
 
-const ThemeStorageProvider = ({ storage, children } :{storage?: typeof localStorage | typeof sessionStorage, children:React.ReactNode}) => {
+const ThemeStorageProvider = ({
+  storage,
+  children,
+}: {
+  storage?: typeof localStorage | typeof sessionStorage
+  children: React.ReactNode
+}) => {
   const [initialized, setInitialized] = useState(false)
   const [themeName, setThemeName] = useState<ThemeName>(ThemeName.Light)
 

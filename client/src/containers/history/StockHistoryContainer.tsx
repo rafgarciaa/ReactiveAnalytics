@@ -10,7 +10,7 @@ import {
   StockHistoryQueryVariables,
 } from "./graphql/types/StockHistoryQuery"
 
-const History= ({ id }:{id:string}) => {
+const History = ({ id }: { id: string }) => {
   return (
     <>
       <AppQuery<StockHistoryQuery, StockHistoryQueryVariables>
@@ -23,7 +23,7 @@ const History= ({ id }:{id:string}) => {
   )
 }
 
-export const StockHistoryContainer = ({id} : {id:string}) => (
+export const StockHistoryContainer = ({ id }: { id: string }) => (
   <HistoryWrapper>
     <History id={id} />
   </HistoryWrapper>

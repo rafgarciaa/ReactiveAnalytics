@@ -9,7 +9,7 @@ import {
   onFXPriceSubscriptionVariables,
 } from "../graphql/types/onFXPriceSubscription"
 
-export const FXTicker = ({ id }:{id:string}) => {
+export const FXTicker = ({ id }: { id: string }) => {
   const [shouldResubscribe, setShouldResubscribe] = useState<boolean>(true)
   const [currentId, setCurrentId] = useState<string>(id)
 

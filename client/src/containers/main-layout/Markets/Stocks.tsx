@@ -4,8 +4,8 @@ import { useParams } from "react-router-dom"
 import { MainGridArea, NewsGridArea } from "../../../common/StyledComponents"
 import { Company, History, News, Peers, Stats } from "../../index"
 
-const Stocks= () =>{
-  const id = useParams()['id'] || "";
+const Stocks = () => {
+  const id = useParams()["id"] || ""
   return (
     <>
       <MainGridArea>

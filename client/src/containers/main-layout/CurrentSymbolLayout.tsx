@@ -1,5 +1,5 @@
 import React from "react"
-import { Outlet} from "react-router-dom"
+import { Outlet } from "react-router-dom"
 
 import { MarketSegment } from "@/containers/global-types"
 import { PriceTicker } from "@/containers/price-ticker"
@@ -13,7 +13,13 @@ import {
 import { Search } from "../index"
 import Footer from "./Footer"
 
-export const CurrentSymbolLayout = ({ id, market } :   { id?: string, market: MarketSegment }) => {
+export const CurrentSymbolLayout = ({
+  id,
+  market,
+}: {
+  id?: string
+  market: MarketSegment
+}) => {
   const { currentSymbol, previousSearch } = useSearch()
 
   return (
@@ -24,7 +30,7 @@ export const CurrentSymbolLayout = ({ id, market } :   { id?: string, market: Ma
           {currentSymbol && <PriceTicker market={market} />}
         </SearchGridArea>
       </MainSearchContent>
-      {currentSymbol && <Outlet/>}
+      {currentSymbol && <Outlet />}
       <Footer hasNoSearch={!currentSymbol} />
     </WrapperContent>
   )

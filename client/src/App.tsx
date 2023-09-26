@@ -22,22 +22,22 @@ library.add(fasLightBulb, farLightBulb)
 const App = () => {
   return (
     <BrowserRouter>
-    <ApolloProvider client={apolloClient}>
-      <GlobalStyle />
-      <ThemeProvider>
-        <SearchContextProvider>
-          <FocusProvider>
-            <FDC3Provider>
-              <GlobalScrollbarStyle />
-              <ParentContainer>
-                <PWAToolbar />
-                  <AppRoutes/>
-              </ParentContainer>
-            </FDC3Provider>
-          </FocusProvider>
-        </SearchContextProvider>
-      </ThemeProvider>
-    </ApolloProvider>
+      <ApolloProvider client={apolloClient}>
+        <GlobalStyle />
+        <ThemeProvider>
+          <SearchContextProvider>
+            <FocusProvider>
+              <FDC3Provider>
+                <GlobalScrollbarStyle />
+                <ParentContainer>
+                  <PWAToolbar />
+                  <AppRoutes />
+                </ParentContainer>
+              </FDC3Provider>
+            </FocusProvider>
+          </SearchContextProvider>
+        </ThemeProvider>
+      </ApolloProvider>
     </BrowserRouter>
   )
 }

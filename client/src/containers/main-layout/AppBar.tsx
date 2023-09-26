@@ -12,7 +12,7 @@ const LogoWrapper = styled.div`
 
 const Sidebar = styled.div<{ $hasPreviousSearch: boolean }>`
   display: flex;
-  align-items: ${props=>
+  align-items: ${(props) =>
     props.$hasPreviousSearch ? "flex-start" : "center"};
   justify-content: center;
   background: ${({ theme }) => theme.secondary.coreSecondary2};

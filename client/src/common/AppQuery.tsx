@@ -7,9 +7,9 @@ import AdaptiveLoader from "../common/AdaptiveLoader"
 
 const LoadableStyle = styled.div<{ $minWidth?: string; $minHeight?: string }>`
   width: 100%;
-  min-width: ${props => props.$minWidth || "100%"};
+  min-width: ${(props) => props.$minWidth || "100%"};
   height: 100%;
-  min-height: ${props => props.$minHeight || "100%"};
+  min-height: ${(props) => props.$minHeight || "100%"};
   border-radius: 0.1875rem;
   color: ${({ theme }) => theme.textColorPrimary};
   display: flex;

@@ -1,6 +1,6 @@
 import React, { useMemo } from "react"
 import { Keyframes } from "styled-components/dist/types"
-import {keyframes } from "styled-components/macro"
+import { keyframes } from "styled-components/macro"
 import styled from "styled-components/macro"
 
 const ANIMATION_SPEED = 2
@@ -18,8 +18,8 @@ interface IBarProps {
 }
 
 const Bar = styled("rect")<IBarProps>`
-  animation: ${props => props.$bouceKeyframes}
-    ${props => props.speed}s infinite;
+  animation: ${(props) => props.$bouceKeyframes} ${(props) => props.speed}s
+    infinite;
   animation-delay: ${({ order, speed }) => order * (speed / 1.3 / BAR_NUMBER)}s;
   fill: ${({ theme }) => theme.primary.corePrimary};
   will-change: transform;

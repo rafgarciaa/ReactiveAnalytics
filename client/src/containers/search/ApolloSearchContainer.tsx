@@ -26,7 +26,7 @@ interface IProps extends IApolloContainerProps {
   market: MarketSegment
 }
 
-type Props =  IProps
+type Props = IProps
 
 const ApolloSearchContainer: React.FunctionComponent<Props> = ({
   id,
@@ -34,7 +34,7 @@ const ApolloSearchContainer: React.FunctionComponent<Props> = ({
   market,
 }) => {
   const [currentText, setCurrentText] = useState<string>("")
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const { currentSymbol, refetchAttempts, searching, dispatch } = useSearch()
 
   const placeholderText = "Enter a stock, symbol, or currency pair..."
@@ -52,7 +52,7 @@ const ApolloSearchContainer: React.FunctionComponent<Props> = ({
           payload: { currentSymbol: symbol },
         })
       }
-      
+
       if (symbol) {
         clearSymbol()
         navigate(
@@ -61,7 +61,6 @@ const ApolloSearchContainer: React.FunctionComponent<Props> = ({
       } else {
         navigate(`/${url}`)
       }
-      
     },
     [dispatch, navigate, url, clearSymbol],
   )

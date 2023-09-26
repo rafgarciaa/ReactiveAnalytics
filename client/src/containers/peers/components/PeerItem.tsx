@@ -7,10 +7,8 @@ type PeerItemProps = {
   symbol: string
 }
 
-const PeerItem: React.FunctionComponent<PeerItemProps> = ({
-  symbol,
-}) => {
-  const navigate = useNavigate();
+const PeerItem: React.FunctionComponent<PeerItemProps> = ({ symbol }) => {
+  const navigate = useNavigate()
   const navClickHandler: MouseEventHandler<HTMLAnchorElement> = async (
     event,
   ) => {

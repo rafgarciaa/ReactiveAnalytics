@@ -13,7 +13,7 @@ interface IProps {
   instrument: string
 }
 
-const DataContents = (props : IProps) => {
+const DataContents = (props: IProps) => {
   return (
     <VanillaDataCard style={props.style}>
       <Heading style={props.headingStyle}>{props.title}</Heading>
@@ -22,8 +22,9 @@ const DataContents = (props : IProps) => {
   )
 }
 
-const VanillaDataCard = styled.div<{style: Interpolation<React.CSSProperties>;}>`
-
+const VanillaDataCard = styled.div<{
+  style: Interpolation<React.CSSProperties>
+}>`
   display: grid;
   grid-template-columns: 100%;
   overflow-x: hidden;

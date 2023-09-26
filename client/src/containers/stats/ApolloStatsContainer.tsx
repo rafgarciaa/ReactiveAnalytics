@@ -9,8 +9,8 @@ import { Stats } from "./components"
 import StatsConnection from "./graphql/StatsConnection.graphql"
 import { StatsQuery, StatsQueryVariables } from "./graphql/types/StatsQuery"
 
-const Statistics= () =>{
-  const id = useParams()['id'] || "";
+const Statistics = () => {
+  const id = useParams()["id"] || ""
   const onStatsQueryResults: (data: StatsQuery) => JSX.Element = ({
     stock,
   }) => {

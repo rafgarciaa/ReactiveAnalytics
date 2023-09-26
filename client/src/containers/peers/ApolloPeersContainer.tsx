@@ -6,8 +6,8 @@ import { Peers } from "./components"
 import CompanyConnection from "./graphql/PeersConnection.graphql"
 import { PeersQuery, PeersQueryVariables } from "./graphql/types/PeersQuery"
 
-const ApolloPeersContainer= () =>{ 
-   const id = useParams()['id'] || "";
+const ApolloPeersContainer = () => {
+  const id = useParams()["id"] || ""
   const onCompanyQueryResult = ({
     stock: { peers },
   }: PeersQuery): JSX.Element => {

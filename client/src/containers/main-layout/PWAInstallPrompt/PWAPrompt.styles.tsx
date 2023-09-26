@@ -6,7 +6,7 @@ import { pxToRems } from "@/utils"
 
 export const Banner = styled.div<{ $isHidden: boolean }>`
   position: relative;
-  display: ${props=> (props.$isHidden ? "none" : "grid")};
+  display: ${(props) => (props.$isHidden ? "none" : "grid")};
   grid-row: 1;
   grid-column: 1 / -1;
   height: ${pxToRems(56)};
