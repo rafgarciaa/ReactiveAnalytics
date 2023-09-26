@@ -1,13 +1,11 @@
-import React, { useMemo } from "react"
+import React from "react"
 import { Outlet} from "react-router-dom"
 import { MarketSegment } from "@/containers/global-types"
 import { PriceTicker } from "@/containers/price-ticker"
 import { useSearch } from "@/hooks"
 
 import {
-  MainContent,
   MainSearchContent,
-  ScrollableArea,
   SearchGridArea,
   WrapperContent,
 } from "../../common/StyledComponents"

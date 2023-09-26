@@ -16,7 +16,7 @@ import { ThemeProvider } from "@/rt-theme/ThemeContext"
 import AppRoutes from "./Routes"
 import { BrowserRouter } from "react-router-dom"
 
-//library.add(fasLightBulb, farLightBulb)
+library.add(fasLightBulb, farLightBulb)
 
 const App = () => {
   return (

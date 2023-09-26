@@ -9,9 +9,7 @@ import {
   CompanyQueryVariables,
 } from "./graphql/types/CompanyQuery"
 
-const ApolloCompanyContainer: React.FunctionComponent<
-  IApolloContainerProps
-> = ({ id }) => {
+const ApolloCompanyContainer= ({ id }:{id:string}) => {
   const onCompanyQueryResults = (data: CompanyQuery): JSX.Element => (
     <Company company={data.stock.company} />
   )
