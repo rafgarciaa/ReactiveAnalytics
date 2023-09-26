@@ -1,6 +1,7 @@
 import React, { MouseEventHandler } from "react"
 
 import { PeersLink } from "./Peers.styles"
+import { useNavigate } from "react-router-dom"
 
 type PeerItemProps = {
   symbol: string
@@ -9,12 +10,13 @@ type PeerItemProps = {
 const PeerItem: React.FunctionComponent<PeerItemProps> = ({
   symbol,
 }) => {
+  const navigate = useNavigate();
   const navClickHandler: MouseEventHandler<HTMLAnchorElement> = async (
     event,
   ) => {
     const newSymbol = event.currentTarget.dataset.symbol
 
-    //history.push(`/stock/${newSymbol}`)
+    navigate(`/stock/${newSymbol}`)
   }
 
   return (
@@ -24,4 +26,4 @@ const PeerItem: React.FunctionComponent<PeerItemProps> = ({
   )
 }
 
-//export default withRouter(PeerItem)
+export default PeerItem
