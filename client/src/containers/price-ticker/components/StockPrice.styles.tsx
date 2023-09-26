@@ -22,8 +22,10 @@ export const StockPriceChangeWrapper = styled.div<{ $change: number }>`
   align-self: end;
   margin-left: ${pxToRems(4)};
   ${Text} {
-    color: ${ props =>
-     props.$change < 0 ? props.theme.accents.accentNegative : props.theme.accents.accentPositive};
+    color: ${(props) =>
+      props.$change < 0
+        ? props.theme.accents.accentNegative
+        : props.theme.accents.accentPositive};
   }
   @media ${mediaQuery.mobile} {
     justify-content: start;
