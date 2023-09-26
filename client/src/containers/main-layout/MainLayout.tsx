@@ -12,9 +12,7 @@ import { useParams } from "react-router-dom"
 
 const SESSION = "PWABanner"
 
-const MainLayout: React.FunctionComponent<
-   { market: MarketSegment }
-> = (props) => {
+const MainLayout = ({market} : {market?:MarketSegment}) => {
   const {id} = useParams()
   const [banner, setBanner] = useState<string>(
     sessionStorage.getItem(SESSION) || PWABanner.NotSet,
@@ -59,7 +57,7 @@ const MainLayout: React.FunctionComponent<
           setIsModalOpen={setIsModalOpen}
         />
         <AppBar />
-        <CurrentSymbolLayout id={id || ""} {...props} />
+        <CurrentSymbolLayout id={id} market={market} />
       </MainLayoutWrapper>
     </PlatformProvider>
   )

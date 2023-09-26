@@ -15,32 +15,19 @@ import { Search } from "../index"
 import Footer from "./Footer"
 
 export const CurrentSymbolLayout: React.FunctionComponent<
-  { id: string, market: MarketSegment }
+  { id?: string, market?: MarketSegment }
 > = ({ id, market }) => {
-  const { currentSymbol, errorMessage, previousSearch } = useSearch()
-
-  const renderedErrorMessage: JSX.Element | null = useMemo(() => {
-    if (!(currentSymbol && currentSymbol.id) && id) {
-      return (
-        <ScrollableArea>
-          <MainContent>
-            <span>{errorMessage}</span>
-          </MainContent>
-        </ScrollableArea>
-      )
-    }
-    return null
-  }, [currentSymbol, errorMessage, id])
+  const { currentSymbol, previousSearch } = useSearch()
 
   return (
     <WrapperContent>
       <MainSearchContent $hasPreviousSearch={previousSearch ?? false}>
         <SearchGridArea>
-          <Search id={id} url={market} market={market} />
+          <Search id={id} url={market} market={market || MarketSegment.STOCK} />
           {currentSymbol && <PriceTicker market={market} />}
         </SearchGridArea>
       </MainSearchContent>
-      <Outlet/>
+      {id && <Outlet/>}
       <Footer hasNoSearch={!currentSymbol} />
     </WrapperContent>
   )

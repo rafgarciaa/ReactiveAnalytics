@@ -5,13 +5,11 @@ import { FXHistory } from "@/containers/history"
 import { useParams } from "react-router-dom"
 
 const Currencies= () =>{
-  const id = useParams()['id'] || "";
+  const {id} = useParams();
   return (
-    <>
       <MainGridArea>
         <FXHistory id={id} />
       </MainGridArea>
-    </>
   )
 }
 
