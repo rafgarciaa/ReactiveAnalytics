@@ -11,7 +11,7 @@ const ApolloPriceTickerContainer: React.FunctionComponent<
   IApolloContainerProps
 > = ({ market }) => {
   const id = useParams()['id'] || "";
-  if (market === MarketSegment.FX.toLowerCase()) {
+  if (market === MarketSegment.FX) {
     return <FXTicker id={id} />
   }
   return <StockTicker id={id} />
