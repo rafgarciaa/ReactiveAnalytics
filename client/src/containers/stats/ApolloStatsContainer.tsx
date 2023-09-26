@@ -1,4 +1,5 @@
 import * as React from "react"
+import { useParams } from "react-router-dom"
 
 import { StatisticsWrapper } from "@/common/StyledComponents"
 
@@ -7,7 +8,6 @@ import { IApolloContainerProps } from "../../common/IApolloContainerProps"
 import { Stats } from "./components"
 import StatsConnection from "./graphql/StatsConnection.graphql"
 import { StatsQuery, StatsQueryVariables } from "./graphql/types/StatsQuery"
-import { useParams } from "react-router-dom"
 
 const Statistics= () =>{
   const id = useParams()['id'] || "";

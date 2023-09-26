@@ -1,4 +1,4 @@
-import styled, { Interpolation, css } from "styled-components/macro"
+import styled, { css,Interpolation } from "styled-components/macro"
 
 import { fonts } from "@/rt-theme/fonts"
 import { mediaQuery } from "@/rt-theme/mediaQueries"

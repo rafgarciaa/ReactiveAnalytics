@@ -1,6 +1,8 @@
 import React from "react"
+
 import { AppQuery } from "@/common/AppQuery"
 import { HistoryWrapper } from "@/common/StyledComponents"
+
 import { StockHistoryChart } from "./components/StockHistoryChart"
 import StockHistoryConnection from "./graphql/StockHistoryConnection.graphql"
 import {

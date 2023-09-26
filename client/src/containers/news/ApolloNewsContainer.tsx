@@ -1,10 +1,10 @@
 import React from "react"
+import { useParams } from "react-router-dom"
 
 import { AppQuery } from "../../common/AppQuery"
 import { News } from "./components"
 import NewsConnection from "./graphql/NewsConnection.graphql"
 import { NewsQuery, NewsQueryVariables } from "./graphql/types/NewsQuery"
-import { useParams } from "react-router-dom"
 
 const ApolloNewsContainer= () =>{ 
    const id = useParams()['id'] || "";

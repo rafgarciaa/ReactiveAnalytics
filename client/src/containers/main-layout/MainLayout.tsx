@@ -1,14 +1,15 @@
 import React, { useCallback, useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
 
 import { MarketSegment } from "@/containers/global-types"
 import { useSearch, useSearchFocus } from "@/hooks"
 import { getPlatformAsync, PlatformProvider } from "@/ra-platforms"
 import { AsyncReturnType } from "@/utils"
+
 import { MainLayoutWrapper } from "../../common/StyledComponents"
 import AppBar from "./AppBar"
 import { CurrentSymbolLayout } from "./CurrentSymbolLayout"
 import { PWABanner, PWAInstallBanner } from "./PWAInstallPrompt"
-import { useParams } from "react-router-dom"
 
 const SESSION = "PWABanner"
 

@@ -1,8 +1,9 @@
 import React from "react"
 import { Route, Routes } from "react-router-dom"
+
 import { MainLayout} from "./containers"
-import { Stocks, Currencies } from "./containers/main-layout/Markets"
 import { MarketSegment } from "./containers/global-types"
+import { Currencies,Stocks } from "./containers/main-layout/Markets"
 
 const AppRoutes = () =>{
 

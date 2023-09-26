@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 import { MarketSegment } from "@/containers/global-types"
 import { useFDC3Context, useSearch } from "@/hooks"
@@ -19,7 +20,6 @@ import {
 import { searchQuery, searchQueryVariables } from "./graphql/types/searchQuery"
 import { SearchContextActionTypes } from "./SearchContext"
 import { SearchErrorCard } from "./SearchErrorCard"
-import { useNavigate } from "react-router-dom"
 
 interface IProps extends IApolloContainerProps {
   url?: string

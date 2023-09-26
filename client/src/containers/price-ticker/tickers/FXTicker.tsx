@@ -1,5 +1,6 @@
 import { useSubscription } from "@apollo/client"
 import React, { useEffect, useState } from "react"
+
 import AdaptiveLoader from "@/common/AdaptiveLoader"
 
 import FXPriceSubscription from "../graphql/FXPriceSubscription.graphql"

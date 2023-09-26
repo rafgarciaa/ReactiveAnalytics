@@ -3,6 +3,7 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { faLightbulb as farLightBulb } from "@fortawesome/free-regular-svg-icons"
 import { faLightbulb as fasLightBulb } from "@fortawesome/free-solid-svg-icons"
 import React from "react"
+import { BrowserRouter } from "react-router-dom"
 import styled from "styled-components/macro"
 
 import apolloClient from "@/apollo/client"
@@ -13,8 +14,8 @@ import { SearchContextProvider } from "@/containers/search/SearchContext"
 import { FDC3Provider } from "@/ra-platforms/fdc3"
 import GlobalStyle from "@/rt-theme/globals"
 import { ThemeProvider } from "@/rt-theme/ThemeContext"
+
 import AppRoutes from "./Routes"
-import { BrowserRouter } from "react-router-dom"
 
 library.add(fasLightBulb, farLightBulb)
 

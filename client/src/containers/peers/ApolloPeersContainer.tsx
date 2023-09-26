@@ -1,10 +1,10 @@
 import React from "react"
+import { useParams } from "react-router-dom"
 
 import { AppQuery } from "../../common/AppQuery"
 import { Peers } from "./components"
 import CompanyConnection from "./graphql/PeersConnection.graphql"
 import { PeersQuery, PeersQueryVariables } from "./graphql/types/PeersQuery"
-import { useParams } from "react-router-dom"
 
 const ApolloPeersContainer= () =>{ 
    const id = useParams()['id'] || "";

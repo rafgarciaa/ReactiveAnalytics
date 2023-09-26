@@ -1,7 +1,6 @@
 import React from "react"
 
 import { AppQuery } from "../../common/AppQuery"
-import { IApolloContainerProps } from "../../common/IApolloContainerProps"
 import { Company } from "./components"
 import CompanyConnection from "./graphql/CompanyConnection.graphql"
 import {

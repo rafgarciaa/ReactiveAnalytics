@@ -1,7 +1,7 @@
 import React, { MouseEventHandler } from "react"
+import { useNavigate } from "react-router-dom"
 
 import { PeersLink } from "./Peers.styles"
-import { useNavigate } from "react-router-dom"
 
 type PeerItemProps = {
   symbol: string

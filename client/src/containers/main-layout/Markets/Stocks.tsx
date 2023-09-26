@@ -1,8 +1,8 @@
 import React from "react"
+import { useParams } from "react-router-dom"
 
 import { MainGridArea, NewsGridArea } from "../../../common/StyledComponents"
 import { Company, History, News, Peers, Stats } from "../../index"
-import { useParams } from "react-router-dom"
 
 const Stocks= () =>{
   const id = useParams()['id'] || "";
