@@ -1,0 +1,38 @@
+name: Scheduled daily E2E
+
+on:
+  schedule:
+    - cron: "45 8 * * *"
+
+defaults:
+  run:
+    working-directory: client
+
+jobs:
+  ra-end-to-end-test:
+    name: prod(demo) - e2e
+    
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set Node version
+        uses: actions/setup-node@v3
+        with:
+            node-version: 20
+
+      - name: Install
+        run: yarn install
+
+      - name: Test
+        env:
+            E2E_RA_WEB_BASE_URL: https://demo-reactive-analytics.adaptivecluster.com
+        run: yarn run e2e:web
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+            name: playwright-report
+            path: packages/client/playwright-report/
+            retention-days: 7

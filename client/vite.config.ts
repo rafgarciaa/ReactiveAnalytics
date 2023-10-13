@@ -92,6 +92,7 @@ const setConfig = ({ mode }) => {
       setupFiles: "src/setupTests.ts",
       // setting globals: true gives all tests access to the vitest functions without having to import them everytime
       globals: true,
+      include: ["**/*.test.{tsx,ts}", "**/__tests__/*"]
     },
   })
 }

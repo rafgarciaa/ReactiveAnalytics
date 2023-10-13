@@ -23,7 +23,8 @@
     "test:ui": "vitest --ui",
     "coverage": "vitest run --coverage",
     "verify": "yarn typecheck && yarn lint && yarn format:check && yarn test",
-    "openfin": "wait-on -l http://localhost:3005/openfin/app.json && openfin -l -c http://localhost:3005/openfin/app.json"
+    "openfin": "wait-on -l http://localhost:3005/openfin/app.json && openfin -l -c http://localhost:3005/openfin/app.json",
+    "e2e:web": "playwright test --project=chrome"
   },
   "dependencies": {
     "@apollo/client": "^3.7.1",
@@ -51,6 +52,7 @@
     "typeface-roboto": "^0.0.75"
   },
   "devDependencies": {
+    "@playwright/test": "1.39.0",
     "@rollup/plugin-graphql": "^2.0.2",
     "@rollup/plugin-replace": "^5.0.1",
     "@testing-library/jest-dom": "^5.16.5",
