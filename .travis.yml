@@ -1,3 +1,13 @@
+# Use a later Ubuntu distro, where Python 3.8+ is definitely available
+# https://docs.travis-ci.com/user/reference/linux/
+dist: focal
+
+# Need to bump Python for Google CLI
+# See https://cloud.google.com/sdk/docs/install#linux
+# and https://docs.travis-ci.com/user/customizing-the-build/#installing-a-second-programming-language
+before_install:
+  - pyenv global 3.8
+
 services:
   - docker
 
