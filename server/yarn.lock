@@ -2,21 +2,21 @@
 # yarn lockfile v1
 
 
-"@adaptive/hydra-codecs@3.120.0":
-  version "3.120.0"
-  resolved "https://weareadaptive.jfrog.io/artifactory/api/npm/hydra-web/@adaptive/hydra-codecs/-/@adaptive/hydra-codecs-3.120.0.tgz#ff1001cca49adee412908726bf7063b65fcb6bbb"
-  integrity sha512-Wah6mDTiKm7ot8Q+6OqVXlGU6O/RZp/99oXpKC0M1l97xCVAxxSzhXg3bbURpP2QUmw6QlwkM0ndytK2yhFk6w==
+"@adaptive/hydra-codecs@4.12.0":
+  version "4.12.0"
+  resolved "https://weareadaptive.jfrog.io/artifactory/api/npm/hydra-web/@adaptive/hydra-codecs/-/@adaptive/hydra-codecs-4.12.0.tgz#1f6ad2cb3134dd57fa22a8b3d12cc06cf2fe75f7"
+  integrity sha512-FBtk604bJU3Np8y3p25Oc2JMURG0SdaEmXu6q9dwOL1PwQFXmdeNBZ4sc6z+Y2nzQjgtI1BIXmCFT7cAMcGmyg==
   dependencies:
     commander "^7.1.0"
     jsbi "4.1.0"
     ts-morph "^10.0.1"
 
-"@adaptive/hydra-platform@3.120.0":
-  version "3.120.0"
-  resolved "https://weareadaptive.jfrog.io/artifactory/api/npm/hydra-web/@adaptive/hydra-platform/-/@adaptive/hydra-platform-3.120.0.tgz#57069ab81311312c382654f9bc40068d7c622655"
-  integrity sha512-8JJ2rmUcLDskvepK+yZGv3bAt6h2BMBEw6UTsxPPj9lSYi9ldRc9e6wea77FksQ2c5HY1K1zx2ccFS9rJM/Zpg==
+"@adaptive/hydra-platform@4.12.0":
+  version "4.12.0"
+  resolved "https://weareadaptive.jfrog.io/artifactory/api/npm/hydra-web/@adaptive/hydra-platform/-/@adaptive/hydra-platform-4.12.0.tgz#92d90371d32c2daae5628891b09139f1473c0a54"
+  integrity sha512-yYhzG+A55VpjWlbwP3fJm9bFksflFkydfIG1UUc14w5uEPKsBMFlrFceq6Zfvuy8ExDP3sAWXjUgUMeH0tkskg==
   dependencies:
-    "@adaptive/hydra-codecs" "3.120.0"
+    "@adaptive/hydra-codecs" "4.12.0"
 
 "@apollo/protobufjs@1.2.2":
   version "1.2.2"
