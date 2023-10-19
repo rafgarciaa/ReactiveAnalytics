@@ -1,4 +1,4 @@
-name: Scheduled daily E2E
+name: Reactive Analytics Prod Daily E2E
 
 on:
   schedule:
@@ -13,6 +13,8 @@ jobs:
     name: prod(demo) - e2e
     
     runs-on: ubuntu-20.04
+
+    if: github.repository_owner == 'AdaptiveConsulting'
 
     steps:
       - name: Checkout code

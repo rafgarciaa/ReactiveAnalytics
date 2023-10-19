@@ -19,7 +19,7 @@ export const test = base.extend({
       use(context)
     }
   },
-  reactiveAnalyticsPageRec: async ({ context }, use) => {
+  reactiveAnalyticsPage: async ({ context }, use) => {
     const contextPages = context.pages()
     const mainWindow =
       contextPages.length > 0 ? contextPages[0] : await context.newPage()

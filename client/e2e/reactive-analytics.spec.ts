@@ -5,21 +5,21 @@ import { ElementTimeout } from "./utils"
 
 test.describe("Reactive Analytics", () => {
   const baseUrl = `${process.env.E2E_RA_WEB_BASE_URL}`
-  let reactiveAnalyticsPage: Page
+  let mainPage: Page
   let searchBar: Locator
   let suggestions: Locator
 
-  test.beforeAll(async ({ reactiveAnalyticsPageRec }) => {
-    reactiveAnalyticsPage = reactiveAnalyticsPageRec
-    await reactiveAnalyticsPage.goto(baseUrl)
+  test.beforeAll(async ({ reactiveAnalyticsPage }) => {
+    mainPage = reactiveAnalyticsPage
 
-    searchBar = reactiveAnalyticsPage.getByPlaceholder(
+    searchBar = mainPage.getByPlaceholder(
       /Enter a stock, symbol, or currency pair.../,
     )
-    suggestions = reactiveAnalyticsPage.getByRole("listbox")
+    suggestions = mainPage.getByRole("listbox")
   })
 
   test.beforeEach(async () => {
+    await mainPage.goto(baseUrl)
     await searchBar.clear()
   })
 
@@ -34,14 +34,34 @@ test.describe("Reactive Analytics", () => {
     ).toBeGreaterThan(0)
   })
 
-  test("Opens stock page stock selected from suggestions", async () => {
-    await searchBar.pressSequentially("USD")
+  test("Opens stock page from suggestions", async () => {
+    await searchBar.pressSequentially("Ford")
+
+    await expect(suggestions.getByText("Stock")).toBeVisible()
+    await expect(suggestions.getByText("FX")).not.toBeVisible()
+
     const firstSuggestion = suggestions.getByRole("option").first()
     const firstSuggestionText = await firstSuggestion.textContent()
-
     await firstSuggestion.click()
-    await reactiveAnalyticsPage.waitForURL(`${baseUrl}/stock/*`)
-    await reactiveAnalyticsPage.waitForLoadState("networkidle")
+
+    await mainPage.waitForURL(`${baseUrl}/stock/*`)
+    await mainPage.waitForLoadState("networkidle")
+    await expect(searchBar).toBeVisible()
+    await expect(searchBar).toHaveValue(firstSuggestionText)
+  })
+
+  test("Opens FX page from suggestions", async () => {
+    await searchBar.pressSequentially("GBP")
+
+    await expect(suggestions.getByText("FX")).toBeVisible()
+    await expect(suggestions.getByText("Stock")).not.toBeVisible()
+
+    const firstSuggestion = suggestions.getByRole("option").first()
+    const firstSuggestionText = await firstSuggestion.textContent()
+    await firstSuggestion.click()
+
+    await mainPage.waitForURL(`${baseUrl}/fx/*`)
+    await mainPage.waitForLoadState("networkidle")
     await expect(searchBar).toBeVisible()
     await expect(searchBar).toHaveValue(firstSuggestionText)
   })
